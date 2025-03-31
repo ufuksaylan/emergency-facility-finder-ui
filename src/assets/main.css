@@ -1,42 +1,35 @@
-@import './base.css';
+/* src/assets/main.css */
+@import './base.css'; /* Keep base styles/resets */
 
+/* Minimal global styles for the root app element */
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  font-weight: normal; /* Or remove if handled by base.css */
+  /* max-width, margin, padding removed */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+/* Ensure body has no unexpected margin/padding if not in base.css */
+body {
+  margin: 0;
 }
 
+/* Essential styles for Leaflet Routing Machine panel */
 .leaflet-routing-container {
-  color: #000000;
-  max-height: 250px;
+  color: #333; /* Slightly softer than pure black */
+  max-height: 250px; /* Adjust if needed */
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+  padding: 8px; /* Internal padding */
+  border-radius: 4px; /* Slightly rounded corners */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
+/* --- REMOVED SECTIONS --- */
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+/* Default Vue template link styles (a, .green, a:hover) should be removed or commented out */
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+/* Default Vue template responsive layout styles (@media (min-width: 1024px)) should be removed or commented out */

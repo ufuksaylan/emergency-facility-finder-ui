@@ -7,65 +7,22 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+/*
+  Styles removed.
+  The layout is now primarily handled by individual view components (like HomeView.vue using Element Plus)
+  and global styles (src/assets/main.css, Element Plus CSS).
+  Add styles here only if they need to apply universally to the RouterView container itself across ALL views.
+*/
+
+/* Example: If you needed the container App.vue provides to have a specific background */
+/*
+:global(body) {
+  margin: 0; // Often set in main.css or base.css already
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+:host { // Style the App.vue component itself
+  display: block; // Ensure it behaves like a block element
+  min-height: 100vh; // Example: make sure App covers full viewport height
 }
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+*/
 </style>
