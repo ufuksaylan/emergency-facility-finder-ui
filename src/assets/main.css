@@ -15,6 +15,13 @@ a,
   padding: 3px;
 }
 
+.leaflet-routing-container {
+  color: #000000;
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
