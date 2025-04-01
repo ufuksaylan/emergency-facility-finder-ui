@@ -1,55 +1,51 @@
 <script setup>
 // --- Core Vue/Router/Pinia Imports ---
-import { ref, onMounted, watch, computed } from 'vue' // Added computed
-import { storeToRefs } from 'pinia' // Import storeToRefs
+import { ref, onMounted, watch } from 'vue' // removed computed, not needed here anymore
+import { storeToRefs } from 'pinia'
 
 // --- Store Imports ---
 import { useLocationStore } from '@/stores/location'
-import { useMapSettingsStore } from '@/stores/mapSettings' // Import the new map settings store
+import { useMapSettingsStore } from '@/stores/mapSettings'
 
 // --- API & Composables ---
 import { findFacilities } from '@/api/facilities'
-import { useLeafletMap } from '@/composables/useLeafletMap'
+// useLeafletMap is NO LONGER directly used here
 
 // --- Component Imports ---
 import AppHeader from '@/components/AppHeader.vue'
 import SearchBar from '@/components/SearchBar.vue'
+import MapComponent from '@/components/MapComponent.vue' // <-- Import the new component
 
 // --- Element Plus Imports ---
-import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton } from 'element-plus' // Added Radio components
-import { Van, Promotion } from '@element-plus/icons-vue' // Added Promotion as placeholder walking icon
+import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton, ElIcon } from 'element-plus' // ElIcon needed for buttons
+import { Van, Promotion } from '@element-plus/icons-vue'
 
 // --- Store Instantiation ---
 const locationStore = useLocationStore()
-const mapSettingsStore = useMapSettingsStore() // Instantiate the map settings store
+const mapSettingsStore = useMapSettingsStore()
 
 // --- Reactive State from Stores ---
-const { selectedTravelMode } = storeToRefs(mapSettingsStore) // Get reactive state from map settings store
+const { selectedTravelMode } = storeToRefs(mapSettingsStore)
 
 // --- Local Component State ---
 const searchQuery = ref('')
-const destinationFacility = ref(null)
+const destinationFacility = ref(null) // Still needed to pass as prop
 const destinationLoading = ref(false)
 const destinationError = ref(null)
-const mapContainerRef = ref(null)
+// mapContainerRef is NO LONGER needed here
 
-// --- Use the Map Composable (No longer passing mode) ---
-const { isRouting, routingError, routeSummary } = useLeafletMap(
-  mapContainerRef,
-  destinationFacility,
-  // selectedTravelMode ref is no longer passed here
-)
+// --- Map State (Managed via MapComponent props/emits) ---
+// We still need local refs to receive updates from MapComponent for notifications
+const isRouting = ref(false)
+const routingError = ref(null)
+const routeSummary = ref(null)
 
 // --- Computed Properties ---
-// Determine the icon based on the selected travel mode from the store
-const currentModeIcon = computed(() => {
-  // Replace 'Promotion' with a better icon like Bicycle or a custom SVG if available
-  return selectedTravelMode.value === 'driving' ? Van : Promotion
-})
+// currentModeIcon is NO LONGER needed here (handled in MapComponent)
 
 // --- Methods ---
 
-// Fetch Destination Logic (remains the same as original)
+// Fetch Destination Logic (remains the same)
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
@@ -76,7 +72,7 @@ async function fetchDestinationFacility() {
       if (formattedDestination.latitude == null || formattedDestination.longitude == null) {
         throw new Error('Destination coordinates missing in API response.')
       }
-      destinationFacility.value = formattedDestination
+      destinationFacility.value = formattedDestination // Update the ref passed to MapComponent
       console.log('HomeView: Destination data ref updated:', destinationFacility.value)
     } else {
       throw new Error('No suitable facilities found.')
@@ -85,7 +81,7 @@ async function fetchDestinationFacility() {
     console.error('HomeView: Failed fetch/process destination:', error)
     const errorMessage = error?.message || 'Could not load destination.'
     destinationError.value = errorMessage
-    destinationFacility.value = null
+    destinationFacility.value = null // Clear the ref passed to MapComponent
     ElNotification({
       title: 'Destination Finding Error',
       message: errorMessage,
@@ -99,7 +95,7 @@ async function fetchDestinationFacility() {
 
 // Handler to update the travel mode in the store
 function handleModeChange(newMode) {
-  mapSettingsStore.setTravelMode(newMode) // Call the store action
+  mapSettingsStore.setTravelMode(newMode) // MapComponent's composable will react to this
 }
 
 // --- Lifecycle & Watchers ---
@@ -109,7 +105,7 @@ onMounted(() => {
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
     locationStore.fetchLocation()
   }
-  // Map initialization is handled within useLeafletMap
+  // Map initialization is now handled within MapComponent
 })
 
 // Watch Location Errors (remains the same)
@@ -156,9 +152,10 @@ watch(
   { immediate: false },
 )
 
-// Watch Routing Status (remains the same)
+// Watch Routing Status (Now watches the local ref updated by MapComponent)
 watch(isRouting, (routing) => {
   if (routing && !routingError.value) {
+    // Check local routingError ref
     ElMessage({
       message: 'Calculating route...',
       type: 'info',
@@ -167,25 +164,26 @@ watch(isRouting, (routing) => {
   }
 })
 
-// Watch Routing Errors (remains the same)
+// Watch Routing Errors (Now watches the local ref updated by MapComponent)
 watch(routingError, (error) => {
   if (error) {
     ElNotification({
-      title: 'Routing Error', // Error message now comes formatted from composable
-      message: error,
+      title: 'Routing Error',
+      message: error, // Error message comes from MapComponent -> composable
       type: 'error',
       duration: 0,
     })
   }
 })
 
-// Watch Route Summary (remains the same)
+// Watch Route Summary (Now watches the local ref updated by MapComponent)
 watch(routeSummary, (summary, oldSummary) => {
+  // Check local routingError ref as well
   if (summary !== null && oldSummary === null && !routingError.value) {
     console.log('HomeView: Route summary updated:', summary)
-    ElMessage.closeAll('info')
+    ElMessage.closeAll('info') // Close any "Calculating" messages
     ElMessage({
-      message: 'Route calculated.', // Summary text itself comes from composable
+      message: 'Route calculated.', // Summary text itself is now in MapComponent overlay
       type: 'success',
       duration: 2000,
     })
@@ -213,20 +211,14 @@ watch(routeSummary, (summary, oldSummary) => {
         </el-radio-button>
       </el-radio-group>
     </div>
-    <el-main class="map-main-content">
-      <div ref="mapContainerRef" class="map-container"></div>
 
-      <transition name="el-fade-in">
-        <div class="directions-overlay" v-if="routeSummary && !routingError">
-          <el-icon :size="24" style="margin-right: 8px">
-            <component :is="currentModeIcon" />
-          </el-icon>
-          <div class="directions-text">
-            <span>ER is {{ routeSummary }}</span>
-            <el-link type="primary" :underline="false">Tap here for directions</el-link>
-          </div>
-        </div>
-      </transition>
+    <el-main class="map-main-content">
+      <MapComponent
+        :destination-facility="destinationFacility"
+        v-model:is-routing="isRouting"
+        v-model:routing-error="routingError"
+        v-model:route-summary="routeSummary"
+      />
     </el-main>
   </el-container>
 </template>
@@ -239,69 +231,30 @@ watch(routeSummary, (summary, oldSummary) => {
   flex-direction: column;
 }
 
-/* NEW: Styles for Travel Mode Selector */
+/* Styles for Travel Mode Selector */
 .travel-mode-selector {
   padding: 8px 15px;
   background-color: #f9f9f9; /* Light background */
   text-align: center;
   border-bottom: 1px solid #eee;
   flex-shrink: 0; /* Prevent shrinking */
-  z-index: 10; /* Ensure it's visually distinct if needed */
+  z-index: 10; /* Ensure it's visually distinct */
+}
+
+/* ElIcon adjustments within buttons if needed */
+.travel-mode-selector .el-radio-button__inner .el-icon {
+  margin-right: 4px; /* Add space between icon and text */
+  vertical-align: middle; /* Align icon better */
+}
+.travel-mode-selector .el-radio-button__inner {
+  display: inline-flex; /* Help with vertical alignment */
+  align-items: center;
 }
 
 .map-main-content {
-  padding: 0;
-  flex-grow: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-.map-container {
-  height: 100%;
-  width: 100%;
-}
-
-.directions-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  z-index: 1001; /* Above map layers, below potential modals */
-  width: fit-content;
-  max-width: 90%;
-}
-
-.directions-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.3;
-}
-
-.directions-text span {
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.directions-text .el-link {
-  font-weight: normal;
-}
-
-/* Global Leaflet control styles (remain the same) */
-:global(.leaflet-control-zoom a),
-:global(.leaflet-control-locate a) {
-  border: 1px solid #ccc !important;
-  background-color: white !important;
-  color: #333 !important;
-}
-:global(.leaflet-control-zoom a:hover),
-:global(.leaflet-control-locate a:hover) {
-  background-color: #f4f4f4 !important;
+  padding: 0; /* Remove padding */
+  flex-grow: 1; /* Take remaining space */
+  position: relative; /* Keep for potential future absolute elements */
+  overflow: hidden; /* Prevent content spill */
 }
 </style>
