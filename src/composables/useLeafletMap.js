@@ -1,5 +1,5 @@
 // src/composables/useLeafletMap.js
-import { ref, shallowRef, onMounted, onBeforeUnmount, watch, computed } from 'vue'
+import { shallowRef, onMounted, onBeforeUnmount, watch, computed } from 'vue'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
@@ -8,6 +8,7 @@ import 'leaflet-routing-machine'
 // --- Pinia Store Imports ---
 import { useLocationStore } from '@/stores/location'
 import { useMapSettingsStore } from '@/stores/mapSettings'
+import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
 
 // --- Environment Variable ---
 const OSRM_SERVICE_URL = import.meta.env.VITE_OSRM_SERVICE_URL
@@ -45,7 +46,6 @@ const userIcon = L.icon({
 const facilityIcon = L.icon(L.Icon.Default.prototype.options)
 
 // --- Helper Functions ---
-
 // upsertMarker
 function upsertMarker(markerRef, latLng, options, map) {
   let created = false
@@ -82,19 +82,19 @@ function formatRouteSummary(summary, mode) {
 }
 
 // --- Composable ---
+// Now takes destinationRef (the computed ref from destinationStore)
 export function useLeafletMap(mapContainerRef, destinationRef) {
   // --- Internal State ---
   const mapObject = shallowRef(null)
   const routingControl = shallowRef(null)
   const userMarker = shallowRef(null)
   const destinationMarker = shallowRef(null)
-  const isRouting = ref(false)
-  const routingError = ref(null)
-  const routeSummary = ref(null)
+  // REMOVED: Local isRouting, routingError, routeSummary refs
 
   // --- Access Stores ---
   const locationStore = useLocationStore()
   const mapSettingsStore = useMapSettingsStore()
+  const destinationStore = useDestinationStore() // <-- Instantiate Destination Store
 
   // --- Computed LatLng Refs ---
   const userLatLng = computed(() =>
@@ -103,8 +103,9 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
       : null,
   )
 
+  // Use the destinationRef passed in (which should come from destinationStore.selectedFacility)
   const destinationLatLng = computed(() => {
-    const dest = destinationRef.value
+    const dest = destinationRef.value // Already the computed { lat, lng, ... } object
     return dest?.latitude != null && dest?.longitude != null
       ? L.latLng(dest.latitude, dest.longitude)
       : null
@@ -112,12 +113,11 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
 
   // --- Internal Functions ---
 
-  // removeRouteControl - safely removes the routing control
+  // removeRouteControl - now also updates the store
   function removeRouteControl() {
     if (routingControl.value) {
       if (mapObject.value) {
         try {
-          // Fix 1: Check if _map exists on control before removing
           const control = routingControl.value
           if (control._container && control._container.parentNode) {
             console.log('Composable: Removing routing control.')
@@ -130,98 +130,106 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
         }
       }
       routingControl.value = null
-      routeSummary.value = null
+      // Update store: clear routing state
+      destinationStore.setRoutingState({ routing: false, error: null, summary: null })
     }
   }
 
-  // createRoute - creates a new routing control with proper error handling
+  // createRoute - now updates the store on success/error
   function createRoute(startLatLng, endLatLng) {
     if (!OSRM_SERVICE_URL) {
-      routingError.value = 'Routing service URL is not configured.'
-      isRouting.value = false
+      // Update store with error
+      destinationStore.setRoutingState({
+        routing: false,
+        error: 'Routing service URL is not configured.',
+      })
       return
     }
-
-    // Fix 2: Make sure the map is available before proceeding
     if (!mapObject.value || !mapObject.value._loaded) {
       console.log('Composable: Map not ready yet, deferring route creation')
       setTimeout(() => {
-        if (mapObject.value && mapObject.value._loaded) {
-          createRoute(startLatLng, endLatLng)
+        // Re-check conditions before retrying
+        if (
+          mapObject.value &&
+          mapObject.value._loaded &&
+          userLatLng.value &&
+          destinationLatLng.value
+        ) {
+          createRoute(userLatLng.value, destinationLatLng.value) // Use current computed values
         }
       }, 200)
       return
     }
 
-    // Remove existing route before creating a new one
     removeRouteControl()
 
-    // Get current mode from the store
     const currentMode = mapSettingsStore.selectedTravelMode
     console.log(
       `Composable: Creating route from ${startLatLng} to ${endLatLng} using mode: ${currentMode}`,
     )
-    routingError.value = null
-    isRouting.value = true
-    routeSummary.value = null
+    // Update store: starting routing process
+    destinationStore.setRoutingState({ routing: true, error: null, summary: null })
 
-    // Configure OSRM options based on mode
     const osrmOptions = {
       serviceUrl: OSRM_SERVICE_URL,
       profile: currentMode === 'driving' ? 'driving' : 'foot',
     }
     console.log('Composable: OSRM options:', osrmOptions)
 
-    // Fix 3: Use a try-catch block when creating control
     try {
-      // Store a reference to the control being created
       const newControl = L.Routing.control({
         waypoints: [startLatLng, endLatLng],
         router: L.Routing.osrmv1(osrmOptions),
         lineOptions: { styles: [{ color: '#dc3545', opacity: 0.8, weight: 6 }] },
-        createMarker: () => null,
-        show: true,
+        createMarker: () => null, // We use our own markers
+        show: true, // Show instructions panel
         addWaypoints: false,
         routeWhileDragging: false,
         fitSelectedRoutes: true,
         draggableWaypoints: false,
       })
         .on('routesfound', (e) => {
-          // Check if this event belongs to the *current* control instance
           if (routingControl.value === newControl) {
+            // Check if event is for current control
             console.log('Composable: Route found.')
             const routes = e.routes
+            let summaryText = null
             if (routes.length > 0) {
-              routeSummary.value = formatRouteSummary(routes[0].summary, currentMode)
+              summaryText = formatRouteSummary(routes[0].summary, currentMode)
             }
-            isRouting.value = false
+            // Update store: route found, include summary
+            destinationStore.setRoutingState({ routing: false, summary: summaryText })
           }
         })
         .on('routingerror', (e) => {
-          // Check if this event belongs to the *current* control instance
           if (routingControl.value === newControl) {
+            // Check if event is for current control
             console.error('Composable: Routing error:', e.error)
-            routingError.value =
+            const errorMsg =
               `Could not calculate ${currentMode} route. ${e.error?.message || ''}`.trim()
-            isRouting.value = false
+            // Update store: routing failed, include error message
+            destinationStore.setRoutingState({ routing: false, error: errorMsg })
           }
         })
 
-      // Fix 4: Set the reference first, then add to map
       routingControl.value = newControl
 
-      // Fix 5: Ensure map exists before adding control
       if (mapObject.value && mapObject.value._loaded) {
         newControl.addTo(mapObject.value)
       } else {
         console.error('Composable: Map not available when adding control')
         routingControl.value = null
-        isRouting.value = false
+        // Update store: Failed to add control
+        destinationStore.setRoutingState({
+          routing: false,
+          error: 'Map unavailable during route setup.',
+        })
       }
     } catch (error) {
       console.error('Composable: Error creating routing control:', error)
-      routingError.value = 'Failed to create route: ' + (error.message || '')
-      isRouting.value = false
+      const errorMsg = 'Failed to create route: ' + (error.message || '')
+      // Update store: routing failed during creation
+      destinationStore.setRoutingState({ routing: false, error: errorMsg })
       routingControl.value = null
     }
   }
@@ -234,41 +242,53 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
       { icon: userIcon, popupContent: 'Your Location' },
       mapObject.value,
     )
+    // Only pan/zoom if the marker was just created and we have a location
     if (created && currentLatLng) {
-      mapObject.value.setView(currentLatLng, 14)
+      // Check if map already has a destination bounds set by routing
+      if (!routingControl.value || !routingControl.value.getWaypoints().some((wp) => wp.latLng)) {
+        mapObject.value.setView(currentLatLng, 14) // Adjust zoom level as needed
+      } else {
+        // Maybe fit bounds including user and destination if route not shown?
+        // For now, let routing control handle fitSelectedRoutes
+      }
     }
   }
 
-  // updateDestinationMarkerState
+  // updateDestinationMarkerState (uses destinationRef)
   function updateDestinationMarkerState(currentLatLng, currentDestData) {
+    // currentDestData is the formatted object from destinationStore.selectedFacility
     const destOptions = currentDestData
       ? {
           icon: facilityIcon,
-          popupContent: `<b>${currentDestData.name || 'Destination'}</b><br>${
-            currentDestData.address || 'Address not available'
-          }`,
+          popupContent: `<b>${currentDestData.name || 'Destination'}</b><br>${currentDestData.address || 'Address not available'}`,
           tooltipContent: currentDestData.name || 'Destination',
         }
       : {}
     upsertMarker(destinationMarker, currentLatLng, destOptions, mapObject.value)
   }
 
-  // updateRouteState - safely updates routing
+  // updateRouteState (calls createRoute/removeRouteControl which update store)
   function updateRouteState(uLatLng, dLatLng) {
-    // Fix 6: Add a debounce mechanism
     if (window._routeUpdateTimeout) {
       clearTimeout(window._routeUpdateTimeout)
     }
 
     window._routeUpdateTimeout = setTimeout(() => {
       if (uLatLng && dLatLng) {
-        createRoute(uLatLng, dLatLng)
+        // Only create route if destinationRef has valid data
+        if (destinationRef.value) {
+          createRoute(uLatLng, dLatLng)
+        } else {
+          // Destination data is missing, maybe cleared? Remove route.
+          console.log('Composable: Destination data missing, removing route.')
+          removeRouteControl()
+        }
       } else {
+        // User or destination LatLng missing, remove route
         removeRouteControl()
-        isRouting.value = false
-        routingError.value = null
+        // Store is updated within removeRouteControl
       }
-    }, 100)
+    }, 150) // Slightly increased debounce
   }
 
   // updateMapState - master update function
@@ -276,8 +296,8 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
     if (!mapObject.value) return
 
     const uLatLng = userLatLng.value
-    const dLatLng = destinationLatLng.value
-    const destData = destinationRef.value
+    const dLatLng = destinationLatLng.value // From destinationRef (store)
+    const destData = destinationRef.value // From destinationRef (store)
 
     updateUserMarkerState(uLatLng)
     updateDestinationMarkerState(dLatLng, destData)
@@ -292,11 +312,10 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
     }
     await configureLeafletIcons()
 
-    // Fix 7: Add a try-catch to map initialization
     try {
       mapObject.value = L.map(mapContainerRef.value, {
-        zoomControl: true,
-      }).setView([54.6872, 25.2797], 12) // Vilnius center
+        zoomControl: true, // Keep default zoom control
+      }).setView([54.6872, 25.2797], 12) // Default center (Vilnius)
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -305,29 +324,27 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
 
       console.log('Composable: Map initialized.')
 
-      // Fix 8: Use a more reliable way to check map readiness
-      if (mapObject.value._loaded) {
-        console.log('Composable: Map already ready, performing initial state update.')
+      // Use whenReady for initial state update
+      mapObject.value.whenReady(() => {
+        console.log('Composable: Map ready, performing initial state update.')
         updateMapState()
-      } else {
-        mapObject.value.whenReady(() => {
-          console.log('Composable: Map ready, performing initial state update.')
-          updateMapState()
-        })
-      }
+      })
     } catch (error) {
       console.error('Composable: Error initializing map:', error)
+      destinationStore.setRoutingState({ error: 'Map initialization failed.' }) // Inform user via store
     }
   })
 
   onBeforeUnmount(() => {
     console.log('Composable: Cleaning up map.')
-    // Fix 9: Ensure all event handlers are cleared before removing the map
     if (window._routeUpdateTimeout) {
       clearTimeout(window._routeUpdateTimeout)
     }
+    if (window._modeChangeTimeout) {
+      clearTimeout(window._modeChangeTimeout)
+    }
 
-    removeRouteControl()
+    removeRouteControl() // Ensure store state is cleared
 
     if (mapObject.value) {
       mapObject.value.remove()
@@ -338,33 +355,35 @@ export function useLeafletMap(mapContainerRef, destinationRef) {
   })
 
   // --- Watchers ---
-  watch([userLatLng, destinationLatLng], updateMapState)
+  // Watch user location and the destinationRef (which comes from the store's selectedFacility)
+  watch([userLatLng, destinationRef], updateMapState, { deep: true })
 
-  watch(destinationRef, updateMapState, { deep: true })
-
+  // Watch travel mode from settings store
   watch(
     () => mapSettingsStore.selectedTravelMode,
     (newMode, oldMode) => {
-      if (newMode !== oldMode) {
+      if (newMode !== oldMode && mapObject.value) {
+        // Ensure map exists
         console.log('Composable: Travel mode changed in store to:', newMode)
-        // Only recalculate route if we actually have points to route between
-        if (userLatLng.value && destinationLatLng.value) {
+        // Only recalculate if we have a user location and a destination set in the store
+        if (userLatLng.value && destinationRef.value) {
           if (window._modeChangeTimeout) {
             clearTimeout(window._modeChangeTimeout)
           }
-
           window._modeChangeTimeout = setTimeout(() => {
-            updateMapState()
-          }, 100)
+            // Re-check conditions before updating
+            if (userLatLng.value && destinationRef.value) {
+              updateMapState() // This will trigger route recalculation
+            }
+          }, 150) // Debounce mode change
         }
       }
     },
   )
 
   // --- Expose Reactive State ---
+  // REMOVED: isRouting, routingError, routeSummary - now handled via destinationStore
   return {
-    isRouting,
-    routingError,
-    routeSummary,
+    // No return value needed now as state is managed in the store
   }
 }

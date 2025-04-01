@@ -1,11 +1,12 @@
 <script setup>
 // --- Core Vue/Router/Pinia Imports ---
-import { ref, onMounted, watch, computed } from 'vue' // Added computed back
+import { ref, onMounted, watch, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
 // --- Store Imports ---
 import { useLocationStore } from '@/stores/location'
 import { useMapSettingsStore } from '@/stores/mapSettings'
+import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
 
 // --- API & Composables ---
 import { findFacilities } from '@/api/facilities'
@@ -22,20 +23,17 @@ import { Van, Promotion } from '@element-plus/icons-vue'
 // --- Store Instantiation ---
 const locationStore = useLocationStore()
 const mapSettingsStore = useMapSettingsStore()
+const destinationStore = useDestinationStore() // <-- Instantiate Destination Store
 
 // --- Reactive State from Stores ---
 const { selectedTravelMode } = storeToRefs(mapSettingsStore)
+// Get reactive destination and routing state from destinationStore
+const { isRouting, routingError, routeSummary } = storeToRefs(destinationStore)
 
 // --- Local Component State ---
-const destinationFacility = ref(null)
-const destinationLoading = ref(false)
-const destinationError = ref(null)
-const availableFacilities = ref([]) // <-- Store the full list here
-
-// --- Map State (Managed via MapComponent props/emits) ---
-const isRouting = ref(false)
-const routingError = ref(null)
-const routeSummary = ref(null)
+const destinationLoading = ref(false) // For API call state
+const destinationError = ref(null) // For API call errors specifically
+const availableFacilities = ref([]) // To populate search suggestions
 
 // --- Computed Properties ---
 // Format facilities for the SearchBar's el-autocomplete
@@ -55,59 +53,45 @@ const searchSuggestions = computed(() => {
 
 // --- Methods ---
 
-// Fetch Destination Logic (modified to store all facilities)
+// Fetch Destination Logic (now updates the store)
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
-  destinationError.value = null
+  destinationError.value = null // Clear previous API error
   console.log('HomeView: Fetching destination facility...')
 
   try {
     const response = await findFacilities({ has_emergency: true }) // Fetch nearby emergency facilities
     console.log('HomeView: API Response:', response)
-
-    // Store the whole list
     availableFacilities.value = response?.data || []
 
-    // Still set the first one as the initial destination (closest emergency facility)
     if (availableFacilities.value.length > 0) {
       const firstFacility = availableFacilities.value[0]
-      const formattedDestination = {
-        id: firstFacility.id,
-        name: firstFacility.name || 'Closest ER', // Make name more specific
-        address:
-          [firstFacility.street, firstFacility.house_number, firstFacility.city]
-            .filter(Boolean)
-            .join(' ')
-            .trim() || 'Address not available',
-        latitude: firstFacility.location?.latitude,
-        longitude: firstFacility.location?.longitude,
-      }
-      if (formattedDestination.latitude == null || formattedDestination.longitude == null) {
-        // Handle case where the *first* facility lacks coords. Maybe find the next one?
-        // For now, we'll just proceed without setting an initial destination if the first is invalid.
-        console.warn('Closest facility found lacks coordinates:', firstFacility.name)
-        destinationFacility.value = null // Don't set an invalid destination
-        // Keep availableFacilities populated for search
+      // Set the first facility in the destination store
+      destinationStore.setDestination(firstFacility)
+      // Check if the store successfully set it (i.e., if coords were valid)
+      if (!destinationStore.selectedFacility) {
+        console.warn(
+          'HomeView: Closest facility lacked coordinates, no initial destination set in store.',
+        )
+        // Optional: Notify user? Maybe ElMessage.warning(...)
       } else {
-        destinationFacility.value = formattedDestination // Set the initial destination
-        console.log('HomeView: Initial destination set:', destinationFacility.value)
+        console.log('HomeView: Initial destination set in store.')
       }
     } else {
-      destinationFacility.value = null // No facilities found
+      destinationStore.clearDestination() // Clear store if no facilities found
       throw new Error('No suitable facilities found nearby.')
     }
   } catch (error) {
     console.error('HomeView: Failed fetch/process destination:', error)
-    const errorMessage = error?.message || 'Could not load destination facilities.'
-    destinationError.value = errorMessage // Keep track of the error
-    destinationFacility.value = null
-    availableFacilities.value = [] // Clear list on error
+    destinationError.value = error?.message || 'Could not load destination facilities.' // Store API specific error
+    destinationStore.clearDestination() // Clear store on error
+    availableFacilities.value = []
     ElNotification({
       title: 'Facility Loading Error',
-      message: errorMessage,
+      message: destinationError.value,
       type: 'error',
-      duration: 5000, // Show for 5 seconds
+      duration: 5000,
     })
   } finally {
     destinationLoading.value = false
@@ -119,50 +103,41 @@ function handleModeChange(newMode) {
   mapSettingsStore.setTravelMode(newMode)
 }
 
-// <-- New: Handler for when a facility is selected in SearchBar -->
+// Handler for when a facility is selected in SearchBar (now updates the store)
 function handleFacilitySelected(selectedSuggestion) {
   if (!selectedSuggestion || !selectedSuggestion.facilityData) {
     console.warn('HomeView: Invalid facility selected from search.')
-    // Maybe clear destination if selection is invalid?
-    // destinationFacility.value = null;
     return
   }
-
   const facility = selectedSuggestion.facilityData
   console.log('HomeView: Facility selected from search:', facility)
 
-  // Check if selected facility has valid coordinates
-  if (facility.location?.latitude == null || facility.location?.longitude == null) {
-    ElMessage.error(`Selected facility "${facility.name || facility.id}" has no location data.`)
-    return // Don't update the destination
-  }
+  // Set selected facility in the destination store
+  // The store's setDestination action handles validation and formatting
+  destinationStore.setDestination(facility)
 
-  // Format and update the destinationFacility ref
-  // This will automatically be picked up by the MapComponent prop binding
-  destinationFacility.value = {
-    id: facility.id,
-    name: facility.name || 'Selected Destination',
-    address:
-      [facility.street, facility.house_number, facility.city].filter(Boolean).join(' ').trim() ||
-      'Address not available',
-    latitude: facility.location?.latitude,
-    longitude: facility.location?.longitude,
+  // Check if the store rejected it (e.g., no coords)
+  if (!destinationStore.selectedFacility || destinationStore.selectedFacility.id !== facility.id) {
+    ElMessage.error(
+      `Selected facility "${facility.name || facility.id}" could not be set as destination (missing location data?).`,
+    )
+  } else {
+    console.log('HomeView: destinationStore updated by search selection.')
+    // Optional: Maybe show a success message
+    // ElMessage.success(`Destination set to ${destinationStore.selectedFacility.name}`)
   }
-  console.log('HomeView: destinationFacility updated by search selection.')
-
-  // Optional: Clear the search bar text after selection
-  // searchQuery.value = ''; // Needs SearchBar to accept v-model again
 }
 
 // --- Lifecycle & Watchers ---
 
 onMounted(() => {
+  // Attempt to get location on mount
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
     locationStore.fetchLocation()
   }
 })
 
-// Watch Location Errors (remains the same)
+// Watch Location Errors (now clears destination store)
 watch(
   () => locationStore.error,
   (error) => {
@@ -173,10 +148,10 @@ watch(
         type: 'warning',
         duration: 0,
       })
-      destinationError.value = null // Maybe keep API error separate?
+      destinationError.value = null
       destinationLoading.value = false
-      destinationFacility.value = null
-      availableFacilities.value = [] // Clear facilities if location fails
+      destinationStore.clearDestination() // Clear store
+      availableFacilities.value = []
     }
   },
 )
@@ -191,14 +166,18 @@ watch(
       !locationStore.isLoading &&
       !locationStore.error
     ) {
-      // Fetch facilities only if not already loading and list is empty
-      if (!destinationLoading.value && availableFacilities.value.length === 0) {
+      // Fetch facilities only if not already loading and store has no destination yet and list is empty
+      if (
+        !destinationLoading.value &&
+        !destinationStore.selectedFacility &&
+        availableFacilities.value.length === 0
+      ) {
         fetchDestinationFacility()
       }
     } else if (newLatitude === null && oldLatitude !== null) {
       // Location lost
-      destinationFacility.value = null
-      availableFacilities.value = [] // Clear facilities
+      destinationStore.clearDestination() // Clear store
+      availableFacilities.value = []
       ElNotification({
         title: 'Location Lost',
         message: 'Location signal lost. Please check device settings.',
@@ -210,26 +189,44 @@ watch(
   { immediate: false }, // Don't run immediately, wait for location
 )
 
-// Watch Routing Status (remains the same)
+// --- Watchers for Routing State (Now watch store refs for notifications) ---
 watch(isRouting, (routing) => {
   if (routing && !routingError.value) {
-    ElMessage({ message: 'Calculating route...', type: 'info', duration: 3000 })
+    // Check store's routingError
+    console.log('HomeView: Routing started (from store state)')
+    // Optional: Show brief message, but MapComponent likely shows indicator
+    // ElMessage({ message: 'Calculating route...', type: 'info', duration: 1500 })
   }
 })
 
-// Watch Routing Errors (remains the same)
 watch(routingError, (error) => {
   if (error) {
-    ElNotification({ title: 'Routing Error', message: error, type: 'error', duration: 0 })
+    // Show persistent notification based on store error state
+    ElNotification({
+      title: 'Routing Problem',
+      message: error,
+      type: 'error',
+      duration: 0, // Keep open until dismissed
+    })
+    console.error('HomeView: Routing error occurred (from store state):', error)
   }
 })
 
-// Watch Route Summary (remains the same)
 watch(routeSummary, (summary, oldSummary) => {
+  // Check store's routingError
   if (summary !== null && oldSummary === null && !routingError.value) {
-    console.log('HomeView: Route summary updated:', summary)
-    ElMessage.closeAll('info')
-    ElMessage({ message: 'Route calculated.', type: 'success', duration: 2000 })
+    console.log('HomeView: Route summary updated (from store state):', summary)
+    ElMessage.closeAll('info') // Close any calculating messages
+    // MapComponent shows the summary, maybe just a brief success confirmation here
+    ElMessage({
+      message: 'Route calculated.',
+      type: 'success',
+      duration: 3000,
+    })
+  } else if (summary === null && oldSummary !== null) {
+    console.log('HomeView: Route summary cleared (from store state)')
+    // Optional: Close any success messages if route is cleared
+    ElMessage.closeAll('success')
   }
 })
 </script>
@@ -241,8 +238,16 @@ watch(routeSummary, (summary, oldSummary) => {
     <SearchBar
       :suggestions="searchSuggestions"
       @facility-selected="handleFacilitySelected"
-      :placeholder="locationStore.latitude ? 'Search nearby facilities...' : 'Getting location...'"
-      :disabled="!locationStore.latitude || destinationLoading"
+      :placeholder="
+        locationStore.isLoading
+          ? 'Getting location...'
+          : !locationStore.latitude
+            ? 'Location unavailable'
+            : destinationLoading
+              ? 'Loading facilities...'
+              : 'Search nearby facilities...'
+      "
+      :disabled="!locationStore.latitude || destinationLoading || locationStore.isLoading"
     />
 
     <div class="travel-mode-selector">
@@ -261,12 +266,7 @@ watch(routeSummary, (summary, oldSummary) => {
     </div>
 
     <el-main class="map-main-content">
-      <MapComponent
-        :destination-facility="destinationFacility"
-        v-model:is-routing="isRouting"
-        v-model:routing-error="routingError"
-        v-model:route-summary="routeSummary"
-      />
+      <MapComponent />
     </el-main>
   </el-container>
 </template>
@@ -302,22 +302,5 @@ watch(routeSummary, (summary, oldSummary) => {
   flex-grow: 1;
   position: relative;
   overflow: hidden;
-}
-
-/* Optional overlay style */
-
-.map-loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  color: #333;
-  z-index: 1000;
 }
 </style>

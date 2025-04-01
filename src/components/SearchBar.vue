@@ -44,20 +44,14 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  // If you want the parent to control the text:
-  // modelValue: {
-  //   type: String,
-  //   default: ''
-  // }
 })
 
 // --- Emits ---
 // Emit an event when a facility is actually selected from the list
-const emit = defineEmits(['facility-selected']) // , 'update:modelValue'])
+const emit = defineEmits(['facility-selected'])
 
 // --- Local State ---
 // Local state for the input field's text.
-// If using v-model from parent, use computed getter/setter instead.
 const inputValue = ref('')
 
 // --- Methods ---
@@ -84,11 +78,10 @@ const createFilter = (queryString) => {
 // Method called when a suggestion is selected from the dropdown
 const handleSelect = (item) => {
   console.log('SearchBar: Selected Item:', item)
-  // inputValue.value = item.value; // v-model handles this automatically via value-key
   // Emit the full selected facility data object to the parent
   emit('facility-selected', item) // item is the suggestion object {value, address, facilityData}
 
-  // Optional: Clear input after selection? If so, reset inputValue
+  // Optional: Clear input after selection?
   // inputValue.value = '';
 }
 </script>

@@ -1,76 +1,35 @@
-// src/components/MapComponent.vue
 <script setup>
-import { ref, watch, computed, toRef } from 'vue'
+import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { ElIcon, ElLink } from 'element-plus'
-import { Van, Promotion } from '@element-plus/icons-vue' // Assuming Promotion is used for walk
+import { Van, Promotion } from '@element-plus/icons-vue'
 
 // Import the composable and stores
 import { useLeafletMap } from '@/composables/useLeafletMap'
 import { useMapSettingsStore } from '@/stores/mapSettings'
-// Location store might be implicitly used by the composable, but not directly needed here
-
-// --- Props ---
-const props = defineProps({
-  destinationFacility: {
-    type: Object, // Expecting the formatted facility object or null
-    default: null,
-  },
-  // Expose map state back up if needed by parent for things like notifications
-  // Using 'update:...' pattern allows v-model:is-routing etc. in parent if desired
-  isRouting: {
-    type: Boolean,
-    default: false,
-  },
-  routingError: {
-    type: String,
-    default: null,
-  },
-  routeSummary: {
-    type: String,
-    default: null,
-  },
-})
-
-// --- Emits (for v-model pattern if used) ---
-const emit = defineEmits(['update:isRouting', 'update:routingError', 'update:routeSummary'])
+import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
 
 // --- Store Instantiation ---
 const mapSettingsStore = useMapSettingsStore()
+const destinationStore = useDestinationStore() // <-- Instantiate Destination Store
+
+// --- Reactive State from Stores ---
 const { selectedTravelMode } = storeToRefs(mapSettingsStore)
+// Get reactive destination and routing state from destinationStore
+const { selectedFacility, isRouting, routingError, routeSummary } = storeToRefs(destinationStore)
 
 // --- Local Component State ---
 const mapContainerRef = ref(null)
 
 // --- Use the Map Composable ---
-// Pass the destinationFacility prop as a reactive ref using toRef
-const destinationRef = toRef(props, 'destinationFacility')
-const {
-  isRouting: composableIsRouting,
-  routingError: composableRoutingError,
-  routeSummary: composableRouteSummary,
-} = useLeafletMap(mapContainerRef, destinationRef)
+// Pass the reactive selectedFacility ref directly from the store
+// NOTE: useLeafletMap now returns nothing, it updates the store directly
+useLeafletMap(mapContainerRef, selectedFacility)
 
 // --- Computed Properties ---
 // Determine the icon based on the selected travel mode from the store
 const currentModeIcon = computed(() => {
-  // Replace 'Promotion' with a better icon like Bicycle or a custom SVG if available
   return selectedTravelMode.value === 'driving' ? Van : Promotion
-})
-
-// --- Watchers to update parent via emits (if using v-model pattern) ---
-// These watchers synchronize the composable's state back to the parent component
-// if the parent needs to react to these changes (e.g., for notifications).
-watch(composableIsRouting, (newValue) => {
-  emit('update:isRouting', newValue)
-})
-
-watch(composableRoutingError, (newValue) => {
-  emit('update:routingError', newValue)
-})
-
-watch(composableRouteSummary, (newValue) => {
-  emit('update:routeSummary', newValue)
 })
 </script>
 
@@ -79,26 +38,33 @@ watch(composableRouteSummary, (newValue) => {
     <div ref="mapContainerRef" class="map-container"></div>
 
     <transition name="el-fade-in">
-      <div class="directions-overlay" v-if="composableRouteSummary && !composableRoutingError">
+      <div class="directions-overlay" v-if="routeSummary && !routingError">
         <el-icon :size="24" style="margin-right: 8px">
           <component :is="currentModeIcon" />
         </el-icon>
         <div class="directions-text">
-          <span>ER is {{ composableRouteSummary }}</span>
+          <span>ER is {{ routeSummary }}</span>
           <el-link type="primary" :underline="false">Tap here for directions</el-link>
         </div>
       </div>
+    </transition>
+
+    <transition name="el-fade-in">
+      <div v-if="routingError" class="routing-error-overlay">⚠️ {{ routingError }}</div>
+    </transition>
+    <transition name="el-fade-in">
+      <div v-if="isRouting" class="routing-loading-overlay">Calculating Route...</div>
     </transition>
   </div>
 </template>
 
 <style scoped>
-/* Styles specific to the MapComponent layout and elements */
+/* Styles for map layout and elements */
 .map-component-wrapper {
   height: 100%;
   width: 100%;
-  position: relative; /* Needed for absolute positioning of overlay */
-  overflow: hidden; /* Prevent map content spilling if dimensions are odd */
+  position: relative;
+  overflow: hidden;
 }
 
 .map-container {
@@ -107,7 +73,7 @@ watch(composableRouteSummary, (newValue) => {
   background-color: #e0e0e0; /* Placeholder background */
 }
 
-/* Styles moved from HomeView for the overlay */
+/* Styles for the directions overlay */
 .directions-overlay {
   position: absolute;
   bottom: 20px;
@@ -140,8 +106,34 @@ watch(composableRouteSummary, (newValue) => {
   font-weight: normal;
 }
 
+/* Optional overlay styles */
+.routing-error-overlay,
+.routing-loading-overlay {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 8px 15px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  text-align: center;
+  max-width: 80%;
+  font-size: 0.9em;
+}
+.routing-error-overlay {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  border: 1px solid #f5c6cb;
+}
+.routing-loading-overlay {
+  background-color: #e2e3e5; /* Light grey */
+  color: #383d41; /* Dark grey */
+  border: 1px solid #d6d8db;
+}
+
 /* Global Leaflet control styles should remain in main.css or App.vue */
-/* Styles specific to leaflet controls can stay global if needed */
 :global(.leaflet-control-zoom a),
 :global(.leaflet-control-locate a) {
   border: 1px solid #ccc !important;
