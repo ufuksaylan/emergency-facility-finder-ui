@@ -1,26 +1,8 @@
 <template>
   <el-container class="main-container">
-    <el-header class="app-header">
-      <el-row justify="space-between" align="middle" style="height: 100%">
-        <el-col :span="12">
-          <span class="header-title">Find Hospitals now</span>
-        </el-col>
-        <el-col :span="4" style="text-align: right">
-          <el-button type="danger" :icon="PhoneFilled" circle plain />
-          <span class="header-911">911</span>
-        </el-col>
-      </el-row>
-    </el-header>
+    <AppHeader />
 
-    <div class="search-container">
-      <el-input
-        v-model="searchQuery"
-        placeholder="Search for location (feature not implemented)"
-        :prefix-icon="Search"
-        size="large"
-        clearable
-      />
-    </div>
+    <SearchBar v-model="searchQuery" />
 
     <div class="status-messages">
       <el-alert
@@ -114,11 +96,15 @@ import { ref, onMounted, watch } from 'vue'
 import { useLocationStore } from '@/stores/location'
 import { findFacilities } from '@/api/facilities'
 import { useLeafletMap } from '@/composables/useLeafletMap'
-// Import used icons (even if registered globally, good for clarity)
-import { Search, PhoneFilled, Van } from '@element-plus/icons-vue'
+import AppHeader from '@/components/AppHeader.vue'
+// Import the new search component
+import SearchBar from '@/components/SearchBar.vue'
+// Import used icons (Search removed)
+import { Van } from '@element-plus/icons-vue' // Removed Search
 
 const locationStore = useLocationStore()
-const searchQuery = ref('') // For the search input
+// searchQuery ref is still needed here to be used with v-model
+const searchQuery = ref('')
 
 // --- State for Data Fetching ---
 const destinationFacility = ref(null)
@@ -129,9 +115,20 @@ const destinationError = ref(null)
 const mapContainerRef = ref(null)
 
 // --- Use the Composable ---
-const mapState = useLeafletMap(mapContainerRef, destinationFacility)
+const { isRouting, routingError, routeSummary } = useLeafletMap(
+  mapContainerRef,
+  destinationFacility,
+)
 
-// --- Fetch Destination Logic (Keep your existing logic) ---
+// Define mapState based on composable's return values for template use
+const mapState = ref({ isRouting, routingError, routeSummary })
+
+// Watch composable state changes to update mapState
+watch(isRouting, (val) => (mapState.value.isRouting = val))
+watch(routingError, (val) => (mapState.value.routingError = val))
+watch(routeSummary, (val) => (mapState.value.routeSummary = val))
+
+// --- Fetch Destination Logic (Remains the same) ---
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
@@ -172,7 +169,7 @@ async function fetchDestinationFacility() {
   }
 }
 
-// --- Lifecycle & Watchers (Keep your existing logic) ---
+// --- Lifecycle & Watchers (Remains the same) ---
 onMounted(() => {
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
     locationStore.fetchLocation()
@@ -191,7 +188,6 @@ watch(
     } else if (newLatitude === null) {
       // Location lost or became null
       destinationFacility.value = null
-      // Don't set destinationError here, let locationStore.error handle it
     }
   },
   { immediate: true },
@@ -201,8 +197,7 @@ watch(
   () => locationStore.error,
   (newError) => {
     if (newError) {
-      // Update a general error state if needed, or rely on the specific alert binding
-      destinationError.value = null // Clear destination specific error if location fails first
+      destinationError.value = null
       destinationLoading.value = false
       destinationFacility.value = null
     }
@@ -211,7 +206,7 @@ watch(
 
 // Watch for changes in the composable's route summary
 watch(
-  () => mapState.routeSummary,
+  () => mapState.value.routeSummary,
   (summary) => {
     console.log('Route summary updated:', summary)
   },
@@ -219,48 +214,14 @@ watch(
 </script>
 
 <style scoped>
+/* Styles specific to HomeView layout, excluding header and search styles */
 .main-container {
   height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
 }
 
-.app-header {
-  background-color: #d9534f; /* Red color */
-  color: white;
-  line-height: 60px; /* Adjust as needed */
-  height: 60px; /* Fixed header height */
-  flex-shrink: 0; /* Prevent header from shrinking */
-}
-
-.header-title {
-  font-weight: bold;
-  font-size: 1.2em;
-  margin-left: 15px; /* Add some padding */
-}
-
-.header-911 {
-  font-weight: bold;
-  margin-left: 5px; /* Space between icon and text */
-  margin-right: 15px;
-}
-/* Ensure 911 button icon is white */
-.app-header .el-button.is-plain {
-  --el-button-text-color: white;
-  --el-button-border-color: white;
-}
-.app-header .el-button.is-plain:hover {
-  --el-button-hover-text-color: white;
-  --el-button-hover-border-color: white;
-  --el-button-hover-bg-color: rgba(255, 255, 255, 0.1);
-}
-
-.search-container {
-  padding: 10px 15px;
-  background-color: #f8f8f8; /* Light background for search */
-  border-bottom: 1px solid #eee;
-  flex-shrink: 0; /* Prevent search bar from shrinking */
-}
+/* Search container styles are removed from here */
 
 .status-messages {
   padding: 0 15px 10px 15px; /* Padding around alerts */
@@ -314,12 +275,7 @@ watch(
   font-weight: normal;
 }
 
-/* Ensure Leaflet controls are styled correctly if needed */
-:global(.leaflet-routing-container) {
-  color: #333; /* Example: Dark text for routing instructions */
-}
-
-/* Style leaflet controls (optional) */
+/* Global styles for leaflet controls kept or moved */
 :global(.leaflet-control-zoom a),
 :global(.leaflet-control-locate a) {
   border: 1px solid #ccc !important;
