@@ -1,112 +1,15 @@
-<template>
-  <el-container class="main-container">
-    <AppHeader />
-
-    <SearchBar v-model="searchQuery" />
-
-    <div class="status-messages">
-      <el-alert
-        v-if="locationStore.isLoading && !locationStore.latitude"
-        title="Getting your location..."
-        type="info"
-        :closable="false"
-        show-icon
-      />
-      <el-alert
-        v-if="locationStore.error && !locationStore.latitude"
-        :title="'Location Error: ' + locationStore.error + '. Cannot determine destination.'"
-        type="warning"
-        :closable="false"
-        show-icon
-      />
-
-      <el-alert
-        v-if="destinationLoading"
-        title="Finding destination facility..."
-        type="info"
-        :closable="false"
-        show-icon
-      />
-      <el-alert
-        v-if="destinationError"
-        :title="'Destination Finding Error: ' + destinationError"
-        type="error"
-        :closable="false"
-        show-icon
-      />
-
-      <el-alert
-        v-if="isRouting && !routingError"
-        title="Calculating route..."
-        type="info"
-        :closable="false"
-        show-icon
-      />
-      <el-alert
-        v-if="routingError"
-        :title="'Routing Error: ' + routingError"
-        type="error"
-        :closable="false"
-        show-icon
-      />
-
-      <el-alert
-        v-if="
-          !destinationFacility && // No destination set yet
-          locationStore.latitude && // Got user location
-          !locationStore.error && // No location error
-          !destinationLoading && // Not currently loading destination
-          !destinationError && // No destination finding error
-          !isRouting && // Not currently calculating a route
-          !routingError // No current routing error
-        "
-        title="Location found. Waiting for destination data..."
-        type="success"
-        :closable="false"
-        show-icon
-      />
-      <el-alert
-        v-if="
-          !locationStore.latitude && // No user location yet
-          !locationStore.error && // No location error
-          !locationStore.isLoading && // Not actively getting location
-          !destinationLoading // Not loading destination (redundant but safe)
-        "
-        title="Waiting for location permission and data..."
-        type="info"
-        :closable="false"
-        show-icon
-      />
-    </div>
-
-    <el-main class="map-main-content">
-      <div ref="mapContainerRef" class="map-container"></div>
-
-      <transition name="el-fade-in">
-        <div class="directions-overlay" v-if="routeSummary && !routingError">
-          <el-icon :size="24" style="margin-right: 8px"><Van /></el-icon>
-          <div class="directions-text">
-            <span>ER is {{ routeSummary }}</span>
-            <el-link type="primary" :underline="false">Tap here for directions</el-link>
-          </div>
-        </div>
-      </transition>
-    </el-main>
-  </el-container>
-</template>
-
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useLocationStore } from '@/stores/location'
 import { findFacilities } from '@/api/facilities'
-// Ensure you are importing the *refactored* version of useLeafletMap
 import { useLeafletMap } from '@/composables/useLeafletMap'
 import AppHeader from '@/components/AppHeader.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import { Van } from '@element-plus/icons-vue'
+import { ElNotification, ElMessage } from 'element-plus' // Keep imports
 
 const locationStore = useLocationStore()
-const searchQuery = ref('') // Still needed for SearchBar v-model
+const searchQuery = ref('')
 
 // --- State for Data Fetching ---
 const destinationFacility = ref(null)
@@ -117,14 +20,12 @@ const destinationError = ref(null)
 const mapContainerRef = ref(null)
 
 // --- Use the Composable ---
-// Destructure the reactive refs directly from the composable
 const { isRouting, routingError, routeSummary } = useLeafletMap(
   mapContainerRef,
-  destinationFacility, // Pass the destination ref to the composable
+  destinationFacility,
 )
 
 // --- Fetch Destination Logic ---
-// (This function remains exactly the same as before)
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
@@ -132,6 +33,9 @@ async function fetchDestinationFacility() {
   console.log('HomeView: Fetching destination facility...')
 
   try {
+    // --- REMOVED Loading Message ---
+    // ElMessage({ message: 'Finding destination facility...', type: 'info', duration: 1500 });
+
     const response = await findFacilities({ has_emergency: true })
     console.log('HomeView: API Response:', response)
 
@@ -153,49 +57,59 @@ async function fetchDestinationFacility() {
       }
       destinationFacility.value = formattedDestination
       console.log('HomeView: Destination data ref updated:', destinationFacility.value)
+      // --- REMOVED Success Message ---
+      // ElMessage.success('Destination found.')
     } else {
       throw new Error('No suitable facilities found.')
     }
   } catch (error) {
     console.error('HomeView: Failed fetch/process destination:', error)
-    destinationError.value = error?.message || 'Could not load destination.'
+    const errorMessage = error?.message || 'Could not load destination.'
+    destinationError.value = errorMessage
     destinationFacility.value = null // Clear destination on error
+    // --- KEEP Error Notification ---
+    ElNotification({
+      title: 'Destination Finding Error',
+      message: errorMessage,
+      type: 'error',
+      duration: 0, // Keep open until manually closed
+    })
+    // --- End Error Notification ---
   } finally {
     destinationLoading.value = false
   }
 }
 
 // --- Lifecycle & Watchers ---
+
 onMounted(() => {
-  // Attempt to get location on mount if not already available/loading/error
+  // Attempt to get location on mount
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
+    // --- REMOVED Initial Waiting Message ---
+    // ElMessage({ message: 'Waiting for location permission and data...', type: 'info', duration: 3000 });
     locationStore.fetchLocation()
   }
-  // Map initialization is handled within the useLeafletMap composable's onMounted hook
+  // Map initialization is handled within the useLeafletMap composable
 })
 
-// Watch for user location becoming available to fetch destination
-watch(
-  () => locationStore.latitude,
-  (newLatitude, oldLatitude) => {
-    if (newLatitude !== null && !locationStore.isLoading && !locationStore.error) {
-      // Fetch destination only when location is newly acquired AND we don't have a destination yet/aren't loading one
-      if (oldLatitude === null && !destinationLoading.value && !destinationFacility.value) {
-        fetchDestinationFacility()
-      }
-    } else if (newLatitude === null) {
-      // If location is lost, clear the destination
-      destinationFacility.value = null
-    }
-  },
-  { immediate: true }, // Run on component mount too
-)
+// --- Watchers for Notifications/Messages ---
 
-// Watch for location errors to clear destination state
+// --- REMOVED Watcher for Location Loading Status ---
+// watch(() => locationStore.isLoading, (loading) => { ... });
+
+// Watch Location Errors - KEEP
 watch(
   () => locationStore.error,
-  (newError) => {
-    if (newError) {
+  (error) => {
+    if (error && !locationStore.latitude) {
+      // Only show if location hasn't been acquired
+      // --- KEEP Error Notification ---
+      ElNotification({
+        title: 'Location Error',
+        message: `${error}. Cannot determine destination.`,
+        type: 'warning', // Use warning as it might be recoverable by user action
+        duration: 0, // Keep open until closed
+      })
       // Clear destination state if location fails
       destinationError.value = null
       destinationLoading.value = false
@@ -204,19 +118,103 @@ watch(
   },
 )
 
-// Optional: Watch for changes in the route summary for logging or other side effects
+// Watch Location Success (Latitude becomes available) - Actions only, no message
 watch(
-  routeSummary, // Watch the ref directly returned by the composable
-  (summary) => {
-    // Log only when a valid summary is received
-    if (summary !== null) {
-      console.log('HomeView: Route summary updated:', summary)
+  () => locationStore.latitude,
+  (newLatitude, oldLatitude) => {
+    // Only trigger actions when latitude is *newly* available
+    if (
+      newLatitude !== null &&
+      oldLatitude === null &&
+      !locationStore.isLoading &&
+      !locationStore.error
+    ) {
+      // --- REMOVED Success Message ---
+      // ElMessage.success('Location found.');
+
+      // Fetch destination if not already loading/found
+      if (!destinationLoading.value && !destinationFacility.value) {
+        fetchDestinationFacility()
+      }
+    } else if (newLatitude === null && oldLatitude !== null) {
+      // Location lost
+      destinationFacility.value = null // Clear destination if location is lost
+      // Optionally, add a persistent warning if location is lost *after* being acquired
+      ElNotification({
+        title: 'Location Lost',
+        message: 'Location signal lost. Please check device settings.',
+        type: 'warning',
+        duration: 0,
+      })
     }
   },
+  { immediate: false },
 )
 
-// No longer need watchers for isRouting/routingError to update local state
+// Watch Routing Status - KEEP loading message for this potentially longer step
+watch(isRouting, (routing) => {
+  if (routing && !routingError.value) {
+    // Check routingError ref directly
+    // --- KEEP Loading Message ---
+    ElMessage({
+      message: 'Calculating route...',
+      type: 'info',
+      duration: 3000, // Give it a bit longer duration or until replaced
+    })
+  }
+})
+
+// Watch Routing Errors - KEEP
+watch(routingError, (error) => {
+  if (error) {
+    // --- KEEP Error Notification ---
+    ElNotification({
+      title: 'Routing Error',
+      message: error, // Assumes error is a string message from the composable
+      type: 'error',
+      duration: 0, // Keep open until closed
+    })
+  }
+})
+
+// Watch for changes in the route summary - Add success message here
+watch(routeSummary, (summary, oldSummary) => {
+  // Trigger success only when summary newly appears
+  if (summary !== null && oldSummary === null && !routingError.value) {
+    console.log('HomeView: Route summary updated:', summary)
+    // --- KEEP Brief Success Message ---
+    // Close any "Calculating route..." message first
+    ElMessage.closeAll('info') // Close only info messages
+    ElMessage({
+      message: 'Route calculated.',
+      type: 'success',
+      duration: 2000, // Show briefly
+    })
+  }
+})
 </script>
+
+<template>
+  <el-container class="main-container">
+    <AppHeader />
+
+    <SearchBar v-model="searchQuery" />
+
+    <el-main class="map-main-content">
+      <div ref="mapContainerRef" class="map-container"></div>
+
+      <transition name="el-fade-in">
+        <div class="directions-overlay" v-if="routeSummary && !routingError">
+          <el-icon :size="24" style="margin-right: 8px"><Van /></el-icon>
+          <div class="directions-text">
+            <span>ER is {{ routeSummary }}</span>
+            <el-link type="primary" :underline="false">Tap here for directions</el-link>
+          </div>
+        </div>
+      </transition>
+    </el-main>
+  </el-container>
+</template>
 
 <style scoped>
 /* Styles specific to HomeView layout, excluding header and search styles */
@@ -224,14 +222,6 @@ watch(
   height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
-}
-
-.status-messages {
-  padding: 0 15px 10px 15px; /* Padding around alerts */
-  flex-shrink: 0; /* Prevent status messages from shrinking */
-}
-.status-messages .el-alert {
-  margin-top: 8px; /* Space between alerts */
 }
 
 .map-main-content {
@@ -278,7 +268,7 @@ watch(
   font-weight: normal;
 }
 
-/* Global styles for leaflet controls kept or moved */
+/* Global styles for leaflet controls kept */
 :global(.leaflet-control-zoom a),
 :global(.leaflet-control-locate a) {
   border: 1px solid #ccc !important;
