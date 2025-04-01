@@ -1,6 +1,6 @@
 <script setup>
 // --- Core Vue/Router/Pinia Imports ---
-import { ref, onMounted, watch } from 'vue' // removed computed, not needed here anymore
+import { ref, onMounted, watch, computed } from 'vue' // Added computed back
 import { storeToRefs } from 'pinia'
 
 // --- Store Imports ---
@@ -9,15 +9,14 @@ import { useMapSettingsStore } from '@/stores/mapSettings'
 
 // --- API & Composables ---
 import { findFacilities } from '@/api/facilities'
-// useLeafletMap is NO LONGER directly used here
 
 // --- Component Imports ---
 import AppHeader from '@/components/AppHeader.vue'
 import SearchBar from '@/components/SearchBar.vue'
-import MapComponent from '@/components/MapComponent.vue' // <-- Import the new component
+import MapComponent from '@/components/MapComponent.vue'
 
 // --- Element Plus Imports ---
-import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton, ElIcon } from 'element-plus' // ElIcon needed for buttons
+import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton, ElIcon } from 'element-plus'
 import { Van, Promotion } from '@element-plus/icons-vue'
 
 // --- Store Instantiation ---
@@ -28,24 +27,35 @@ const mapSettingsStore = useMapSettingsStore()
 const { selectedTravelMode } = storeToRefs(mapSettingsStore)
 
 // --- Local Component State ---
-const searchQuery = ref('')
-const destinationFacility = ref(null) // Still needed to pass as prop
+const destinationFacility = ref(null)
 const destinationLoading = ref(false)
 const destinationError = ref(null)
-// mapContainerRef is NO LONGER needed here
+const availableFacilities = ref([]) // <-- Store the full list here
 
 // --- Map State (Managed via MapComponent props/emits) ---
-// We still need local refs to receive updates from MapComponent for notifications
 const isRouting = ref(false)
 const routingError = ref(null)
 const routeSummary = ref(null)
 
 // --- Computed Properties ---
-// currentModeIcon is NO LONGER needed here (handled in MapComponent)
+// Format facilities for the SearchBar's el-autocomplete
+const searchSuggestions = computed(() => {
+  return availableFacilities.value.map((facility) => {
+    const address = [facility.street, facility.house_number, facility.city]
+      .filter(Boolean)
+      .join(' ')
+      .trim()
+    return {
+      value: facility.name || `Facility ID ${facility.id}`, // Text displayed & searched
+      address: address || 'Address not available', // Secondary display text
+      facilityData: facility, // Keep original data for selection handling
+    }
+  })
+})
 
 // --- Methods ---
 
-// Fetch Destination Logic (remains the same)
+// Fetch Destination Logic (modified to store all facilities)
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
@@ -53,14 +63,18 @@ async function fetchDestinationFacility() {
   console.log('HomeView: Fetching destination facility...')
 
   try {
-    const response = await findFacilities({ has_emergency: true })
+    const response = await findFacilities({ has_emergency: true }) // Fetch nearby emergency facilities
     console.log('HomeView: API Response:', response)
 
-    if (response?.data?.[0]) {
-      const firstFacility = response.data[0]
+    // Store the whole list
+    availableFacilities.value = response?.data || []
+
+    // Still set the first one as the initial destination (closest emergency facility)
+    if (availableFacilities.value.length > 0) {
+      const firstFacility = availableFacilities.value[0]
       const formattedDestination = {
         id: firstFacility.id,
-        name: firstFacility.name || 'Destination',
+        name: firstFacility.name || 'Closest ER', // Make name more specific
         address:
           [firstFacility.street, firstFacility.house_number, firstFacility.city]
             .filter(Boolean)
@@ -70,23 +84,30 @@ async function fetchDestinationFacility() {
         longitude: firstFacility.location?.longitude,
       }
       if (formattedDestination.latitude == null || formattedDestination.longitude == null) {
-        throw new Error('Destination coordinates missing in API response.')
+        // Handle case where the *first* facility lacks coords. Maybe find the next one?
+        // For now, we'll just proceed without setting an initial destination if the first is invalid.
+        console.warn('Closest facility found lacks coordinates:', firstFacility.name)
+        destinationFacility.value = null // Don't set an invalid destination
+        // Keep availableFacilities populated for search
+      } else {
+        destinationFacility.value = formattedDestination // Set the initial destination
+        console.log('HomeView: Initial destination set:', destinationFacility.value)
       }
-      destinationFacility.value = formattedDestination // Update the ref passed to MapComponent
-      console.log('HomeView: Destination data ref updated:', destinationFacility.value)
     } else {
-      throw new Error('No suitable facilities found.')
+      destinationFacility.value = null // No facilities found
+      throw new Error('No suitable facilities found nearby.')
     }
   } catch (error) {
     console.error('HomeView: Failed fetch/process destination:', error)
-    const errorMessage = error?.message || 'Could not load destination.'
-    destinationError.value = errorMessage
-    destinationFacility.value = null // Clear the ref passed to MapComponent
+    const errorMessage = error?.message || 'Could not load destination facilities.'
+    destinationError.value = errorMessage // Keep track of the error
+    destinationFacility.value = null
+    availableFacilities.value = [] // Clear list on error
     ElNotification({
-      title: 'Destination Finding Error',
+      title: 'Facility Loading Error',
       message: errorMessage,
       type: 'error',
-      duration: 0,
+      duration: 5000, // Show for 5 seconds
     })
   } finally {
     destinationLoading.value = false
@@ -95,17 +116,50 @@ async function fetchDestinationFacility() {
 
 // Handler to update the travel mode in the store
 function handleModeChange(newMode) {
-  mapSettingsStore.setTravelMode(newMode) // MapComponent's composable will react to this
+  mapSettingsStore.setTravelMode(newMode)
+}
+
+// <-- New: Handler for when a facility is selected in SearchBar -->
+function handleFacilitySelected(selectedSuggestion) {
+  if (!selectedSuggestion || !selectedSuggestion.facilityData) {
+    console.warn('HomeView: Invalid facility selected from search.')
+    // Maybe clear destination if selection is invalid?
+    // destinationFacility.value = null;
+    return
+  }
+
+  const facility = selectedSuggestion.facilityData
+  console.log('HomeView: Facility selected from search:', facility)
+
+  // Check if selected facility has valid coordinates
+  if (facility.location?.latitude == null || facility.location?.longitude == null) {
+    ElMessage.error(`Selected facility "${facility.name || facility.id}" has no location data.`)
+    return // Don't update the destination
+  }
+
+  // Format and update the destinationFacility ref
+  // This will automatically be picked up by the MapComponent prop binding
+  destinationFacility.value = {
+    id: facility.id,
+    name: facility.name || 'Selected Destination',
+    address:
+      [facility.street, facility.house_number, facility.city].filter(Boolean).join(' ').trim() ||
+      'Address not available',
+    latitude: facility.location?.latitude,
+    longitude: facility.location?.longitude,
+  }
+  console.log('HomeView: destinationFacility updated by search selection.')
+
+  // Optional: Clear the search bar text after selection
+  // searchQuery.value = ''; // Needs SearchBar to accept v-model again
 }
 
 // --- Lifecycle & Watchers ---
 
 onMounted(() => {
-  // Attempt to get location on mount (remains the same)
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
     locationStore.fetchLocation()
   }
-  // Map initialization is now handled within MapComponent
 })
 
 // Watch Location Errors (remains the same)
@@ -115,32 +169,36 @@ watch(
     if (error && !locationStore.latitude) {
       ElNotification({
         title: 'Location Error',
-        message: `${error}. Cannot determine destination.`,
+        message: `${error}. Cannot find nearby facilities.`,
         type: 'warning',
         duration: 0,
       })
-      destinationError.value = null
+      destinationError.value = null // Maybe keep API error separate?
       destinationLoading.value = false
       destinationFacility.value = null
+      availableFacilities.value = [] // Clear facilities if location fails
     }
   },
 )
 
-// Watch Location Success (remains the same)
+// Watch Location Success (triggers initial facility fetch)
 watch(
   () => locationStore.latitude,
   (newLatitude, oldLatitude) => {
     if (
       newLatitude !== null &&
-      oldLatitude === null &&
+      oldLatitude === null && // Trigger only on first location fix
       !locationStore.isLoading &&
       !locationStore.error
     ) {
-      if (!destinationLoading.value && !destinationFacility.value) {
+      // Fetch facilities only if not already loading and list is empty
+      if (!destinationLoading.value && availableFacilities.value.length === 0) {
         fetchDestinationFacility()
       }
     } else if (newLatitude === null && oldLatitude !== null) {
+      // Location lost
       destinationFacility.value = null
+      availableFacilities.value = [] // Clear facilities
       ElNotification({
         title: 'Location Lost',
         message: 'Location signal lost. Please check device settings.',
@@ -149,44 +207,29 @@ watch(
       })
     }
   },
-  { immediate: false },
+  { immediate: false }, // Don't run immediately, wait for location
 )
 
-// Watch Routing Status (Now watches the local ref updated by MapComponent)
+// Watch Routing Status (remains the same)
 watch(isRouting, (routing) => {
   if (routing && !routingError.value) {
-    // Check local routingError ref
-    ElMessage({
-      message: 'Calculating route...',
-      type: 'info',
-      duration: 3000,
-    })
+    ElMessage({ message: 'Calculating route...', type: 'info', duration: 3000 })
   }
 })
 
-// Watch Routing Errors (Now watches the local ref updated by MapComponent)
+// Watch Routing Errors (remains the same)
 watch(routingError, (error) => {
   if (error) {
-    ElNotification({
-      title: 'Routing Error',
-      message: error, // Error message comes from MapComponent -> composable
-      type: 'error',
-      duration: 0,
-    })
+    ElNotification({ title: 'Routing Error', message: error, type: 'error', duration: 0 })
   }
 })
 
-// Watch Route Summary (Now watches the local ref updated by MapComponent)
+// Watch Route Summary (remains the same)
 watch(routeSummary, (summary, oldSummary) => {
-  // Check local routingError ref as well
   if (summary !== null && oldSummary === null && !routingError.value) {
     console.log('HomeView: Route summary updated:', summary)
-    ElMessage.closeAll('info') // Close any "Calculating" messages
-    ElMessage({
-      message: 'Route calculated.', // Summary text itself is now in MapComponent overlay
-      type: 'success',
-      duration: 2000,
-    })
+    ElMessage.closeAll('info')
+    ElMessage({ message: 'Route calculated.', type: 'success', duration: 2000 })
   }
 })
 </script>
@@ -195,7 +238,12 @@ watch(routeSummary, (summary, oldSummary) => {
   <el-container class="main-container">
     <AppHeader />
 
-    <SearchBar v-model="searchQuery" />
+    <SearchBar
+      :suggestions="searchSuggestions"
+      @facility-selected="handleFacilitySelected"
+      :placeholder="locationStore.latitude ? 'Search nearby facilities...' : 'Getting location...'"
+      :disabled="!locationStore.latitude || destinationLoading"
+    />
 
     <div class="travel-mode-selector">
       <el-radio-group
@@ -234,27 +282,42 @@ watch(routeSummary, (summary, oldSummary) => {
 /* Styles for Travel Mode Selector */
 .travel-mode-selector {
   padding: 8px 15px;
-  background-color: #f9f9f9; /* Light background */
+  background-color: #f9f9f9;
   text-align: center;
   border-bottom: 1px solid #eee;
-  flex-shrink: 0; /* Prevent shrinking */
-  z-index: 10; /* Ensure it's visually distinct */
+  flex-shrink: 0;
+  z-index: 10;
 }
-
-/* ElIcon adjustments within buttons if needed */
 .travel-mode-selector .el-radio-button__inner .el-icon {
-  margin-right: 4px; /* Add space between icon and text */
-  vertical-align: middle; /* Align icon better */
+  margin-right: 4px;
+  vertical-align: middle;
 }
 .travel-mode-selector .el-radio-button__inner {
-  display: inline-flex; /* Help with vertical alignment */
+  display: inline-flex;
   align-items: center;
 }
 
 .map-main-content {
-  padding: 0; /* Remove padding */
-  flex-grow: 1; /* Take remaining space */
-  position: relative; /* Keep for potential future absolute elements */
-  overflow: hidden; /* Prevent content spill */
+  padding: 0;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional overlay style */
+
+.map-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #333;
+  z-index: 1000;
 }
 </style>

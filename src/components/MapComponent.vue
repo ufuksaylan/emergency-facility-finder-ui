@@ -72,11 +72,6 @@ watch(composableRoutingError, (newValue) => {
 watch(composableRouteSummary, (newValue) => {
   emit('update:routeSummary', newValue)
 })
-
-// --- Lifecycle Hooks ---
-// onMounted is handled *within* the useLeafletMap composable now.
-// No specific onMounted logic needed here unless you want to do something *after*
-// the map itself is mounted by the composable.
 </script>
 
 <template>
