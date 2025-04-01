@@ -1,31 +1,55 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+// --- Core Vue/Router/Pinia Imports ---
+import { ref, onMounted, watch, computed } from 'vue' // Added computed
+import { storeToRefs } from 'pinia' // Import storeToRefs
+
+// --- Store Imports ---
 import { useLocationStore } from '@/stores/location'
+import { useMapSettingsStore } from '@/stores/mapSettings' // Import the new map settings store
+
+// --- API & Composables ---
 import { findFacilities } from '@/api/facilities'
 import { useLeafletMap } from '@/composables/useLeafletMap'
+
+// --- Component Imports ---
 import AppHeader from '@/components/AppHeader.vue'
 import SearchBar from '@/components/SearchBar.vue'
-import { Van } from '@element-plus/icons-vue'
-import { ElNotification, ElMessage } from 'element-plus' // Keep imports
 
+// --- Element Plus Imports ---
+import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton } from 'element-plus' // Added Radio components
+import { Van, Promotion } from '@element-plus/icons-vue' // Added Promotion as placeholder walking icon
+
+// --- Store Instantiation ---
 const locationStore = useLocationStore()
-const searchQuery = ref('')
+const mapSettingsStore = useMapSettingsStore() // Instantiate the map settings store
 
-// --- State for Data Fetching ---
+// --- Reactive State from Stores ---
+const { selectedTravelMode } = storeToRefs(mapSettingsStore) // Get reactive state from map settings store
+
+// --- Local Component State ---
+const searchQuery = ref('')
 const destinationFacility = ref(null)
 const destinationLoading = ref(false)
 const destinationError = ref(null)
-
-// --- Map Container Ref ---
 const mapContainerRef = ref(null)
 
-// --- Use the Composable ---
+// --- Use the Map Composable (No longer passing mode) ---
 const { isRouting, routingError, routeSummary } = useLeafletMap(
   mapContainerRef,
   destinationFacility,
+  // selectedTravelMode ref is no longer passed here
 )
 
-// --- Fetch Destination Logic ---
+// --- Computed Properties ---
+// Determine the icon based on the selected travel mode from the store
+const currentModeIcon = computed(() => {
+  // Replace 'Promotion' with a better icon like Bicycle or a custom SVG if available
+  return selectedTravelMode.value === 'driving' ? Van : Promotion
+})
+
+// --- Methods ---
+
+// Fetch Destination Logic (remains the same as original)
 async function fetchDestinationFacility() {
   if (destinationLoading.value || !locationStore.latitude) return
   destinationLoading.value = true
@@ -33,9 +57,6 @@ async function fetchDestinationFacility() {
   console.log('HomeView: Fetching destination facility...')
 
   try {
-    // --- REMOVED Loading Message ---
-    // ElMessage({ message: 'Finding destination facility...', type: 'info', duration: 1500 });
-
     const response = await findFacilities({ has_emergency: true })
     console.log('HomeView: API Response:', response)
 
@@ -57,8 +78,6 @@ async function fetchDestinationFacility() {
       }
       destinationFacility.value = formattedDestination
       console.log('HomeView: Destination data ref updated:', destinationFacility.value)
-      // --- REMOVED Success Message ---
-      // ElMessage.success('Destination found.')
     } else {
       throw new Error('No suitable facilities found.')
     }
@@ -66,51 +85,44 @@ async function fetchDestinationFacility() {
     console.error('HomeView: Failed fetch/process destination:', error)
     const errorMessage = error?.message || 'Could not load destination.'
     destinationError.value = errorMessage
-    destinationFacility.value = null // Clear destination on error
-    // --- KEEP Error Notification ---
+    destinationFacility.value = null
     ElNotification({
       title: 'Destination Finding Error',
       message: errorMessage,
       type: 'error',
-      duration: 0, // Keep open until manually closed
+      duration: 0,
     })
-    // --- End Error Notification ---
   } finally {
     destinationLoading.value = false
   }
 }
 
+// Handler to update the travel mode in the store
+function handleModeChange(newMode) {
+  mapSettingsStore.setTravelMode(newMode) // Call the store action
+}
+
 // --- Lifecycle & Watchers ---
 
 onMounted(() => {
-  // Attempt to get location on mount
+  // Attempt to get location on mount (remains the same)
   if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
-    // --- REMOVED Initial Waiting Message ---
-    // ElMessage({ message: 'Waiting for location permission and data...', type: 'info', duration: 3000 });
     locationStore.fetchLocation()
   }
-  // Map initialization is handled within the useLeafletMap composable
+  // Map initialization is handled within useLeafletMap
 })
 
-// --- Watchers for Notifications/Messages ---
-
-// --- REMOVED Watcher for Location Loading Status ---
-// watch(() => locationStore.isLoading, (loading) => { ... });
-
-// Watch Location Errors - KEEP
+// Watch Location Errors (remains the same)
 watch(
   () => locationStore.error,
   (error) => {
     if (error && !locationStore.latitude) {
-      // Only show if location hasn't been acquired
-      // --- KEEP Error Notification ---
       ElNotification({
         title: 'Location Error',
         message: `${error}. Cannot determine destination.`,
-        type: 'warning', // Use warning as it might be recoverable by user action
-        duration: 0, // Keep open until closed
+        type: 'warning',
+        duration: 0,
       })
-      // Clear destination state if location fails
       destinationError.value = null
       destinationLoading.value = false
       destinationFacility.value = null
@@ -118,28 +130,21 @@ watch(
   },
 )
 
-// Watch Location Success (Latitude becomes available) - Actions only, no message
+// Watch Location Success (remains the same)
 watch(
   () => locationStore.latitude,
   (newLatitude, oldLatitude) => {
-    // Only trigger actions when latitude is *newly* available
     if (
       newLatitude !== null &&
       oldLatitude === null &&
       !locationStore.isLoading &&
       !locationStore.error
     ) {
-      // --- REMOVED Success Message ---
-      // ElMessage.success('Location found.');
-
-      // Fetch destination if not already loading/found
       if (!destinationLoading.value && !destinationFacility.value) {
         fetchDestinationFacility()
       }
     } else if (newLatitude === null && oldLatitude !== null) {
-      // Location lost
-      destinationFacility.value = null // Clear destination if location is lost
-      // Optionally, add a persistent warning if location is lost *after* being acquired
+      destinationFacility.value = null
       ElNotification({
         title: 'Location Lost',
         message: 'Location signal lost. Please check device settings.',
@@ -151,44 +156,38 @@ watch(
   { immediate: false },
 )
 
-// Watch Routing Status - KEEP loading message for this potentially longer step
+// Watch Routing Status (remains the same)
 watch(isRouting, (routing) => {
   if (routing && !routingError.value) {
-    // Check routingError ref directly
-    // --- KEEP Loading Message ---
     ElMessage({
       message: 'Calculating route...',
       type: 'info',
-      duration: 3000, // Give it a bit longer duration or until replaced
+      duration: 3000,
     })
   }
 })
 
-// Watch Routing Errors - KEEP
+// Watch Routing Errors (remains the same)
 watch(routingError, (error) => {
   if (error) {
-    // --- KEEP Error Notification ---
     ElNotification({
-      title: 'Routing Error',
-      message: error, // Assumes error is a string message from the composable
+      title: 'Routing Error', // Error message now comes formatted from composable
+      message: error,
       type: 'error',
-      duration: 0, // Keep open until closed
+      duration: 0,
     })
   }
 })
 
-// Watch for changes in the route summary - Add success message here
+// Watch Route Summary (remains the same)
 watch(routeSummary, (summary, oldSummary) => {
-  // Trigger success only when summary newly appears
   if (summary !== null && oldSummary === null && !routingError.value) {
     console.log('HomeView: Route summary updated:', summary)
-    // --- KEEP Brief Success Message ---
-    // Close any "Calculating route..." message first
-    ElMessage.closeAll('info') // Close only info messages
+    ElMessage.closeAll('info')
     ElMessage({
-      message: 'Route calculated.',
+      message: 'Route calculated.', // Summary text itself comes from composable
       type: 'success',
-      duration: 2000, // Show briefly
+      duration: 2000,
     })
   }
 })
@@ -200,12 +199,28 @@ watch(routeSummary, (summary, oldSummary) => {
 
     <SearchBar v-model="searchQuery" />
 
+    <div class="travel-mode-selector">
+      <el-radio-group
+        :model-value="selectedTravelMode"
+        @update:model-value="handleModeChange"
+        size="small"
+      >
+        <el-radio-button value="driving">
+          <el-icon><Van /></el-icon> Drive
+        </el-radio-button>
+        <el-radio-button value="foot">
+          <el-icon><Promotion /></el-icon> Walk
+        </el-radio-button>
+      </el-radio-group>
+    </div>
     <el-main class="map-main-content">
       <div ref="mapContainerRef" class="map-container"></div>
 
       <transition name="el-fade-in">
         <div class="directions-overlay" v-if="routeSummary && !routingError">
-          <el-icon :size="24" style="margin-right: 8px"><Van /></el-icon>
+          <el-icon :size="24" style="margin-right: 8px">
+            <component :is="currentModeIcon" />
+          </el-icon>
           <div class="directions-text">
             <span>ER is {{ routeSummary }}</span>
             <el-link type="primary" :underline="false">Tap here for directions</el-link>
@@ -217,39 +232,49 @@ watch(routeSummary, (summary, oldSummary) => {
 </template>
 
 <style scoped>
-/* Styles specific to HomeView layout, excluding header and search styles */
+/* Styles specific to HomeView layout */
 .main-container {
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* NEW: Styles for Travel Mode Selector */
+.travel-mode-selector {
+  padding: 8px 15px;
+  background-color: #f9f9f9; /* Light background */
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0; /* Prevent shrinking */
+  z-index: 10; /* Ensure it's visually distinct if needed */
+}
+
 .map-main-content {
-  padding: 0; /* Remove default padding */
-  flex-grow: 1; /* Allow main content to take remaining space */
-  position: relative; /* Needed for absolute positioning of overlay */
-  overflow: hidden; /* Hide anything that might overflow */
+  padding: 0;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
 }
 
 .map-container {
-  height: 100%; /* Fill the main content area */
+  height: 100%;
   width: 100%;
 }
 
 .directions-overlay {
   position: absolute;
-  bottom: 20px; /* Position from bottom */
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
+  transform: translateX(-50%);
   background-color: white;
   padding: 10px 20px;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  z-index: 1001; /* Ensure it's above map layers */
-  width: fit-content; /* Adjust width to content */
-  max-width: 90%; /* Prevent it from being too wide on large screens */
+  z-index: 1001; /* Above map layers, below potential modals */
+  width: fit-content;
+  max-width: 90%;
 }
 
 .directions-text {
@@ -268,7 +293,7 @@ watch(routeSummary, (summary, oldSummary) => {
   font-weight: normal;
 }
 
-/* Global styles for leaflet controls kept */
+/* Global Leaflet control styles (remain the same) */
 :global(.leaflet-control-zoom a),
 :global(.leaflet-control-locate a) {
   border: 1px solid #ccc !important;
