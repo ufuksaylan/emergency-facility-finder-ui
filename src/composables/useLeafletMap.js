@@ -10,8 +10,11 @@ import { useLocationStore } from '@/stores/location'
 import { useMapSettingsStore } from '@/stores/mapSettings'
 import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 // --- Environment Variable ---
-const OSRM_SERVICE_URL = import.meta.env.VITE_OSRM_SERVICE_URL
+const OSRM_SERVICE_URL = API_BASE_URL ? `${API_BASE_URL}/route/v1` : null
+
 if (!OSRM_SERVICE_URL) {
   console.error('Composable Error: VITE_OSRM_SERVICE_URL is not defined. Routing will fail.')
 } else {

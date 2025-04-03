@@ -1,0 +1,29 @@
+# Node modules
+node_modules
+
+# Build output directory
+dist
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables file
+.env*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Git directory
+.git
+
+# IDE/Editor config
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

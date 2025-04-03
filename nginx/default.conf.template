@@ -1,0 +1,42 @@
+# /etc/nginx/conf.d/default.conf
+
+server {
+    # Listen on IPv4 and IPv6
+    listen 80;
+    listen [::]:80;
+
+    # Define the root directory for static files (where your Vue app's build output is)
+    root /usr/share/nginx/html;
+    # Define the default file to serve (your app's entry point)
+    index index.html index.htm;
+
+    # Hide Nginx version for security
+    server_tokens off;
+
+    # Enable gzip compression for better performance
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+    # Optional: Set max upload size if your app handles uploads directly to Nginx (unlikely for API based)
+    # client_max_body_size 20M;
+
+    # Main location block for serving the SPA
+    location / {
+        # Try serving direct file matches ($uri), then directories ($uri/),
+        # finally fall back to index.html for client-side routing (essential for Vue Router history mode)
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Optional: Add custom error pages if needed
+    # error_page 404 /404.html;
+    # location = /404.html {
+    #     internal;
+    # }
+    # error_page 500 502 503 504 /50x.html;
+    # location = /50x.html {
+    #     internal;
+    # }
+}
