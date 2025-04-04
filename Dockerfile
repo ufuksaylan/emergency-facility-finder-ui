@@ -9,40 +9,48 @@ WORKDIR /app
 ARG VITE_API_BASE_URL="http://localhost:3000/api" # Default if not provided during build
 
 # --- Dependency Installation ---
+# Copy only package files first to leverage Docker cache
 COPY package.json package-lock.json ./
+# Use npm ci for clean, reproducible installs based on package-lock.json
 RUN npm ci
 
 # --- Copy Source Code ---
+# Copy the rest of the application code
 COPY . .
 
 # --- Set Environment Variables for Build ---
-# Make the build argument available for the 'npm run build' command
+# Make the build argument available as an environment variable for the 'npm run build' command
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 # --- Build Application ---
-# Vite will use the VITE_API_BASE_URL environment variable
+# Vite will use the VITE_API_BASE_URL environment variable during the build
 RUN npm run build
-# Output should be in /app/dist
+# The build output will be in /app/dist
 
-# Stage 2: Serve the application using Nginx
-# Use a stable alpine Nginx image
-FROM nginx:stable-alpine
-# Or use the specific version if preferred: FROM nginx:1.25.3-alpine3.18
+# Stage 2: Serve the application using a Node.js server
+# Use the same Node version for consistency and smaller image size potential
+FROM node:22-alpine
 
-# --- Nginx Configuration ---
-# Remove default Nginx welcome page
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app
 
-# Copy the custom static Nginx configuration file
-COPY nginx/default.conf.template /etc/nginx/conf.d/default.conf
+# --- Install Production Server ---
+# Install 'serve', a popular static file serving package
+# Use --no-cache to reduce image size slightly if using apk add first (not strictly needed here)
+# Or install globally directly with npm:
+RUN npm install -g serve
 
 # --- Copy Built Assets ---
-# Copy the built Vue app from the 'builder' stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy only the built application artifacts from the 'builder' stage
+COPY --from=builder /app/dist /app/dist
 
 # --- Expose Port ---
-EXPOSE 80
+# Expose the port the server will run on (default for 'serve' is 3000, but let's use 8080 for clarity)
+# You can change this port if needed.
+EXPOSE 8080
 
 # --- Run Command ---
-# Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Start the 'serve' command to serve the static files from the /app/dist directory
+# The '-s' flag is important for Single Page Applications (SPAs) like Vue
+# It rewrites all requests to index.html so client-side routing works correctly.
+# The '-l' flag specifies the port to listen on.
+CMD ["serve", "-s", "-l", "8080", "/app/dist"]

@@ -43,8 +43,8 @@ const currentModeIcon = computed(() => {
           <component :is="currentModeIcon" />
         </el-icon>
         <div class="directions-text">
-          <span>ER is {{ routeSummary }}</span>
-          <el-link type="primary" :underline="false">Tap here for directions</el-link>
+          <span style="color: black">ER is {{ routeSummary }}</span>
+          <!-- <el-link type="primary" :underline="false">Tap here for directions</el-link> -->
         </div>
       </div>
     </transition>
