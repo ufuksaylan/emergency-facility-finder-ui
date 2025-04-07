@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { ElIcon, ElLink } from 'element-plus'
+import { ElIcon } from 'element-plus'
 import { Van, Promotion } from '@element-plus/icons-vue'
 
 // Import the composable and stores

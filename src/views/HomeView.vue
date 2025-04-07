@@ -1,306 +1,296 @@
+// src/views/HomeView.vue - Conceptual Changes
 <script setup>
-// --- Core Vue/Router/Pinia Imports ---
 import { ref, onMounted, watch, computed } from 'vue'
-import { storeToRefs } from 'pinia'
-
-// --- Store Imports ---
 import { useLocationStore } from '@/stores/location'
-import { useMapSettingsStore } from '@/stores/mapSettings'
-import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
-
-// --- API & Composables ---
-import { findFacilities } from '@/api/facilities'
-
-// --- Component Imports ---
+import { useDestinationStore } from '@/stores/destinationStore'
+import { findFacilities } from '@/api/facilities' // Use the updated API function
 import AppHeader from '@/components/AppHeader.vue'
-import SearchBar from '@/components/SearchBar.vue'
 import MapComponent from '@/components/MapComponent.vue'
+// Import filter components if you create separate ones, or add controls here
 
-// --- Element Plus Imports ---
-import { ElNotification, ElMessage, ElRadioGroup, ElRadioButton, ElIcon } from 'element-plus'
-import { Van, Promotion } from '@element-plus/icons-vue'
-
-// --- Store Instantiation ---
-const locationStore = useLocationStore()
-const mapSettingsStore = useMapSettingsStore()
-const destinationStore = useDestinationStore() // <-- Instantiate Destination Store
-
-// --- Reactive State from Stores ---
-const { selectedTravelMode } = storeToRefs(mapSettingsStore)
-// Get reactive destination and routing state from destinationStore
-const { isRouting, routingError, routeSummary } = storeToRefs(destinationStore)
-
-// --- Local Component State ---
-const destinationLoading = ref(false) // For API call state
-const destinationError = ref(null) // For API call errors specifically
-const availableFacilities = ref([]) // To populate search suggestions
-
-// --- Computed Properties ---
-// Format facilities for the SearchBar's el-autocomplete
-const searchSuggestions = computed(() => {
-  return availableFacilities.value.map((facility) => {
-    const address = [facility.street, facility.house_number, facility.city]
-      .filter(Boolean)
-      .join(' ')
-      .trim()
-    return {
-      value: facility.name || `Facility ID ${facility.id}`, // Text displayed & searched
-      address: address || 'Address not available', // Secondary display text
-      facilityData: facility, // Keep original data for selection handling
-    }
-  })
+const props = defineProps({
+  searchType: {
+    type: String,
+    default: 'general', // Default if no type is passed
+  },
 })
 
-// --- Methods ---
+const locationStore = useLocationStore()
+const destinationStore = useDestinationStore()
 
-// Fetch Destination Logic (now updates the store)
-async function fetchDestinationFacility() {
-  if (destinationLoading.value || !locationStore.latitude) return
-  destinationLoading.value = true
-  destinationError.value = null // Clear previous API error
-  console.log('HomeView: Fetching destination facility...')
+const isLoading = ref(false)
+const searchError = ref(null)
+const facilities = ref([]) // Store multiple results
+const currentFilters = ref({}) // Store active filters
 
-  try {
-    const response = await findFacilities({ has_emergency: true }) // Fetch nearby emergency facilities
-    console.log('HomeView: API Response:', response)
-    availableFacilities.value = response?.data || []
+// Example Filter State
+const facilityTypeFilter = ref('') // e.g., 'hospital', 'clinic'
+const specializationFilter = ref('') // e.g., 'cardiology', 'orthopedics'
+const emergencyOnlyFilter = ref(false)
+const nameQuery = ref('')
 
-    if (availableFacilities.value.length > 0) {
-      const firstFacility = availableFacilities.value[0]
-      // Set the first facility in the destination store
-      destinationStore.setDestination(firstFacility)
-      // Check if the store successfully set it (i.e., if coords were valid)
-      if (!destinationStore.selectedFacility) {
-        console.warn(
-          'HomeView: Closest facility lacked coordinates, no initial destination set in store.',
-        )
-        // Optional: Notify user? Maybe ElMessage.warning(...)
-      } else {
-        console.log('HomeView: Initial destination set in store.')
-      }
-    } else {
-      destinationStore.clearDestination() // Clear store if no facilities found
-      throw new Error('No suitable facilities found nearby.')
-    }
-  } catch (error) {
-    console.error('HomeView: Failed fetch/process destination:', error)
-    destinationError.value = error?.message || 'Could not load destination facilities.' // Store API specific error
-    destinationStore.clearDestination() // Clear store on error
-    availableFacilities.value = []
-    ElNotification({
-      title: 'Facility Loading Error',
-      message: destinationError.value,
-      type: 'error',
-      duration: 5000,
-    })
-  } finally {
-    destinationLoading.value = false
-  }
-}
-
-// Handler to update the travel mode in the store
-function handleModeChange(newMode) {
-  mapSettingsStore.setTravelMode(newMode)
-}
-
-// Handler for when a facility is selected in SearchBar (now updates the store)
-function handleFacilitySelected(selectedSuggestion) {
-  if (!selectedSuggestion || !selectedSuggestion.facilityData) {
-    console.warn('HomeView: Invalid facility selected from search.')
+// Function to fetch facilities based on current state
+async function fetchAndSetFacilities() {
+  if (!locationStore.hasLocation()) {
+    // Maybe trigger location fetch again or show message
+    searchError.value = 'Please enable location services.'
     return
   }
-  const facility = selectedSuggestion.facilityData
-  console.log('HomeView: Facility selected from search:', facility)
 
-  // Set selected facility in the destination store
-  // The store's setDestination action handles validation and formatting
-  destinationStore.setDestination(facility)
+  isLoading.value = true
+  searchError.value = null
+  facilities.value = [] // Clear previous results
 
-  // Check if the store rejected it (e.g., no coords)
-  if (!destinationStore.selectedFacility || destinationStore.selectedFacility.id !== facility.id) {
-    ElMessage.error(
-      `Selected facility "${facility.name || facility.id}" could not be set as destination (missing location data?).`,
-    )
-  } else {
-    console.log('HomeView: destinationStore updated by search selection.')
-    // Optional: Maybe show a success message
-    // ElMessage.success(`Destination set to ${destinationStore.selectedFacility.name}`)
+  try {
+    const filters = {
+      ...currentFilters.value, // Base filters
+      query: nameQuery.value || undefined, // Add name search
+      facility_type: facilityTypeFilter.value || undefined,
+      specialization: specializationFilter.value || undefined,
+      has_emergency: emergencyOnlyFilter.value ? true : undefined,
+    }
+    // Remove undefined filters before sending
+    Object.keys(filters).forEach((key) => filters[key] === undefined && delete filters[key])
+
+    const response = await findFacilities(filters)
+    facilities.value = response.data // Assuming backend returns an array of facilities
+
+    // --- LOGIC CHANGE: Instead of auto-directing to nearest ---
+    // Now you have a list in `facilities.value`.
+    // You need to display these (e.g., on the map, in a list).
+    // The user will select one, and *then* you set the destination.
+    // For emergency, you might still highlight/pre-select the closest *open* one.
+
+    if (props.searchType === 'emergency' && facilities.value.length > 0) {
+      // Add logic here to find the *closest* emergency facility from the results
+      // This requires distance calculation, potentially done on backend or frontend
+      // For now, just log, let user select from map/list
+      console.log('Emergency search results:', facilities.value)
+      // Maybe pre-select the first one for convenience?
+      // handleFacilitySelect(facilities.value[0]);
+    }
+  } catch (error) {
+    console.error('Error fetching facilities:', error)
+    searchError.value = error.message || 'Failed to fetch facilities.'
+    facilities.value = []
+  } finally {
+    isLoading.value = false
   }
 }
 
-// --- Lifecycle & Watchers ---
+// Function called when a user selects a facility from the map or a list
+function handleFacilitySelect(facility) {
+  console.log('Facility selected by user:', facility)
+  destinationStore.setDestination(facility) // Set it in the store
+}
 
-onMounted(() => {
-  // Attempt to get location on mount
-  if (!locationStore.latitude && !locationStore.isLoading && !locationStore.error) {
-    locationStore.fetchLocation()
-  }
-})
-
-// Watch Location Errors (now clears destination store)
+// Watch for location changes to re-fetch if needed
 watch(
-  () => locationStore.error,
-  (error) => {
-    if (error && !locationStore.latitude) {
-      ElNotification({
-        title: 'Location Error',
-        message: `${error}. Cannot find nearby facilities.`,
-        type: 'warning',
-        duration: 0,
-      })
-      destinationError.value = null
-      destinationLoading.value = false
-      destinationStore.clearDestination() // Clear store
-      availableFacilities.value = []
-    }
-  },
-)
-
-// Watch Location Success (triggers initial facility fetch)
-watch(
-  () => locationStore.latitude,
-  (newLatitude, oldLatitude) => {
+  () => [locationStore.latitude, locationStore.longitude],
+  (newVal, oldVal) => {
     if (
-      newLatitude !== null &&
-      oldLatitude === null && // Trigger only on first location fix
-      !locationStore.isLoading &&
-      !locationStore.error
+      newVal[0] !== null &&
+      newVal[1] !== null &&
+      (newVal[0] !== oldVal[0] || newVal[1] !== oldVal[1])
     ) {
-      // Fetch facilities only if not already loading and store has no destination yet and list is empty
-      if (
-        !destinationLoading.value &&
-        !destinationStore.selectedFacility &&
-        availableFacilities.value.length === 0
-      ) {
-        fetchDestinationFacility()
-      }
-    } else if (newLatitude === null && oldLatitude !== null) {
-      // Location lost
-      destinationStore.clearDestination() // Clear store
-      availableFacilities.value = []
-      ElNotification({
-        title: 'Location Lost',
-        message: 'Location signal lost. Please check device settings.',
-        type: 'warning',
-        duration: 0,
-      })
+      console.log('Location updated, re-fetching facilities...')
+      fetchAndSetFacilities()
     }
   },
-  { immediate: false }, // Don't run immediately, wait for location
+  { immediate: false },
+) // Don't run immediately, wait for mount
+
+// Watch for filter changes to re-fetch
+watch(
+  [nameQuery, facilityTypeFilter, specializationFilter, emergencyOnlyFilter],
+  () => {
+    // Debounce this in a real app
+    fetchAndSetFacilities()
+  },
+  { deep: true },
 )
 
-// --- Watchers for Routing State (Now watch store refs for notifications) ---
-watch(isRouting, (routing) => {
-  if (routing && !routingError.value) {
-    // Check store's routingError
-    console.log('HomeView: Routing started (from store state)')
-    // Optional: Show brief message, but MapComponent likely shows indicator
-    // ElMessage({ message: 'Calculating route...', type: 'info', duration: 1500 })
+onMounted(async () => {
+  // Set initial filters based on searchType
+  if (props.searchType === 'emergency') {
+    emergencyOnlyFilter.value = true
+    currentFilters.value = { has_emergency: true } // Set initial filter
+  } else {
+    // Reset filters for other types
+    emergencyOnlyFilter.value = false
+    currentFilters.value = {}
+  }
+
+  if (!locationStore.hasLocation()) {
+    try {
+      await locationStore.fetchLocation() // Fetch location if not already available
+      // fetchAndSetFacilities will be triggered by the location watch
+    } catch {
+      searchError.value = locationStore.error || 'Could not get location.'
+    }
+  } else {
+    // Location already exists, fetch facilities immediately
+    fetchAndSetFacilities()
   }
 })
 
-watch(routingError, (error) => {
-  if (error) {
-    // Show persistent notification based on store error state
-    ElNotification({
-      title: 'Routing Problem',
-      message: error,
-      type: 'error',
-      duration: 0, // Keep open until dismissed
-    })
-    console.error('HomeView: Routing error occurred (from store state):', error)
-  }
-})
-
-watch(routeSummary, (summary, oldSummary) => {
-  // Check store's routingError
-  if (summary !== null && oldSummary === null && !routingError.value) {
-    console.log('HomeView: Route summary updated (from store state):', summary)
-    ElMessage.closeAll('info') // Close any calculating messages
-    // MapComponent shows the summary, maybe just a brief success confirmation here
-    ElMessage({
-      message: 'Route calculated.',
-      type: 'success',
-      duration: 3000,
-    })
-  } else if (summary === null && oldSummary !== null) {
-    console.log('HomeView: Route summary cleared (from store state)')
-    // Optional: Close any success messages if route is cleared
-    ElMessage.closeAll('success')
-  }
+// --- Add computed properties or methods to format facilities for display ---
+const facilityMarkers = computed(() => {
+  return facilities.value
+    .map((f) => ({
+      id: f.id,
+      latitude: f.location?.latitude,
+      longitude: f.location?.longitude,
+      name: f.name,
+      address: [f.street, f.house_number, f.city].filter(Boolean).join(' ').trim(),
+      // Add other relevant info for popups/list
+      facility_type: f.facility_type,
+      opening_hours: f.opening_hours, // Display this nicely
+      has_emergency: f.has_emergency,
+      specialization: f.specialization,
+      raw: f, // Keep raw data if needed when marker is clicked
+    }))
+    .filter((f) => f.latitude != null && f.longitude != null) // Filter out invalid locations
 })
 </script>
 
 <template>
-  <el-container class="main-container">
+  <el-container direction="vertical" style="height: 100vh">
     <AppHeader />
 
-    <SearchBar
-      :suggestions="searchSuggestions"
-      @facility-selected="handleFacilitySelected"
-      :placeholder="
-        locationStore.isLoading
-          ? 'Getting location...'
-          : !locationStore.latitude
-            ? 'Location unavailable'
-            : destinationLoading
-              ? 'Loading facilities...'
-              : 'Search nearby facilities...'
-      "
-      :disabled="!locationStore.latitude || destinationLoading || locationStore.isLoading"
-    />
+    <div class="filter-bar" v-if="props.searchType !== 'emergency'"></div>
 
-    <div class="travel-mode-selector">
-      <el-radio-group
-        :model-value="selectedTravelMode"
-        @update:model-value="handleModeChange"
-        size="small"
-      >
-        <el-radio-button value="driving">
-          <el-icon><Van /></el-icon> Drive
-        </el-radio-button>
-        <el-radio-button value="foot">
-          <el-icon><Promotion /></el-icon> Walk
-        </el-radio-button>
-      </el-radio-group>
-    </div>
+    <el-main style="padding: 0; display: flex; flex-grow: 1; overflow: hidden">
+      <div class="facility-list-panel" v-if="facilityMarkers.length > 0 && !isLoading">
+        <h3>Results</h3>
+        <ul>
+          <li
+            v-for="facility in facilityMarkers"
+            :key="facility.id"
+            @click="handleFacilitySelect(facility.raw)"
+            class="facility-list-item"
+          >
+            <strong class="facility-name">{{ facility.name }}</strong
+            ><br />
+            <small class="facility-address">{{ facility.address }}</small
+            ><br />
+            <small class="facility-details">Type: {{ facility.facility_type }}</small>
+            <small class="facility-details" v-if="facility.specialization">
+              | Specialization: {{ facility.specialization }}</small
+            >
+          </li>
+        </ul>
+      </div>
 
-    <el-main class="map-main-content">
-      <MapComponent />
+      <div class="map-area" v-loading="isLoading || locationStore.isLoading">
+        <MapComponent :markers="facilityMarkers" @marker-click="handleFacilitySelect" />
+      </div>
     </el-main>
   </el-container>
 </template>
 
 <style scoped>
-/* Styles specific to HomeView layout */
-.main-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Styles for Travel Mode Selector */
-.travel-mode-selector {
-  padding: 8px 15px;
-  background-color: #f9f9f9;
-  text-align: center;
+.filter-bar {
+  padding: 10px 15px;
+  background-color: #f8f8f8;
   border-bottom: 1px solid #eee;
   flex-shrink: 0;
-  z-index: 10;
-}
-.travel-mode-selector .el-radio-button__inner .el-icon {
-  margin-right: 4px;
-  vertical-align: middle;
-}
-.travel-mode-selector .el-radio-button__inner {
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
-
-.map-main-content {
-  padding: 0;
-  flex-grow: 1;
-  position: relative;
-  overflow: hidden;
+.el-main {
+  display: flex; /* Use flexbox for layout */
 }
+.facility-list-panel {
+  width: 300px; /* Adjust width as needed */
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+  padding: 15px;
+  overflow-y: auto;
+  background: white;
+}
+.facility-list-panel h3 {
+  margin-bottom: 10px;
+}
+.facility-list-panel ul {
+  list-style: none;
+  padding: 0;
+}
+.facility-list-panel li {
+  padding: 10px;
+  border-bottom: 1px solid #f4f4f4;
+  cursor: pointer;
+}
+.facility-list-panel li:hover {
+  background-color: #f9f9f9;
+}
+
+.map-area {
+  flex-grow: 1; /* Map takes remaining space */
+  position: relative; /* Needed for overlays inside MapComponent */
+}
+
+.facility-list-panel {
+  width: 300px; /* Adjust width as needed */
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+  padding: 15px;
+  overflow-y: auto;
+  background: white;
+  color: #303133; /* Default darker text for the panel if needed */
+}
+
+.facility-list-panel h3 {
+  margin-bottom: 10px;
+  color: #303133; /* Darker heading */
+}
+
+.facility-list-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default ul margin */
+}
+
+/* Target the list item */
+.facility-list-item {
+  /* Use the class added in the template */
+  padding: 12px 5px; /* Adjust padding */
+  border-bottom: 1px solid #f4f4f4;
+  cursor: pointer;
+  transition: background-color 0.2s ease; /* Smooth hover effect */
+}
+
+.facility-list-item:hover {
+  background-color: #f5f5f5; /* Slightly darker hover */
+}
+
+/* Target the specific text elements within the list item */
+.facility-list-item .facility-name {
+  font-weight: 600; /* Make name slightly bolder */
+  color: #303133; /* Element Plus Default Text Color (Dark) */
+  display: block; /* Ensure it takes its own line if needed */
+  margin-bottom: 4px;
+}
+
+.facility-list-item .facility-address,
+.facility-list-item .facility-details {
+  font-size: 0.85em; /* Keep address/details slightly smaller */
+  color: #606266; /* Element Plus Secondary Text Color (Slightly Lighter Dark) */
+  line-height: 1.4; /* Improve readability for smaller text */
+  display: inline-block; /* Keep details on the same line if possible */
+  margin-right: 5px; /* Add space between details */
+}
+
+/* Optional: If you want address and details even darker */
+
+.facility-list-item .facility-address,
+.facility-list-item .facility-details {
+  color: #303133;
+}
+
+.map-area {
+  flex-grow: 1; /* Map takes remaining space */
+  position: relative; /* Needed for overlays inside MapComponent */
+}
+/* Adjust MapComponent styles if necessary */
 </style>
