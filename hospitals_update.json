@@ -1,0 +1,895 @@
+[
+  {
+    "osrm_id": "56150805",
+    "name": null,
+    "status": "permanently closed",
+    "facility_type": null,
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": null,
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [],
+    "notes": "Marked as permanently closed by user.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "57931558",
+    "name": "Vilniaus gimdymo namai",
+    "status": "operational",
+    "facility_type": "Maternity Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.vgn.lt/",
+      "phone": "+370 5262 80 38",
+      "email": "info@vgn.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {},
+    "specialties_en": [
+      "Obstetrics",
+      "Gynecology",
+      "Neonatology",
+      "Resuscitation and Intensive Care"
+    ],
+    "notes": "Specializes in maternity and related services. Has 24/7 maternity admissions.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "923818393",
+    "name": "Mykolo Marcinkevičiaus ligoninė",
+    "status": "operational",
+    "facility_type": "Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.mmligonine.lt/",
+      "phone": "+37052161956",
+      "email": "rastine@mmligonine.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "User requested ER status change to True. May have absorbed services from OSRM ID 341277021.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "72845361",
+    "name": null,
+    "status": "deleted",
+    "facility_type": null,
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": null,
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [],
+    "notes": "User requested deletion: 'Nothing on the map delete this'.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "341277021",
+    "name": null,
+    "status": "permanently closed",
+    "facility_type": null,
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": null,
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [],
+    "notes": "Marked as permanently closed. User suggests it possibly moved/merged with OSRM ID 923818393.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "1093062851",
+    "name": "VšĮ Vilkpėdės ligoninė",
+    "status": "operational",
+    "facility_type": "Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.vilkpedesligonine.lt/",
+      "phone": "+370 5 233 9284",
+      "email": "administracija@vilkpedesligonine.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Specializes in long-term care, palliative care, dementia care, physiotherapy, and psychological support.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "1315847144",
+    "name": "VšĮ Vilniaus universiteto ligoninė Santaros klinikos",
+    "status": "operational",
+    "facility_type": "Hospital",
+    "location": {
+      "latitude": 54.752121041912524,
+      "longitude": 25.278533320821655
+    },
+    "contact": {
+      "website": "https://www.santa.lt/",
+      "phone": "+37052365000",
+      "email": "info@santa.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Major university hospital complex... Includes the new location for the Children's ER (formerly linked to OSRM ID 5689598438).",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "356742553",
+    "name": "Respublikinė Vilniaus psichiatrijos ligoninė",
+    "status": "operational",
+    "facility_type": "Psychiatric Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.vasaros.lt/",
+      "phone": "+37052625979",
+      "email": "info@vasaros.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Psychiatric hospital specializing in various mental health services, including emergency/crisis intervention.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "198691255",
+    "name": "Vilnius University Faculty of Medicine - Psychological Services",
+    "status": "operational",
+    "facility_type": "Clinic / Psychological Counseling Center",
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": "+370 5 261 1043",
+      "email": "vita.danileviciute@mf.vu.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {},
+    "specialties_en": ["Psychologists", "Psychiatrists", "Psychotherapists"],
+    "notes": "Appears to be a psychological/psychiatric service associated with Vilnius University Faculty of Medicine. Contact email seems specific.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "630196432",
+    "name": "Respublikinė Vilniaus universitetinė ligoninė (RVUL)",
+    "status": "operational",
+    "facility_type": "Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.rvul.lt/",
+      "phone": "+37052169069",
+      "email": "rvul@rvul.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Major university hospital providing Level II and III outpatient consultations for adults (18+), inpatient care, and emergency services.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "62041221",
+    "name": "VšĮ Vilniaus universiteto ligoninės Žalgirio klinika",
+    "status": "operational",
+    "facility_type": "Dental Hospital/Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.zalgirioklinika.lt/",
+      "phone": "+37052721031",
+      "email": "info@zalgirioklinika.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Associated with Vilnius University... Provides comprehensive dental care...",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4329133990",
+    "name": "Gemma",
+    "status": "operational",
+    "facility_type": "Nursing Home / Rehabilitation Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.gemma.lt/",
+      "phone": "+370 663 00 000",
+      "email": "slauga@gemma.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Offers paid nursing services, rehabilitation... Facility type updated per user suggestion.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "1093120683",
+    "name": "Vilniaus palaikomojo gydymo ir slaugos ligoninė",
+    "status": "operational",
+    "facility_type": "Nursing Hospital / Long-term Care Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://vpligonine.lt/",
+      "phone": "+37052610102",
+      "email": "rastine@ligonine.eu"
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "Focuses on long-term nursing... Website ligonine.eu redirects... User requested ER status set to True.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "5689598438",
+    "name": "Santaros Klinikos Vaikų Priėmimo-Skubios Pagalbos Skyrius (Old Location / Address)",
+    "status": "moved",
+    "facility_type": "Hospital Department (Pediatric ER)",
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": "+37052720556",
+      "email": null
+    },
+    "has_emergency_room": true,
+    "working_hours": {},
+    "specialties_en": ["Pediatric Emergency Medicine"],
+    "notes": "Represents the previous location/address... The service has moved...",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "5689598433",
+    "name": "Vilniaus miesto klinikinė ligoninė (VMKL) - Potential Branch",
+    "status": "review",
+    "facility_type": "Hospital",
+    "location": null,
+    "contact": {
+      "website": "https://www.vmkl.lt/",
+      "phone": null,
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {},
+    "specialties_en": [],
+    "notes": "User suggests this might be just one branch... May be redundant... Requires review...",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "28621227",
+    "name": "Kardiolitos klinikos",
+    "status": "operational",
+    "facility_type": "Hospital/Clinic",
+    "location": {
+      "latitude": 54.7066,
+      "longitude": 25.2133
+    },
+    "contact": {
+      "website": "https://www.kardiolitosklinikos.lt/",
+      "phone": "+37062033383",
+      "email": null
+    },
+    "has_emergency_room": true,
+    "working_hours": {
+      "general": "Hospital/Clinic: Mon-Fri 7:00-21:00, Sat 8:00-17:00, Sun 8:00-16:00. Emergency Services: 24/7.",
+      "administration": "Mon-Fri 7:00-21:00, Sat 8:00-17:00, Sun 8:00-16:00",
+      "departments": [
+        {
+          "department": "Emergency Services",
+          "hours": "Mon-Sun 24 hours",
+          "phone": null
+        }
+      ]
+    },
+    "specialties_en": [
+      "Eye Disease Center",
+      "Obstetrics and Gynecology Center",
+      "Center for Allergology and Clinical Immunology",
+      "Anesthesia, Intensive Care and Pain Management Center",
+      "Ear, Nose and Throat (ENT) Center",
+      "General and Abdominal Surgery Center",
+      "Diagnostic and Research Center",
+      "Dietetics and Obesity Treatment Center",
+      "Endocrinology Center",
+      "Aesthetic and Laser Dermatology Center",
+      "Gastroenterology Center",
+      "Hematology Center",
+      "Infectious Diseases Center",
+      "Cardiology Center",
+      "Computed Tomography Center",
+      "Vascular Diseases Center",
+      "Breast Disease Center (Mammology)",
+      "Laboratory Research Center",
+      "Magnetic Resonance Imaging (MRI) Center",
+      "Nephrology Center",
+      "Neurology Center",
+      "Dental Center",
+      "Orthopedics and Traumatology Center",
+      "Plastic and Reconstructive Surgery Center",
+      "Preventive Health Checkup Center",
+      "Mental Health Center",
+      "Pulmonology Center",
+      "Rehabilitation, Physical and Sports Medicine Center",
+      "Rheumatology Center",
+      "Family Medicine Center",
+      "Emergency Center",
+      "Urology Center",
+      "Center for the Treatment and Development of Children's Diseases"
+    ],
+    "notes": "Private clinic/hospital. Address: Laisvės pr. 64A, Vilnius.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "60586888",
+    "name": "Vilniaus rajono centrinė poliklinika",
+    "status": "operational",
+    "facility_type": "Polyclinic",
+    "location": {
+      "latitude": 54.7105,
+      "longitude": 25.2105
+    },
+    "contact": {
+      "website": "https://vrcp.lt/",
+      "phone": "+37052470027",
+      "email": "vrcp@vrcp.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 7:00-20:00",
+      "administration": "Mon-Fri 7:00-20:00",
+      "departments": []
+    },
+    "specialties_en": [
+      "Family Medicine",
+      "Specialist Physician Consultations",
+      "Physical Medicine and Rehabilitation",
+      "Radiology",
+      "Clinical Diagnostic Laboratory",
+      "Dentistry and Dental Prosthetics",
+      "Mental Health",
+      "Occupational and Preventive Medicine",
+      "Supportive Treatment and Nursing Care",
+      "Department of Outpatient Nursing and Palliative Care Services at Patient's Home",
+      "Services"
+    ],
+    "notes": "Vilnius District Central Polyclinic. Address: Laisvės pr. 79, Vilnius. Provides urgent care during working hours.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "4317959291",
+    "name": "Atsakingo gydymo klinika",
+    "status": "operational",
+    "facility_type": "Addiction Treatment Clinic",
+    "location": {
+      "latitude": 54.6988,
+      "longitude": 25.2795
+    },
+    "contact": {
+      "website": "https://www.avl.lt/",
+      "phone": "+37065212899",
+      "email": "info@avl.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 8:00-18:00",
+      "administration": "Mon-Fri 8:00-18:00",
+      "departments": []
+    },
+    "specialties_en": [
+      "Alcohol Addiction Treatment",
+      "Drug Addiction Treatment",
+      "Medication Addiction Treatment",
+      "Group Therapy",
+      "Psychological Consultation",
+      "Rapid Tests"
+    ],
+    "notes": "Specialized clinic for addiction treatment. Address: Giedraičių g. 3, Vilnius.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "63106944",
+    "name": "Pašilaičių šeimos medicinos centras",
+    "status": "operational",
+    "facility_type": "Family Medicine Center",
+    "location": {
+      "latitude": 54.7281,
+      "longitude": 25.2281
+    },
+    "contact": {
+      "website": "https://www.gydytojas.lt/",
+      "phone": "+37052490645",
+      "email": "administratore@gydytojas.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 7:00-20:00",
+      "administration": "Mon-Fri 7:00-20:00",
+      "departments": []
+    },
+    "specialties_en": [
+      "Family Medicine",
+      "Gynecology",
+      "Pediatrics",
+      "Urology",
+      "Vaccinations",
+      "Otorhinolaryngology (ENT)",
+      "Ultrasonography (Ultrasound)",
+      "Dentistry",
+      "Preventive Health Examinations",
+      "Oral Surgery",
+      "Psychiatry",
+      "Psychology",
+      "Neurology",
+      "Therapeutic Massage",
+      "Outpatient Medical Care",
+      "Blood Tests"
+    ],
+    "notes": "Family Medicine Center. After-hours/weekend/holiday acute care is redirected to Vilnius City Clinical Hospital (Antakalnio g. 57). Address: Žemynos g. 2, Vilnius.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "37644427",
+    "name": "Valakupių reabilitacijos centras",
+    "status": "operational",
+    "facility_type": "Rehabilitation Center",
+    "location": {
+      "latitude": 54.7385,
+      "longitude": 25.3261
+    },
+    "contact": {
+      "website": "http://www.reabilitacija.lt/",
+      "phone": "+37052440700",
+      "email": "info@reabilitacija.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": null,
+      "administration": "Reception: Mon–Thurs 8:00–17:00, Fri 8:00–15:45 (Lunch 12:00-12:45)",
+      "departments": []
+    },
+    "specialties_en": [
+      "Physical Medicine and Rehabilitation",
+      "Physiotherapy/Kinesitherapy",
+      "Occupational Therapy",
+      "Speech Therapy",
+      "Physical Therapy",
+      "Hydrotherapy",
+      "Psychological Support",
+      "Social Worker Services",
+      "Nursing Services",
+      "Massage Services",
+      "Ozone Therapy",
+      "Mesotherapy",
+      "Carboxytherapy",
+      "Dry Needling Procedures",
+      "Electrical Therapy",
+      "Magnetic Therapy",
+      "Laser Therapy",
+      "Ultrasound Therapy",
+      "Ultra-high Frequency Therapy",
+      "Light Therapy (Bioptron)",
+      "Paraffin Applications",
+      "Heat Therapy",
+      "Cold Therapy",
+      "Underwater Massage",
+      "Whirlpool Bath",
+      "Thermal Massage (Ceragem)",
+      "Lymphatic Drainage (Compression) Therapy"
+    ],
+    "notes": "Specializes in rehabilitation for musculoskeletal, nervous system disorders, post-trauma/surgery, stroke, brain damage, neurotic/stress disorders, post-COVID. Offers inpatient (RII, PLR) and outpatient (AR) programs. Address: Valakupių g. 15A, Vilnius. Services may be covered by health insurance with referral (Form E027).",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "200591271",
+    "name": "Baltijos-Amerikos klinika",
+    "status": "operational",
+    "facility_type": "Hospital/Clinic (Private)",
+    "location": {
+      "latitude": 54.7445,
+      "longitude": 25.3418
+    },
+    "contact": {
+      "website": "https://bak.lt/",
+      "phone": "+370 5 234 2020",
+      "email": "info@bak.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {
+      "general": "24/7",
+      "administration": "Likely 24/7 or extended hours, specific admin hours not detailed.",
+      "departments": []
+    },
+    "specialties_en": [
+      "Obstetrics and Pregnancy Care",
+      "Allergology",
+      "Ear, Nose and Throat (ENT)",
+      "Dermatovenerology",
+      "Diagnostics and Testing",
+      "Dietetics/Nutrition",
+      "Endocrinology",
+      "Gastroenterology",
+      "Genetics",
+      "Gynecology",
+      "Longevity Medicine",
+      "Infectious Diseases",
+      "Cardiology",
+      "Physiotherapy/Kinesitherapy",
+      "Vascular Surgery",
+      "Nephrology",
+      "Neurosurgery",
+      "Neurology",
+      "Fertility Treatment",
+      "Ophthalmology",
+      "Orthopedics and Traumatology",
+      "Pediatrics",
+      "Abdominal Surgery and Proctology",
+      "Plastic Reconstructive Surgery",
+      "Addiction Treatment",
+      "Psychiatry and Psychotherapy",
+      "Psychology",
+      "Pulmonology",
+      "Rehabilitation",
+      "Rheumatology",
+      "Family Medicine",
+      "Health Screening Programs",
+      "Toxicology",
+      "Urology",
+      "Internal Medicine",
+      "Umbilical Cord Blood Stem Cell Collection"
+    ],
+    "notes": "Baltic American Clinic (Private). Operates 24/7 and offers emergency aid. Provides a wide spectrum of services ('Visas paslaugų spektras po vienu stogu'). Address: Nemenčinės pl. 54A, Vilnius.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "238181090",
+    "name": "Vilniaus rajono centrinė poliklinika (Branch/Location Unknown)",
+    "status": "operational",
+    "facility_type": "Polyclinic Branch",
+    "location": null,
+    "contact": {
+      "website": "https://www.vrcp.lt/",
+      "phone": "+370 5 247 0027",
+      "email": "vrcp@vrcp.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 7:00-17:00",
+      "administration": "Mon-Fri 7:00-17:00",
+      "departments": []
+    },
+    "specialties_en": [
+      "Family Medicine",
+      "Specialist Physician Consultations",
+      "Physical Medicine and Rehabilitation",
+      "Radiology",
+      "Clinical Diagnostic Laboratory",
+      "Dentistry and Dental Prosthetics",
+      "Mental Health",
+      "Occupational and Preventive Medicine",
+      "Supportive Treatment and Nursing Care",
+      "Department of Outpatient Nursing and Palliative Care Services at Patient's Home",
+      "Services"
+    ],
+    "notes": "Likely a branch/outpatient clinic of Vilniaus rajono centrinė poliklinika (VRCP). Uses the same contact info and website as the main polyclinic (OSRM ID 60586888) but has different working hours (Mon-Fri 7:00-17:00). Specific address/location corresponding to this OSRM ID needs confirmation.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "25892959",
+    "name": "Respublikinė Vilniaus psichiatrijos ligoninė",
+    "status": "operational",
+    "facility_type": "Psychiatric Hospital",
+    "location": {
+      "latitude": 54.6615,
+      "longitude": 25.3425
+    },
+    "contact": {
+      "website": "https://rvpl.lt/",
+      "phone": "+370 5 267 16 28",
+      "email": "psichiatrija@rvpl.lt"
+    },
+    "has_emergency_room": true,
+    "working_hours": {
+      "general": "Likely 24/7 for inpatient/emergency services",
+      "administration": "Registration hours: Mon-Fri 8:00 - 15:30",
+      "departments": []
+    },
+    "specialties_en": [
+      "Psychiatry Department",
+      "Child and Adolescent Psychiatry Department",
+      "Addiction Treatment Department",
+      "Psychosocial Rehabilitation Department",
+      "Consultation Center",
+      "Radiology Department",
+      "Clinical Laboratory Department",
+      "Transcranial Magnetic Stimulation (TMS)",
+      "Electroconvulsive Therapy (ECT)",
+      "Individual Psychotherapy",
+      "Family Counseling",
+      "Art Therapy (music, art, movement)",
+      "Canine Therapy (Dog Therapy)",
+      "Speech Therapy",
+      "Computed Tomography (CT)",
+      "Ultrasound Examinations",
+      "X-ray Examinations",
+      "Biochemical Tests",
+      "Hematological Tests",
+      "Microbiological Tests",
+      "Immunological Tests",
+      "Treatment of Schizophrenia Spectrum Disorders",
+      "Treatment of Personality and Behavioral Disorders",
+      "Addiction Treatment",
+      "Suicidal Crisis Intervention",
+      "Mood Disorder Treatment",
+      "Anxiety Disorder Treatment",
+      "Eating Disorder Treatment",
+      "Alzheimer's Disease and Dementia Treatment",
+      "Treatment of Organic Mental Disorders",
+      "Treatment of Somatoform Disorders"
+    ],
+    "notes": "Vilnius Republican Psychiatric Hospital. Same address (Parko g. 15) as entry OSRM ID 356742553 (vasaros.lt), potentially duplicate/related entry. Offers emergency psychiatric care. Provides free care with referral/insurance, paid otherwise. Online registration via esveikata.lt available. Registration phone: +370 5 267 1900.",
+    "user_requested_update": false
+  },
+  {
+    "osrm_id": "1117319517",
+    "name": "Raudondvario klinika",
+    "status": "operational",
+    "facility_type": "Clinic",
+    "location": {
+      "latitude": 54.9095,
+      "longitude": 23.8545
+    },
+    "contact": {
+      "website": "https://rvl.lt/",
+      "phone": "+37063963330",
+      "email": "klinika@rvl.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 8:00-19:00; Saturday: temporarily closed; Sunday: closed",
+      "administration": "Mon-Fri 8:00-19:00; Saturday: temporarily closed; Sunday: closed",
+      "departments": []
+    },
+    "specialties_en": [
+      "Family Medicine",
+      "Pediatrics",
+      "Internal Medicine",
+      "Obstetrics and Gynecology",
+      "Urology",
+      "Ultrasound Diagnostics",
+      "Neurology",
+      "Dermatology",
+      "Surgery",
+      "Orthopedics and Traumatology",
+      "Psychiatry and Psychotherapy",
+      "Procedure Room",
+      "Preventive Health Checkups",
+      "Dentistry",
+      "Cardiology"
+    ],
+    "notes": "**LOCATION WARNING: This clinic is located in KAUNAS (Raudondvario pl. 150), not Vilnius.** Name: Raudondvario klinika. Saturday hours temporarily suspended as per input. Landline: +370 37 36 00 36.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4492021748",
+    "name": "Santaros Klinikos (Node 4492021748 / Possible Dept)",
+    "status": "operational",
+    "facility_type": "Hospital Department",
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": "+37052365110",
+      "email": null
+    },
+    "has_emergency_room": true,
+    "working_hours": {
+      "general": "Mon-Sun 00:00-24:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "Cardiology and Angiology Center",
+      "Rheumatology Center",
+      "Neurosurgery Center",
+      "Neurology Center",
+      "Abdominal Surgery Center",
+      "Endocrinology Center",
+      "Internal Medicine Center",
+      "Pulmonology and Allergology Center",
+      "Hematology, Oncology and Transfusiology Center",
+      "Hepatology, Gastroenterology and Dietology Center",
+      "Pulmonary Hypertension Competence Center",
+      "Radiology and Nuclear Medicine Center",
+      "Cardiac and Thoracic Surgery Center",
+      "Ear, Nose, Throat Diseases Center",
+      "Ophthalmology Center",
+      "Infectious Diseases Center",
+      "Vascular Reconstructive and Endovascular Surgery Center",
+      "Medical Genetics Center",
+      "Nephrology Center",
+      "Urology Center",
+      "Rehabilitation, Physical and Sports Medicine Center",
+      "Dermatovenerology Center",
+      "Laboratory Medicine Center",
+      "Blood Center",
+      "Obstetrics and Gynecology Center",
+      "Santaros Fertility Center",
+      "Anesthesiology, Intensive Care and Pain Management Center",
+      "Plastic and Reconstructive Surgery Center",
+      "Informatics and Development Center",
+      "Clinical Research and Pharmacology Department",
+      "Outpatient Consultation Clinic",
+      "Admissions Department",
+      "Family Medicine Center",
+      "Diabetes School",
+      "Pain Management Day Hospital",
+      "Hematology and Oncology Day Hospital",
+      "Endoscopic Diagnostics and Minimally Invasive Surgery Department",
+      "Dialysis Department",
+      "Outpatient Rehabilitation Department",
+      "Santaros Medical Center (Paid Services)",
+      "Drug-Sensitive Tuberculosis Department",
+      "Drug-Resistant Tuberculosis Department",
+      "Bone Marrow Transplantation Department",
+      "Molecular and Regenerative Medicine Department",
+      "Amyloidosis Coordination Center",
+      "Hemophilia and Coagulation Disorders Center",
+      "Perinatology Coordination Center",
+      "Pregnancy Pathology Department",
+      "Neonatal Department",
+      "Cardiologist Consultation",
+      "Rheumatologist Consultation",
+      "Neurosurgeon Consultation",
+      "Neurologist Consultation",
+      "Endocrinologist Consultation",
+      "Pulmonologist Consultation",
+      "Allergologist Consultation",
+      "Hematologist Consultation",
+      "Oncologist Chemotherapist Consultation",
+      "Gastroenterologist Consultation",
+      "Hepatologist Consultation",
+      "Ophthalmologist Consultation",
+      "Otorhinolaryngologist Consultation",
+      "Infectologist Consultation",
+      "Nephrologist Consultation",
+      "Urologist Consultation",
+      "Physical Medicine and Rehabilitation Doctor Consultation",
+      "Dermatovenerologist Consultation",
+      "Gynecologist Consultation",
+      "Obstetrician Consultation",
+      "Geneticist Consultation",
+      "Coloproctologist Consultation",
+      "Vascular Surgeon Consultation",
+      "Abdominal Surgeon Consultation",
+      "Orthopedic-Traumatologist Consultation",
+      "Plastic and Reconstructive Surgery Consultations"
+    ],
+    "notes": "New entry based on user request. Corresponds to phone +37052365110 and 24/7 hours. Shares many specialties with the main Santaros Klinikos entry (OSRM ID 1315847144) and may represent a specific department, an alternative contact point, or potentially duplicate information. Further verification needed.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "64689950",
+    "name": "Santaros Klinikos Fizinės medicinos ir reabilitacijos centras",
+    "status": "operational",
+    "facility_type": "Rehabilitation Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.santa.lt/reabilitacijos-fizines-ir-sporto-medicinos-centras-kontaktai/",
+      "phone": "+37052658522",
+      "email": null
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": [
+        {
+          "department": "Outpatient Rehabilitation Registration",
+          "hours": "Mon-Thu 07:00-18:00, Fri 07:00-16:00",
+          "phone": "+370 5 250 1717"
+        },
+        {
+          "department": "Online Registration (ipr.esveikata.lt)",
+          "hours": "Mon-Sun 24 hours",
+          "phone": null
+        }
+      ]
+    },
+    "specialties_en": [
+      "Physical Medicine and Rehabilitation",
+      "Sports Medicine",
+      "Physiotherapy",
+      "Occupational Therapy"
+    ],
+    "notes": "Physical Medicine and Rehabilitation Center of Vilnius University Hospital Santaros Klinikos (part of OSRM ID 1315847144). Head: Dr. Ieva Laucevičienė. This center has multiple departments and locations:\n- Outpatient Dept: Santariškių St. 2, Bldg B, Vilnius. Registration: +37052501717. Info: +37068862402.\n- 1st Inpatient Dept: Santariškių St. 2, Bldg A, Vilnius. Contact: +37052365171.\n- 2nd Inpatient Dept: J. Kairiūkščio St. 2, Vilnius. Contacts: +37052658540, +37052658521, +37052658541. The main phone +37052658522 might relate to this location.\n- 4th Inpatient Dept: Vilties St. 2, Naujieji Valkininkai, Varėna district (NOT in Vilnius). Contact: +37031055270.\nInpatient services are likely operational 24/7. Check website for full details.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "230188665",
+    "name": "UAB \"Tarandė Animal Home\"",
+    "status": "operational",
+    "facility_type": "Veterinary Clinic",
+    "location": null,
+    "contact": {
+      "website": null,
+      "phone": "+370 600 42545",
+      "email": null
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Sat 10:00-21:00; Sun 12:00-21:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": ["Veterinary Medicine", "Veterinary House Calls"],
+    "notes": "Address: Pikutiškių St. 9 (Tarandė), LT-14187 Vilnius. Offers veterinarian house calls.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "148498456",
+    "name": "Grigiškių sveikatos priežiūros centras",
+    "status": "operational",
+    "facility_type": "Health Center / Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.gspc.lt/",
+      "phone": "+370 5 243 2243",
+      "email": "info@gspc.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "Family Physician",
+      "District Internal Medicine Physician",
+      "District Pediatrician",
+      "Obstetrician-Gynecologist",
+      "Surgeon (Primary/Ambulatory)",
+      "General Dentist",
+      "Neurologist",
+      "Surgeon (Consultation/Specialty)",
+      "Radiologist",
+      "Laboratory Tests",
+      "Blood Coagulation System Assessment Service",
+      "Glycated Hemoglobin Testing Service",
+      "Early Malignant Tumor Diagnostics",
+      "Physiological Pregnancy Care",
+      "Healthcare for Children Under 1 Year",
+      "Pediatric Immunoprophylaxis",
+      "School Readiness Assessment for Students",
+      "Cervical Cancer Prevention Program",
+      "Children's Molar Teeth Sealing Program",
+      "Breast Cancer Screening Mammography Program",
+      "Cardiovascular Disease High-Risk Group Screening and Prevention Program",
+      "Prostate Cancer Early Diagnostics Program",
+      "Colorectal Cancer Early Diagnostics Program",
+      "Home Nursing Procedures",
+      "Community Nursing Services at Patients' Homes",
+      "Telemedicine Services",
+      "Supportive Treatment and Nursing Hospital Services"
+    ],
+    "notes": "Main primary health care center in Grigiškės, Vilnius (Address: Kovo 11-osios g. 28, LT-27108 Grigiškės, Vilnius). Provides a wide range of services including primary care (family doctors, internal medicine, pediatrics), specialist consultations (neurology, surgery, OB/GYN, radiology), dentistry, laboratory diagnostics, preventive health programs, home nursing, telemedicine, and includes a Supportive Treatment and Nursing Hospital.",
+    "user_requested_update": true
+  }
+]

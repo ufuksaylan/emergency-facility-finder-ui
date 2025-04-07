@@ -1,0 +1,27 @@
+{
+  "osrm_id": "string",
+  "name": "string | null",
+  "status": "string",
+  "facility_type": "string | null",
+  "location": { "latitude": "float", "longitude": "float" },
+  "contact": {
+    "website": "string | null",
+    "phone": "string | null",
+    "email": "string | null"
+  },
+  "has_emergency_room": "boolean | null",
+  "working_hours": {
+    "general": "string | null",
+    "administration": "string | null",
+    "departments": [
+      {
+        "department": "string",
+        "hours": "string",
+        "phone": "string | null"
+      }
+    ]
+  },
+  "specialties_en": ["string"],
+  "notes": "string | null",
+  "user_requested_update": "boolean"
+}
