@@ -1,9 +1,11 @@
 <template>
   <el-container direction="vertical" class="landing-container">
-    <el-header class="landing-header">
+    <AppHeader />
+
+    <div class="landing-hero">
       <h1>Medical Facility Finder - Vilnius</h1>
       <p class="tagline">Your guide to the right medical help, right when you need it.</p>
-    </el-header>
+    </div>
 
     <el-main class="landing-main">
       <el-row :gutter="20" justify="center">
@@ -34,99 +36,103 @@
       </el-row>
     </el-main>
 
-    <el-footer class="landing-footer">
-      <p>© {{ new Date().getFullYear() }} Medical Facility Finder Vilnius. All rights reserved.</p>
-    </el-footer>
+    <AppFooter />
   </el-container>
 </template>
 
 <script setup>
-// src/views/LandingView.vue - <script setup> section
 import { useRouter } from 'vue-router'
+import AppHeader from '@/components/AppHeader.vue' // Import the AppHeader
+import { FirstAidKit, Pointer, Search } from '@element-plus/icons-vue' // Keep these imports for cards
+import AppFooter from '@/components/AppFooter.vue'
 
 const router = useRouter()
 
 function goToFinder(searchType) {
   if (searchType === 'emergency') {
-    // Navigate to the dedicated emergency view route
     router.push({ name: 'emergency' })
   } else {
-    // Navigate to the dedicated search view route
     router.push({ name: 'search' })
   }
 }
 </script>
+
 <style scoped>
-/* Import Google Font (Example: Nunito) - Add this ideally in your main CSS/SCSS file or index.html */
-/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap'); */
+/* Styles from previous LandingView, adjusted for the new structure */
 
 .landing-container {
   min-height: 100vh;
-  text-align: center;
-  /* background-color: #f8f9fa; /* Light background for contrast */
-  /* font-family: 'Nunito', sans-serif; /* Apply custom font */
-  display: flex; /* Use flex for footer placement */
-  flex-direction: column; /* Stack elements vertically */
-}
-
-.landing-header {
-  /* Example Gradient - adjust colors as needed */
-  background: linear-gradient(135deg, #00796b 0%, #004d40 100%); /* Teal gradient */
-  color: white;
-  padding: 40px 20px; /* More padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.landing-header h1 {
-  margin-bottom: 10px;
-  font-weight: 800; /* Bolder heading */
-}
-
-.tagline {
-  font-size: 1.1em;
-  color: #e0f2f1; /* Lighter color for tagline */
-  margin-top: 0;
-}
-
-.landing-main {
-  padding: 60px 20px; /* More vertical padding */
-  flex-grow: 1; /* Allow main content to take available space */
-}
-
-.choice-card {
-  margin-bottom: 30px; /* More spacing between cards if stacked */
-  min-height: 280px; /* Increased height to accommodate icons/spacing */
+  /* text-align is handled by specific sections now */
+  /* background-color: #f8f9fa; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes button to bottom */
-  border: 1px solid #e0e0e0; /* Subtle border */
-  border-radius: 8px; /* Slightly rounded corners */
+}
+
+/* NEW: Styles for the Landing Page Hero Section */
+.landing-hero {
+  background: linear-gradient(135deg, #00796b 0%, #004d40 100%); /* Teal gradient */
+  color: white;
+  padding: 50px 20px; /* Adjust padding */
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.landing-hero h1 {
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 2.4em; /* Make title prominent */
+}
+
+.landing-hero .tagline {
+  font-size: 1.15em;
+  color: #e0f2f1;
+  margin-top: 0;
+}
+/* --- End Hero Section Styles --- */
+
+/* Main content area adjustments */
+.landing-main {
+  padding: 50px 20px; /* Adjust top/bottom padding as needed */
+  flex-grow: 1; /* Allow main content to take available space */
+  text-align: center; /* Center the row */
+}
+
+/* Card styles remain the same */
+.choice-card {
+  margin-bottom: 30px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease; /* Smooth transition */
-  background-color: #fff; /* Ensure card background is white */
+    box-shadow 0.3s ease;
+  background-color: #fff;
   padding: 25px;
+  text-align: center; /* Ensure card text is centered */
 }
 
 .choice-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
-  flex-grow: 1; /* Allow content to fill space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center icon and text */
+  align-items: center;
 }
 
 .card-icon {
   margin-bottom: 15px;
-  color: #00796b; /* Use primary color for icon */
+  color: #00796b;
 }
-/* Specific icon color for emergency */
 .emergency-card .card-icon {
-  color: #f56c6c; /* Element Plus danger color */
+  color: #f56c6c;
 }
 
 .choice-card h2 {
@@ -136,57 +142,57 @@ function goToFinder(searchType) {
 }
 
 .choice-card p {
-  margin-bottom: 25px; /* More space before button */
+  margin-bottom: 25px;
   color: #555;
   line-height: 1.6;
 }
 
-/* Custom button styles */
+/* Button styles remain the same */
 .el-button {
-  border-radius: 20px; /* Rounded buttons */
-  padding: 12px 24px; /* Adjust padding */
+  border-radius: 20px;
+  padding: 12px 24px;
   font-weight: bold;
-  /* Ensure icons in buttons are vertically aligned */
   display: inline-flex;
   align-items: center;
 }
 
 .el-button .el-icon {
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px;
 }
 
-/* Primary Button (Adjust color to match palette) */
 .el-button--primary {
-  background-color: #00796b; /* Match primary color */
+  background-color: #00796b;
   border-color: #00796b;
 }
 .el-button--primary:hover {
-  background-color: #004d40; /* Darker shade on hover */
+  background-color: #004d40;
   border-color: #004d40;
 }
 
-/* Keep danger button prominent */
-.el-button--danger {
-  /* Use Element Plus default or customize */
-}
-
+/* Footer styles remain the same */
 .landing-footer {
-  margin-top: auto; /* Pushes footer to the bottom if content is short */
+  margin-top: auto;
   padding: 20px;
   color: #909399;
-  background-color: #f5f5f5; /* Light background for footer */
+  background-color: #f5f5f5;
   border-top: 1px solid #e0e0e0;
   width: 100%;
+  text-align: center;
 }
 .landing-footer p {
   margin: 5px 0;
   font-size: 0.9em;
 }
 .landing-footer a {
-  color: #00796b; /* Use primary color for links */
+  color: #00796b;
   text-decoration: none;
 }
 .landing-footer a:hover {
   text-decoration: underline;
 }
+
+/* REMOVE the old .landing-header style block if it still exists */
+/*
+.landing-header { ... } <--- DELETE THIS WHOLE BLOCK
+*/
 </style>
