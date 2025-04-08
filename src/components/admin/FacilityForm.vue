@@ -165,7 +165,6 @@ import {
   ElSelect,
   ElOption,
   ElCheckbox,
-  ElSwitch,
   ElButton,
   ElAlert,
   ElRow,

@@ -1,7 +1,5 @@
 <template>
-  <el-container direction="vertical" style="height: 100vh">
-    <AppHeader />
-
+  <el-container direction="vertical" style="height: 80vh">
     <el-main
       style="padding: 0; position: relative"
       v-loading="isLoading || locationStore.isLoading"
@@ -44,7 +42,6 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { useLocationStore } from '@/stores/location'
 import { useDestinationStore } from '@/stores/destinationStore'
 import { findFacilities } from '@/api/facilities'
-import AppHeader from '@/components/AppHeader.vue'
 import MapComponent from '@/components/MapComponent.vue'
 import { ElContainer, ElMain, ElAlert } from 'element-plus' // Import used components
 

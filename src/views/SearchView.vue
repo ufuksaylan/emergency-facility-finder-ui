@@ -1,7 +1,5 @@
 <template>
-  <el-container direction="vertical" style="height: 100vh">
-    <AppHeader />
-
+  <el-container direction="vertical" style="height: 80vh">
     <div class="filter-bar">
       <el-input
         v-model="nameQuery"
@@ -153,7 +151,6 @@ import { useDestinationStore } from '@/stores/destinationStore'
 import { findFacilities } from '@/api/facilities'
 
 // Components
-import AppHeader from '@/components/AppHeader.vue'
 import MapComponent from '@/components/MapComponent.vue'
 
 // Element Plus UI

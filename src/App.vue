@@ -1,28 +1,37 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import AppHeader from '@/components/AppHeader.vue' // Make sure path is correct
+// Import necessary Element Plus layout components
+import { ElContainer, ElMain } from 'element-plus'
 </script>
 
 <template>
-  <RouterView />
+  <el-container direction="vertical" class="app-layout-container">
+    <AppHeader />
+
+    <el-main class="app-main-content">
+      <RouterView />
+    </el-main>
+  </el-container>
 </template>
 
 <style scoped>
-/*
-  Styles removed.
-  The layout is now primarily handled by individual view components (like HomeView.vue using Element Plus)
-  and global styles (src/assets/main.css, Element Plus CSS).
-  Add styles here only if they need to apply universally to the RouterView container itself across ALL views.
-*/
-
-/* Example: If you needed the container App.vue provides to have a specific background */
-/*
-:global(body) {
-  margin: 0; // Often set in main.css or base.css already
+.app-layout-container {
+  min-height: 100vh; /* Ensure the container takes at least full viewport height */
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Base background for the app */
 }
 
-:host { // Style the App.vue component itself
-  display: block; // Ensure it behaves like a block element
-  min-height: 100vh; // Example: make sure App covers full viewport height
+.app-main-content {
+  flex-grow: 1; /* Crucial: Makes the main area expand, pushing the footer down */
+  padding: 0; /* Remove default padding. Views should manage their own padding/layout */
+  display: flex; /* Allows the view's root element to potentially grow/flex */
+  flex-direction: column; /* Stack content within main vertically by default */
+  overflow-x: hidden; /* Prevent horizontal scrollbars caused by view content */
+  position: relative; /* Needed if views use absolute positioning (like alerts) */
 }
-*/
+
+/* Global styles affecting body, etc., should be in src/assets/main.css or similar. */
+/* AppFooter component has its own scoped styles (including margin-top: auto). */
 </style>

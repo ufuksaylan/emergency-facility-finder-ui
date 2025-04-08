@@ -1,13 +1,11 @@
 <template>
-  <el-container direction="vertical" class="landing-container">
-    <AppHeader />
-
+  <div class="landing-view-content">
     <div class="landing-hero">
       <h1>Medical Facility Finder - Vilnius</h1>
       <p class="tagline">Your guide to the right medical help, right when you need it.</p>
     </div>
 
-    <el-main class="landing-main">
+    <div class="landing-cards-area">
       <el-row :gutter="20" justify="center">
         <el-col :xs="24" :sm="12" :md="8">
           <el-card shadow="hover" class="choice-card emergency-card">
@@ -24,28 +22,30 @@
         <el-col :xs="24" :sm="12" :md="8">
           <el-card shadow="hover" class="choice-card specific-card">
             <div class="card-content">
-              <el-icon :size="40" class="card-icon"><Search /></el-icon>
+              <el-icon :size="40" class="card-icon"><SearchIconComponent /></el-icon>
               <h2>Find Specific Service</h2>
               <p>Search for hospitals, clinics, or specialists by need.</p>
             </div>
-            <el-button type="primary" size="large" @click="goToFinder('specific')" :icon="Search">
+            <el-button
+              type="primary"
+              size="large"
+              @click="goToFinder('specific')"
+              :icon="SearchIconComponent"
+            >
               Search Facilities
             </el-button>
           </el-card>
         </el-col>
       </el-row>
-    </el-main>
-
-    <AppFooter />
-  </el-container>
+    </div>
+  </div>
 </template>
 
 <script setup>
+// Removed imports: AppHeader, AppFooter, ElContainer, ElMain
 import { useRouter } from 'vue-router'
-import AppHeader from '@/components/AppHeader.vue' // Import the AppHeader
-import { FirstAidKit, Pointer, Search } from '@element-plus/icons-vue' // Keep these imports for cards
-import AppFooter from '@/components/AppFooter.vue'
-
+import { ElRow, ElCol, ElCard, ElIcon, ElButton } from 'element-plus' // Keep components used HERE
+import { FirstAidKit, Pointer, Search as SearchIconComponent } from '@element-plus/icons-vue'
 const router = useRouter()
 
 function goToFinder(searchType) {
@@ -58,47 +58,42 @@ function goToFinder(searchType) {
 </script>
 
 <style scoped>
-/* Styles from previous LandingView, adjusted for the new structure */
-
-.landing-container {
-  min-height: 100vh;
-  /* text-align is handled by specific sections now */
-  /* background-color: #f8f9fa; */
+/* Styles ONLY for LandingView's unique content */
+.landing-view-content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Allow this view to potentially fill the main area */
+  /* background-color: #f8f9fa; /* Optional: background specific to landing page content */
 }
 
-/* NEW: Styles for the Landing Page Hero Section */
+/* Keep hero styles */
 .landing-hero {
-  background: linear-gradient(135deg, #00796b 0%, #004d40 100%); /* Teal gradient */
+  background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
   color: white;
-  padding: 50px 20px; /* Adjust padding */
+  padding: 50px 20px;
   text-align: center;
+  flex-shrink: 0; /* Don't let hero shrink */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Prevent shrinking */
 }
-
 .landing-hero h1 {
   margin-bottom: 10px;
   font-weight: 800;
-  font-size: 2.4em; /* Make title prominent */
+  font-size: 2.4em;
 }
-
 .landing-hero .tagline {
   font-size: 1.15em;
   color: #e0f2f1;
   margin-top: 0;
 }
-/* --- End Hero Section Styles --- */
 
-/* Main content area adjustments */
-.landing-main {
-  padding: 50px 20px; /* Adjust top/bottom padding as needed */
-  flex-grow: 1; /* Allow main content to take available space */
-  text-align: center; /* Center the row */
+/* Keep styles for the cards area */
+.landing-cards-area {
+  padding: 50px 20px; /* Restore padding for the cards area */
+  flex-grow: 1; /* Allow cards area to expand */
+  text-align: center;
 }
 
-/* Card styles remain the same */
+/* Keep card styles (unchanged from your provided snippet) */
 .choice-card {
   margin-bottom: 30px;
   min-height: 280px;
@@ -112,21 +107,18 @@ function goToFinder(searchType) {
     box-shadow 0.3s ease;
   background-color: #fff;
   padding: 25px;
-  text-align: center; /* Ensure card text is centered */
+  text-align: center;
 }
-
 .choice-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
-
 .card-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .card-icon {
   margin-bottom: 15px;
   color: #00796b;
@@ -134,20 +126,16 @@ function goToFinder(searchType) {
 .emergency-card .card-icon {
   color: #f56c6c;
 }
-
 .choice-card h2 {
   margin-bottom: 15px;
   font-weight: 700;
   color: #333;
 }
-
 .choice-card p {
   margin-bottom: 25px;
   color: #555;
   line-height: 1.6;
 }
-
-/* Button styles remain the same */
 .el-button {
   border-radius: 20px;
   padding: 12px 24px;
@@ -155,11 +143,9 @@ function goToFinder(searchType) {
   display: inline-flex;
   align-items: center;
 }
-
 .el-button .el-icon {
   margin-right: 8px;
 }
-
 .el-button--primary {
   background-color: #00796b;
   border-color: #00796b;
@@ -169,30 +155,5 @@ function goToFinder(searchType) {
   border-color: #004d40;
 }
 
-/* Footer styles remain the same */
-.landing-footer {
-  margin-top: auto;
-  padding: 20px;
-  color: #909399;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e0e0e0;
-  width: 100%;
-  text-align: center;
-}
-.landing-footer p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
-.landing-footer a {
-  color: #00796b;
-  text-decoration: none;
-}
-.landing-footer a:hover {
-  text-decoration: underline;
-}
-
-/* REMOVE the old .landing-header style block if it still exists */
-/*
-.landing-header { ... } <--- DELETE THIS WHOLE BLOCK
-*/
+/* REMOVE styles for .landing-container, .landing-main, .landing-footer */
 </style>
