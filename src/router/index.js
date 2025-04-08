@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LandingView from '../views/LandingView.vue'
 import SearchView from '../views/SearchView.vue'
 import EmergencyView from '../views/EmergencyView.vue'
+import MapView from '@/views/MapView.vue'
 
 // Admin Views
 import AdminLoginView from '../views/AdminLoginView.vue'
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/search',
       name: 'search',
       component: SearchView, // Component for the search page
+    },
+    {
+      path: '/map',
+      name: 'MapView', // Name for navigation
+      component: MapView, // The new component that hosts MapComponent
     },
     {
       path: '/emergency',
