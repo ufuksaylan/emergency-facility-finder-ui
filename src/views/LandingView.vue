@@ -24,7 +24,7 @@
             <div class="card-content">
               <el-icon :size="40" class="card-icon"><SearchIconComponent /></el-icon>
               <h2>Find Specific Service</h2>
-              <p>Search for hospitals, clinics, or specialists by need.</p>
+              <p>Search for hospitals or clinics by need.</p>
             </div>
             <el-button
               type="primary"
