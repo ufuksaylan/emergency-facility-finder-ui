@@ -4,11 +4,11 @@ import sys
 import requests # Requires: pip3 install requests
 
 # --- Configuration ---
-API_BASE_URL = "http://127.0.0.1:3000"  # !!! REPLACE with your actual API base URL
-API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6ImFkbWluIiwiaXNzdWVkX2F0IjoxNzQ0MjA1MjY4LCJleHAiOjE3NDQyOTE2NDB9.71565U2vLqzfDNqsJbtt2HxdPcLfpI2OwfH8WublquQ"           # !!! REPLACE with your actual API Bearer token
+API_BASE_URL = "https://emergency-facility-finder.2epmej6a101wj.eu-central-1.cs.amazonlightsail.com/"  # !!! REPLACE with your actual API base URL
+API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluIiwiaXNzdWVkX2F0IjoxNzQ0MjA1Njc0LCJleHAiOjE3NDQyNzIzOTZ9.ZF4qcEmURGyQVgYxF_KWO_5daBx4aPfvwil3etFaBfw"           # !!! REPLACE with your actual API Bearer token
 # For better security, consider reading the token from an environment variable:
 # API_TOKEN = os.environ.get("FACILITY_API_TOKEN")
-INPUT_JSON_FILE = "clinics.json"          # Name of the file containing the actual data array
+INPUT_JSON_FILE = "hospitals_update.json"          # Name of the file containing the actual data array
 # --- End Configuration ---
 
 # --- Database Specialties (as a Python structure) ---
