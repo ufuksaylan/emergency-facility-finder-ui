@@ -1,2215 +1,2216 @@
-[{
-  "osrm_id": "56113044",
-  "name": "Naujininkų Poliklinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.nvpoliklinika.lt/",
-    "phone": "+370 5 2606860",
-    "email": "administracija@nvp.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00; Sat 08:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "allergology_clinical_immunology",
-    "cardiology",
-    "child_adolescent_psychiatry",
-    "dental_prosthetics",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "general_surgery",
-    "internal_medicine",
-    "massage_therapy",
-    "neurology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "otorhinolaryngology_ent",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "psychiatry",
-    "psychology",
-    "radiology_medical_imaging",
-    "social_work",
-    "urology"
-  ],
-  "notes": "Address: Dariaus ir Girėno g. 18, 02160 Vilnius, Lithuania. On Saturdays, a family doctor and dentist are on duty at the associated Naujoji Vilnia clinic (Sirokomlės g. 8, Vilnius), this specific location (Naujininkai) is closed on Saturdays according to the text provided about Sat service. Contains Physical Medicine and Rehabilitation department, Consultation department, Dentistry department, Mental Health Center, and Family Medicine Center. Specific roles identified include: Physiotherapists, Kinesiotherapists, Masseurs, Ophthalmologist, Urologist, Cardiologist, Sonographer (mapped to radiology_medical_imaging), Endocrinologist, Neurologist, ENT specialists, Dermatovenerologist, Allergist, Pediatric Surgeon (no exact match in list), Dentists (general, pediatric, prosthetics), Oral Hygienist (under dentistry), Psychiatrists (general, child/adolescent), Medical Psychologist, Nurses, Social Worker, Family Doctors, Internal Medicine doctors, Pediatricians, Obstetrician-Gynecologists, Surgeons.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12320136892",
-  "name": "Notum",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://notum.lt/",
-    "phone": "+370 676 40330",
-    "email": "jonas.garsva@notum.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 08:00-15:30; Fri 08:00-12:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "occupational_medicine",
-    "preventive_medicine_health_screening"
-  ],
-  "notes": "Address: Švitrigailos g. 11B, 03228 Vilnius, Lithuania (based on search). Primarily provides services like preventive health check-ups for employees, drivers, and issues medical certificates for firearm permits, study, and work abroad.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12206459801",
-  "name": "EYES akių klinika",
-  "status": null,
-  "facility_type": "Ophthalmology Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://eyes.lt/",
-    "phone": "+370 5 2644444",
-    "email": null
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "ophthalmology"
-  ],
-  "notes": "Address potentially Konstitucijos pr. 23A, Vilnius (multiple locations may exist, based on search). Provides services such as eye examinations for adults and children, laser eye correction, cataract surgery, and clear lens surgery.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9532256203",
-  "name": "A. Zacharovo klinika VšĮ",
-  "status": null,
-  "facility_type": "Specialized Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.medicina.lt/imones/A-Zacharovo-klinika-V%C5%A1%C4%AE/2027472",
-    "phone": "+370 5 2603767",
-    "email": "psichokin@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "anesthesiology_intensive_care_pain_management",
-    "massage_therapy",
-    "neurology",
-    "orthopedics_traumatology",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy"
-  ],
-  "notes": "Address: Vytenio g. 6, 03113 Vilnius, Lithuania (based on search). Provides services including neurology, manual therapy, acupuncture, osteopathy, applied kinesiology, pain medicine, physiotherapy, kinesitherapy, and massage. Also mentions bioresonance diagnostics and manual correction of toe/jaw bones. Website link is to a directory listing, not the clinic's own site. Mentions 'Medical tourism'.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11891187134",
-  "name": "Endemik klinika",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://endemik.lt/",
-    "phone": "+37052441188",
-    "email": "patients@affidea.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "family_medicine",
-    "home_care_community_nursing",
-    "laboratory_medicine_clinical_pathology",
-    "massage_therapy",
-    "nursing_care",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Associated with Affidea (based on email). Multiple locations may exist in Vilnius (e.g., Ukmergės g. 219, Vytenio g. 50, based on search). Offers family medicine, specialist consultations (types unspecified in provided text), services at home, health check-ups, various lab tests (including blood tests, Covid-19 tests), vaccinations (including travel vaccinations), IV drip infusions, and massages. Appointments needed for doctors; registration recommended but not required for vaccinations/blood tests. Registration via phone (1811) or online.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "8731164619",
-  "name": "Naujamiesčio šeimos klinika",
-  "status": null,
-  "facility_type": "Family Medicine Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://nsklinika.lt/",
-    "phone": "+37065568047",
-    "email": "info@nsklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "diabetes_care_diabetology",
-    "family_medicine",
-    "home_care_community_nursing",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "occupational_medicine",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: A. Vivulskio g. 5, 03162 Vilnius, Lithuania (based on search). Legal entity: UAB 'EuroEra'. Offers both state-funded (for registered/insured patients) and paid services. Services include family medicine, pediatric care (check-ups, vaccinations, newborn home visits), preventive screenings (e.g., Pap smears, driver/employee checks), laboratory tests (including specific tests like HbA1c for diabetics), general vaccinations, dentistry, and ultrasound (echoscopy).",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "8038746960",
-  "name": "Centro poliklinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://pylimas.lt/",
-    "phone": "+37052442244",
-    "email": "info@centropol.lt"
-  },
-  "has_emergency_room": false,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "emergency_medicine",
-    "family_medicine",
-    "general_surgery",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "physical_medicine_rehabilitation",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Likely the Pylimo branch of Centro poliklinika (based on website URL, while email is central). Address: Pylimo g. 3, 01117 Vilnius, Lithuania (based on search). Offers state-funded (PSDF) and paid services. Includes family medicine, urgent care ('Būtinoji pagalba'), lab & diagnostic tests, OB/GYN, dentistry, infectious diseases, dermatology, mental health services, day surgery, preventive check-ups, rehabilitation, and nursing services. Also provides remote consultations, halotherapy (salt therapy), cosmetology, and mandatory health training.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "7992473230",
-  "name": "Vaikų klinika Empatija",
-  "status": null,
-  "facility_type": "Pediatric Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://vaikuklinika.empatija.lt/",
-    "phone": "+370 618 51884",
-    "email": "vjk@empatija.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00; Sat 10:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "child_adolescent_psychiatry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "occupational_therapy",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "preventive_medicine_health_screening",
-    "psychology",
-    "psychotherapy",
-    "speech_therapy",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Antakalnio g. 40, 10306 Vilnius, Lithuania (based on search). Focuses on pediatric and family medicine. Services include specialist consultations, lab tests, personality development and support (likely psychology/psychotherapy), preventive check-ups and certificates, vaccinations, and children's rehabilitation (including early rehabilitation which often involves physiotherapy, occupational therapy, and speech therapy). Offers state-funded (TLK) services.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "5325179701",
-  "name": "Centro poliklinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://pylimas.lt/",
-    "phone": "+37052442244",
-    "email": "info@centropol.lt"
-  },
-  "has_emergency_room": true,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "emergency_medicine",
-    "family_medicine",
-    "general_surgery",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "physical_medicine_rehabilitation",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Another branch of Centro poliklinika. Exact address for this OSRM ID needs confirmation, but potential location is the Vytenio branch (Vytenio g. 59, 03229 Vilnius). Using central contact information. Specialties and urgent care availability ('has_emergency_room': true) are assumed to be similar to the Pylimo branch (OSRM 8038746960) based on user instruction, but verification for this specific branch is recommended.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "107605807",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://inmedica.lt/",
-    "phone": "+37052620202",
-    "email": "info@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "abdominal_surgery",
-    "allergology_clinical_immunology",
-    "anesthesiology_intensive_care_pain_management",
-    "angiology_vascular_medicine",
-    "cardiology",
-    "dental_prosthetics",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "diabetes_care_diabetology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "genetics_medical",
-    "hematology",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "mammology_breast_health",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "oral_maxillofacial_surgery",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging",
-    "rheumatology",
-    "sports_medicine",
-    "toxicology",
-    "urology",
-    "vaccinations_immunoprophylaxis",
-    "vascular_surgery"
-  ],
-  "notes": "Large medical provider with numerous branches across Vilnius and Lithuania; this OSRM ID likely corresponds to one specific location (address requires confirmation). Offers a very comprehensive range of services via specialized centers: Family Medicine, numerous Specialist Centers (Ophthalmology, OB/GYN, Allergy, Anesthesia/Intensive Care/Pain, ENT, General/Abdominal Surgery, Endocrinology, Dermatology, Gastroenterology, Hematology, Cardiology, Vascular Diseases, Mammology, Neurology, Orthopedics/Trauma, Plastic Surgery, Pulmonology, Rehab/Physical/Sports Medicine, Rheumatology, Urology, Pediatrics), Diagnostics (MRI, CT, Instrumental Tests), Dentistry (including Pediatric, Surgery, Prosthetics), Mental Health, and extensive Laboratory services (including Genetics, Microbiology, Toxicology). Anesthesia/Intensive Therapy center exists, but no explicit emergency room is listed.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "169",
-  "name": "Rega",
-  "status": null,
-  "facility_type": "Ophthalmology Clinic / Optician",
-  "location": null,
-  "contact": {
-    "website": "https://rega.lt/",
-    "phone": "+37060605416",
-    "email": "info@rega.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 08:00-17:00; Fri 08:00-15:45",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "ophthalmology"
-  ],
-  "notes": "Branch of UAB Rega (enterprise of the Lithuanian Association of the Blind and Visually Impaired). This OSRM ID likely corresponds to the main branch at Skroblų g. 19, 03141 Vilnius. Working hours listed are for the Skroblų g. branch. Services include ophthalmologist consultations, eye examinations, contact lens fitting, eyeglass manufacturing and repair, sales of optical goods/aids, and services related to technical aids for the visually impaired. Multiple branches exist.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12539091578",
-  "name": "Grožio Akademija",
-  "status": null,
-  "facility_type": "Aesthetic Medicine Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://grozioakademija.lt/",
-    "phone": "+37052332888",
-    "email": "vilnius@medispa.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-21:00; Sat 10:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "anesthesiology_intensive_care_pain_management",
-    "dermatology_dermatovenerology",
-    "general_surgery",
-    "neurology",
-    "plastic_reconstructive_surgery",
-    "regenerative_medicine"
-  ],
-  "notes": "Associated with MediSPA centras (based on email). Address: Šaltinių g. 20, Vilnius (from website). Specializes in aesthetic/plastic surgery (e.g., eyelids, face lift, breast augmentation/lift/reduction, liposuction, hair transplant), aesthetic medicine (e.g., fillers, botulinum toxin, threads, PRP), laser and fractional plasma treatments, skin lesion removal. Also offers neurological services (consultations, migraine/hyperhidrosis treatment) and cosmetology procedures (facials, peels, mesotherapy, depilation). Additional therapies listed include ozone therapy, carboxytherapy, acoustic wave therapy. Anesthesiology likely available to support surgical procedures.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4555556157",
-  "name": "Asmeda",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://asmeda.lt/",
-    "phone": "+370 612 85580",
-    "email": "info@asmeda.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 08:00-17:00; Fri 08:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "family_medicine",
-    "occupational_medicine",
-    "preventive_medicine_health_screening"
-  ],
-  "notes": "Address: Manufaktūrų g. 7, 11342 Vilnius, Lithuania (based on search). Provides medical certificates for drivers and employees, family doctor consultations. Also offers mandatory health training courses such as first aid and hygiene skills.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9788451287",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Šeimyniškių g. 19, 09200 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/",
-    "phone": "+37052199557",
-    "email": "info@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "abdominal_surgery",
-    "allergology_clinical_immunology",
-    "anesthesiology_intensive_care_pain_management",
-    "angiology_vascular_medicine",
-    "cardiology",
-    "dental_prosthetics",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "diabetes_care_diabetology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "genetics_medical",
-    "hematology",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "mammology_breast_health",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "oral_maxillofacial_surgery",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging",
-    "rheumatology",
-    "sports_medicine",
-    "toxicology",
-    "urology",
-    "vaccinations_immunoprophylaxis",
-    "vascular_surgery"
-  ],
-  "notes": "Branch of the InMedica network located at Šeimyniškių g. 19, Vilnius. Using central contact website/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11892954159",
-  "name": "Affidea",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://affidea.lt/",
-    "phone": "+37052441188",
-    "email": "info@affidea.lt"
-  },
-  "has_emergency_room": true,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "emergency_medicine",
-    "endoscopy",
-    "family_medicine",
-    "general_surgery",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "orthopedics_traumatology",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "sports_medicine",
-    "urology",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Affidea is a large provider with multiple locations focusing on diagnostics and clinical services; this OSRM ID likely corresponds to one specific branch (address requires confirmation). Services listed include Day Surgery, Aesthetic/Laser Medicine, Express Care® (indicating urgent care capacity), Specialist Consultations, Instrumental Diagnostics (likely Radiology, potentially Endoscopy), Laboratory Tests, Sexual Health, Dentistry, Pregnancy Services, Rehabilitation, Vaccinations, Sports Medicine (LTeamLAB), Health Checks, and Pediatric Consultations.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "2644297547",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Žirmūnų g. 70, 09124 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/",
-    "phone": "+37052620202",
-    "email": "info@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "abdominal_surgery",
-    "allergology_clinical_immunology",
-    "anesthesiology_intensive_care_pain_management",
-    "angiology_vascular_medicine",
-    "cardiology",
-    "dental_prosthetics",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "diabetes_care_diabetology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "genetics_medical",
-    "hematology",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "mammology_breast_health",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "oral_maxillofacial_surgery",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging",
-    "rheumatology",
-    "sports_medicine",
-    "toxicology",
-    "urology",
-    "vaccinations_immunoprophylaxis",
-    "vascular_surgery"
-  ],
-  "notes": "Branch of the InMedica network located at Žirmūnų g. 70, Vilnius. Using central contact website/phone/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "6743523640",
-  "name": "TUDU Kineziterapijos Studija",
-  "status": null,
-  "facility_type": "Kinesitherapy Studio",
-  "location": null,
-  "contact": {
-    "website": "https://www.tudu.lt/",
-    "phone": "+370 699 08950",
-    "email": "info@tudu.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:15",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "group_therapy",
-    "pediatrics_child_health",
-    "physiotherapy_kinesitherapy"
-  ],
-  "notes": "Address: Kareivių g. 19, 09109 Vilnius, Lithuania (based on search). Focuses on kinesitherapy, offering individual therapy, group sessions, and specific programs for children.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9913296854",
-  "name": "Karoliniškių poliklinika - Lazdynų Šeimos Medicinos Centras",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Erfurto g. 15, 04220 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.karpol.lt/lazdynu-spc-erfurto-g-15-kontaktine-informacija/",
-    "phone": "+37052458438",
-    "email": "rastine@karpol.lt"
-  },
-  "has_emergency_room": false,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dermatology_dermatovenerology",
-    "family_medicine",
-    "obstetrics_gynecology",
-    "perinatology_high_risk_pregnancy",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "This is the Lazdynai Family Medicine Center branch of Karoliniškių Poliklinika, located at Erfurto g. 15. It provides urgent medical aid ('Būtinoji pagalba'), primary care (family medicine), secondary ambulatory care (Dermatovenerology is mentioned as accessible without referral, other specialties likely available with referral), preventive care, vaccinations, and services for expectant mothers. Remote consultations are also offered. Uses the central email address.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "8575794393",
-  "name": "As Klinika",
-  "status": null,
-  "facility_type": "Mental Health Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.asklinika.lt/",
-    "phone": "+37065211903",
-    "email": "info@asklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "child_adolescent_psychiatry",
-    "psychiatry",
-    "psychology",
-    "psychotherapy",
-    "social_work"
-  ],
-  "notes": "Address: S. Konarskio g. 2-71, 03109 Vilnius, Lithuania (based on search). Mental health clinic offering psychiatrist and psychologist consultations, psychotherapy, and psychological assessments for adults, children, and adolescents, as well as social worker consultations. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4157461390",
-  "name": "Žvėryno klinika",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://zverynoklinika.lt/",
-    "phone": "+37052420404",
-    "email": "zverynoklinika@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:30-19:30",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "child_adolescent_psychiatry",
-    "dental_prosthetics",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Address: Sėlių g. 32, 08109 Vilnius, Lithuania (based on search). Offers family medicine, dentistry (including prosthetics and hygiene), adult and child psychiatry, psychology services, blood tests/programs, preventive programs, and ultrasound (echoscopy).",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11183602103",
-  "name": "Saulėtekio klinika",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.sauletekioklinika.lt/",
-    "phone": "+37052105488",
-    "email": "sauletekis38@yahoo.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "oral_maxillofacial_surgery",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Saulėtekio al. 38, 10225 Vilnius, Lithuania (based on search). Provides family medicine, pediatrics, comprehensive dentistry (general, hygiene, whitening, prosthetics, implants), gynecology, psychiatry, psychology, nursing care, blood tests, vaccinations, and preventive programs. Offers state-funded (free) and paid services.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12164029561",
-  "name": "Sėkmingi vaikai - Vaikų raidos centras",
-  "status": null,
-  "facility_type": "Child Development Center",
-  "location": null,
-  "contact": {
-    "website": "https://www.sekmingivaikai.lt/",
-    "phone": "+37066500568",
-    "email": "egle@sekmingivaikai.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "neurology",
-    "occupational_therapy",
-    "pediatrics_child_health",
-    "physiotherapy_kinesitherapy",
-    "psychology",
-    "speech_therapy"
-  ],
-  "notes": "Address: Verkių g. 34A, 08219 Vilnius, Lithuania (based on search). Child development center focused on therapies and assessments. Services include occupational therapy (incl. sensory integration), kinesitherapy/physiotherapy, speech therapy, clinical psychologist assessments (incl. CARS autism assessment), and consultations with a child neurologist/social pediatrician. Also lists 'Audio-neurosensorystimulation' therapy.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10294753464",
-  "name": "Sapiegos klinika",
-  "status": null,
-  "facility_type": "Dermatology Clinic",
-  "location": {
-    "address": "V. Grybo g. 17, 10318 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.sapiegosklinika.lt/lt/",
-    "phone": "+37065550200",
-    "email": "info@sapiegosklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-19:30; Sat 10:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "dermatology_dermatovenerology"
-  ],
-  "notes": "Clinic located in Antakalnis, Vilnius at V. Grybo g. 17. Specializes in dermatology, aesthetic dermatology, laser hair removal, treatment of skin conditions and hair loss, cosmetology, and aesthetic body treatments. Email obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10308155532",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Antakalnio g. 48A, 10206 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/",
-    "phone": "+37052620202",
-    "email": "info@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "abdominal_surgery",
-    "allergology_clinical_immunology",
-    "anesthesiology_intensive_care_pain_management",
-    "angiology_vascular_medicine",
-    "cardiology",
-    "dental_prosthetics",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "diabetes_care_diabetology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "genetics_medical",
-    "hematology",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "mammology_breast_health",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "oral_maxillofacial_surgery",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging",
-    "rheumatology",
-    "sports_medicine",
-    "toxicology",
-    "urology",
-    "vaccinations_immunoprophylaxis",
-    "vascular_surgery"
-  ],
-  "notes": "Branch of the InMedica network located at Antakalnio g. 48A, Vilnius. Using central contact website/phone/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10294753461",
-  "name": "J. Kaukėnienės akių klinika",
-  "status": null,
-  "facility_type": "Ophthalmology Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.akiugydytojai.lt/",
-    "phone": "+37069415394",
-    "email": "info@akiugydytojai.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00 (Occasional Saturday hours)",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "ophthalmology"
-  ],
-  "notes": "Address: Skroblų g. 19, 03141 Vilnius, Lithuania (based on search, appears co-located with 'Rega' optician). Specializes exclusively in ophthalmology services for adults and children. Services include diagnosis and treatment of various eye diseases (strabismus, amblyopia, glaucoma, dry eye, inflammation), myopia progression control, advanced diagnostics (OCT, visual fields, tonometry, fundus photography, Hess test), foreign body removal from eye surface, and minor eyelid surgeries (chalazion, small tumors, entropion/ectropion). Recommends purchasing glasses/lenses at the adjacent 'Rega' optician. Note: Source text mentioned specific shortened hours and one Saturday opening in April 2025.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4261960690",
-  "name": "NMC - Northway medicinos centrai",
-  "status": null,
-  "facility_type": "Medical Center",
-  "location": null,
-  "contact": {
-    "website": "https://nmc.lt/",
-    "phone": "+37063330303",
-    "email": "info@nmc.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:30-20:30; Sat 09:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "abdominal_surgery",
-    "allergology_clinical_immunology",
-    "angiology_vascular_medicine",
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "dietetics_nutrition",
-    "endocrinology",
-    "endoscopy",
-    "fertility_treatment_reproductive_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "mammology_breast_health",
-    "neurology",
-    "neurosurgery",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "orthopedics_traumatology",
-    "plastic_reconstructive_surgery",
-    "radiology_medical_imaging",
-    "vascular_surgery"
-  ],
-  "notes": "Large medical center, part of the Northway network. This OSRM ID likely corresponds to the main Vilnius center at S. Žukausko g. 19, 08234 (address requires confirmation). Provides a wide array of services including: Allergology, Dietetics, Plastic/Reconstructive Surgery, Lab Tests, Neurology, Vascular Surgery, Endocrinology, Aesthetic Procedures, Breast Care, Dentistry, General/Abdominal Surgery, Gastroenterology, Cardiology, Infertility Treatment, Ophthalmology, Dermatovenerology, Gynecology, Instrumental Diagnostics (Radiology, likely Endoscopy), Neurosurgery, Orthopedics/Traumatology. Email obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9606016871",
-  "name": "Verkių klinika",
-  "status": null,
-  "facility_type": "Dermatology Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://verkiuklinika.lt/",
-    "phone": "+37052300000",
-    "email": "verkiuklinika@mail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 10:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "allergology_clinical_immunology",
-    "dermatology_dermatovenerology",
-    "general_surgery",
-    "regenerative_medicine",
-    "stem_cell_banking_therapy"
-  ],
-  "notes": "Address: Verkių g. 34, 08221 Vilnius, Lithuania (based on search). Specializes in dermatology, allergology, aesthetic medicine, and regenerative medicine, including PRP and stem cell therapies. Offers procedures such as microneedling, mesotherapy, carboxytherapy, chemical peels (chemosurgery), and likely minor dermatologic surgery. Working hours confirmed from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10292172586",
-  "name": "Pagalba pėdoms",
-  "status": null,
-  "facility_type": "Podology Practice",
-  "location": null,
-  "contact": {
-    "website": "https://pagalbapedoms.lt/",
-    "phone": "+37061427199",
-    "email": "podology.practice@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dermatology_dermatovenerology",
-    "diabetes_care_diabetology",
-    "orthopedics_traumatology"
-  ],
-  "notes": "Address: Pylimo g. 45-3, 01136 Vilnius, Lithuania (based on search). This is a specialized podology practice focused on comprehensive foot and nail care. Services include medical/hygienic pedicure, treatment for ingrown nails (using correction systems, prosthetics), removal/treatment of calluses, cracked heels, warts, fungal infections (onychomycosis), and onychogryphosis. Also provides diabetic foot care (including ulcer management) and fabrication of custom corrective/protective orthotics and insoles. Mapped specialties (Dermatology, Diabetes Care, Orthopedics) reflect related medical fields involved, as 'Podology/Podiatry' is not a distinct option in the provided specialty list.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3597052447",
-  "name": "Sveikatos klinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.sveikatosklinika.lt/",
-    "phone": "+37063342462",
-    "email": "registratura@sveikatosklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "proctology",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Polyclinic located at A. J. Povilaičio g. 18. Offers a broad range of services including Family Medicine, Mental Health services, Rehabilitation, Dentistry, Obstetrics/Gynecology, Surgery/Proctology, Dermatology, Endocrinology, Cardiology (adult & pediatric), Laboratory tests, Neurology (adult & pediatric), Ophthalmology, Orthopedics/Traumatology, ENT, Ultrasound diagnostics, and Pediatric Pulmonology.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3597052447",
-  "name": "Sveikatos klinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.sveikatosklinika.lt/",
-    "phone": "+37063342462",
-    "email": "registratura@sveikatosklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "proctology",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Polyclinic located at A. J. Povilaičio g. 18. Offers a broad range of services including Family Medicine, Mental Health services, Rehabilitation, Dentistry, Obstetrics/Gynecology, Surgery/Proctology, Dermatology, Endocrinology, Cardiology (adult & pediatric), Laboratory tests, Neurology (adult & pediatric), Ophthalmology, Orthopedics/Traumatology, ENT, Ultrasound diagnostics, and Pediatric Pulmonology.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3597052446",
-  "name": "Sveikatos klinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.sveikatosklinika.lt/",
-    "phone": "+37063342462",
-    "email": "registratura@sveikatosklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "neurology",
-    "obstetrics_gynecology",
-    "ophthalmology",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "proctology",
-    "psychiatry",
-    "psychology",
-    "pulmonology",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Another OSRM ID associated with 'Sveikatos klinika' at Apolinaro Juozo Povilaitio g. 18 (Karoliniškės area). This address is identical to the one associated with OSRM ID 3597052447. Assuming similar broad polyclinic services based on user instruction and shared location/brand; confirmation of exact services for this specific ID might be needed. This could be a duplicate map entry or represent a distinct part/entrance of the same facility.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10292996090",
-  "name": "Anteja",
-  "status": null,
-  "facility_type": "Medical Clinic / Laboratory",
-  "location": {
-    "address": "Antakalnio g. 45-101, 10308 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.anteja.lt/",
-    "phone": "+37052344487",
-    "email": "pagalba@anteja.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Part of the Anteja laboratory network, this accredited clinic is located at Antakalnio g. 45-101, Vilnius. It offers family medicine consultations, unspecified specialist consultations, extensive laboratory testing, vaccinations, and emphasizes preventive care.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9925556417",
-  "name": "Dermaplius",
-  "status": null,
-  "facility_type": "Dermatology Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://dermaplius.lt/",
-    "phone": "+37061677444",
-    "email": "info@dermaplius.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00; Sat 09:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "dermatology_dermatovenerology"
-  ],
-  "notes": "Address: Antakalnio g. 57, 10207 Vilnius, Lithuania (based on search). Specializes in laser dermatology, aesthetic dermatology, device-based dermatological treatments ('Aparatinė dermatologija'), diagnosis and treatment of skin diseases, Hydrafacial procedures, and cosmetology. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "60566155",
-  "name": "Sugihara klinika",
-  "status": null,
-  "facility_type": "Medical Spa",
-  "location": null,
-  "contact": {
-    "website": "https://sugihara.lt",
-    "phone": "+37052705710",
-    "email": "info@sugihara.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-20:00; Sat 09:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "dermatology_dermatovenerology",
-    "hydrotherapy",
-    "massage_therapy",
-    "obstetrics_gynecology",
-    "plastic_reconstructive_surgery"
-  ],
-  "notes": "Address: Č. Sugiharos g. 3, 08122 Vilnius, Lithuania (based on search). Offers a blend of medical, aesthetic, spa, and beauty services. Includes plastic/aesthetic surgery, hair transplantation, dermatology (large laser center, trichology, UVB therapy for psoriasis), aesthetic/laser gynecology, Eastern medicine (acupuncture/acupressure), cosmetology, various facial/body SPA treatments (massage, hydrotherapy, mud therapy), slimming programs, and full hairdressing/beauty salon services (manicure, pedicure, etc.). Also has cosmetic retail.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9727070619",
-  "name": "Lirema Akių Klinika",
-  "status": null,
-  "facility_type": "Ophthalmology Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://lirema.lt/",
-    "phone": "+37061595550",
-    "email": "lirema@lirema.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-17:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "ophthalmology"
-  ],
-  "notes": "Part of the Lirema network of eye clinics. This OSRM ID likely corresponds to the main Vilnius location at Steelnio g. 3, 08105. Specializes in ophthalmology, with listed core services being laser eye correction and cataract surgery. Working hours are for the Vilnius branch, obtained from the website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11942883497",
-  "name": "Affidea - Antakalnio diagnostikos centras",
-  "status": null,
-  "facility_type": "Medical Imaging Center",
-  "location": {
-    "address": "Antakalnio g. 57, 10207 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://affidea.lt/",
-    "phone": "+37052441188",
-    "email": "info@affidea.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-21:00; Sat 08:00-14:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "radiology_medical_imaging"
-  ],
-  "notes": "Affidea diagnostic imaging center located at Antakalnio g. 57, Vilnius. Specializes solely in instrumental/imaging examinations, offering MRI (including specific 'Icobrain dm' analysis), CT scans (including low-dose options), and X-ray studies. Uses central Affidea contact details. Working hours obtained from the Affidea website for this specific location.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4414794205",
-  "name": "Ąžuolyno klinika",
-  "status": null,
-  "facility_type": "Mental Health Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://azuolynoklinika.lt/",
-    "phone": "+37052460827",
-    "email": "info@azuolynoklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "addiction_medicine_treatment",
-    "psychiatry",
-    "psychology",
-    "psychotherapy"
-  ],
-  "notes": "Address: Ąžuolyno g. 5, 07196 Vilnius, Lithuania (based on search). Specializes in treating mental health disorders, including depression, mood disorders, anxiety, insomnia, schizophrenic spectrum disorders, mental/behavioral issues due to substance use (alcohol, drugs, medications), adaptation disorders, personality/behavioral disorders, somatoform disorders, and eating disorders. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "28138545",
-  "name": "Antakalnio Poliklinika - Psichikos sveikatos centras",
-  "status": null,
-  "facility_type": "Mental Health Center",
-  "location": null,
-  "contact": {
-    "website": "https://www.antakpol.lt/skyriai-psichikos-sveikatos-centras/",
-    "phone": "+37052347486",
-    "email": "info@antakpol.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00; Sat 08:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "child_adolescent_psychiatry",
-    "group_therapy",
-    "psychiatry",
-    "psychology",
-    "psychosocial_rehabilitation",
-    "social_work"
-  ],
-  "notes": "This is the Mental Health Center operating within Antakalnio Poliklinika. It is likely located at the main polyclinic address: Antakalnio g. 59, 10207 Vilnius, Lithuania. Provides services including psychiatric consultations (adult, child/adolescent), psychological services, social work, and potentially day patient programs involving group therapy or psychosocial rehabilitation. Working hours listed are for the main polyclinic. Uses the central email but has a specific phone number listed.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9729795417",
-  "name": "AT Klinika",
-  "status": null,
-  "facility_type": "Dental Clinic",
-  "location": null,
-  "contact": {
-    "website": "http://www.atklinika.lt/",
-    "phone": "+37060824611",
-    "email": "atklinika@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 09:00-19:00; Fri 09:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry"
-  ],
-  "notes": "Address: Antakalnio g. 98, 10202 Vilnius, Lithuania (based on search). Dental clinic focusing on aesthetic dentistry and oral hygiene. Services include consultations regarding malocclusion (alternatives to braces), professional oral hygiene, teeth whitening, Edelweiss veneers, aesthetic fillings (bonding), and a specific 'Fotosun' procedure for oral disinfection.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "6738948259",
-  "name": "Aktyvus Judėjimas",
-  "status": null,
-  "facility_type": "Physiotherapy Clinic",
-  "location": {
-    "address": "J. Balčikonio g. 3, 08247 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.aktyvusjudejimas.lt/",
-    "phone": "+37064700709",
-    "email": "reg@aktyvusjudejimas.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "group_therapy",
-    "massage_therapy",
-    "neurology",
-    "obstetrics_gynecology",
-    "orthopedics_traumatology",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "sports_medicine"
-  ],
-  "notes": "Specializes in kinesitherapy/physiotherapy, osteopathy, and rehabilitation for adults and children. Treats conditions like back/joint pain, muscle/ligament/tendon injuries, jaw disorders, headaches, and provides post-traumatic/post-operative care. Offers individual therapy, group wellness sessions, and massage. Kinesiotherapists have specializations including sports physiotherapy, infant/child physiotherapy, and pregnancy physiotherapy. Various therapeutic techniques mentioned (e.g., Vojta, Maitland, Mulligan, Neurac, Schroth, DNS). Located at J. Balčikonio g. 3, Vilnius.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10792704032",
-  "name": "Anteja",
-  "status": null,
-  "facility_type": "Medical Clinic / Laboratory",
-  "location": {
-    "address": "Kareivių g. 9, 09109 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.anteja.lt/klinikos/kareiviu-g-9",
-    "phone": "+37070055511",
-    "email": "pagalba@anteja.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00; Sat 08:00-13:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Clinic and laboratory branch of the Anteja network located at Kareivių g. 9, Vilnius. Offers family medicine consultations, unspecified specialist consultations, extensive laboratory testing (modern diagnostics), and vaccinations. Working hours obtained from the specific branch webpage.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3121957629",
-  "name": "Vaisingumo Centras",
-  "status": null,
-  "facility_type": "Fertility Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.vaisingumocentras.lt/",
-    "phone": "+37068780605",
-    "email": "info@vaisingumocentras.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 08:00-18:00; Fri 08:00-17:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "anesthesiology_intensive_care_pain_management",
-    "endocrinology",
-    "fertility_treatment_reproductive_medicine",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "radiology_medical_imaging",
-    "urology"
-  ],
-  "notes": "Address: Laisvės pr. 64A, 05263 Vilnius, Lithuania (based on search). A specialized clinic dedicated to the diagnosis and treatment of infertility. Offers services such as initial consultations, hormone testing, diagnostic procedures (laparoscopy, HyFoSy tubal patency test, hysteroscopy, ultrasound), semen analysis (spermogram), and various assisted reproductive technologies including IUI, IVF, ICSI, PICSI, and TESA. Anesthesiology support is likely required for some procedures listed. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11891131223",
-  "name": "Affidea Klinika Outlet",
-  "status": null,
-  "facility_type": "Sports Medicine / Rehabilitation Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://affidea.lt/lt/klinikos/vilniaus-affidea-klinika-outlet/",
-    "phone": "+37052441188",
-    "email": "info@affidea.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-23:00; Sat-Sun 08:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dietetics_nutrition",
-    "laboratory_medicine_clinical_pathology",
-    "massage_therapy",
-    "orthopedics_traumatology",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "sports_medicine",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Affidea clinic located within the 'Vilnius Outlet' shopping center (likely V. Pociūno g. 8, 06214 Vilnius - based on search). Focuses strongly on Sports Medicine (LTeamLAB), Physical Medicine & Rehabilitation, and Orthopedics/Traumatology (adult & pediatric), staffed accordingly with specialists, kinesiotherapists, and masseurs. Also provides instrumental/laboratory diagnostics, vaccinations, and lifestyle consultations. Uses central Affidea contact details. Note the extended operating hours.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "9550072329",
-  "name": "AND Klinika",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.andklinika.lt/",
-    "phone": "+37065019911",
-    "email": "info@andklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:30-20:00; Sat 09:00-16:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "radiology_medical_imaging",
-    "speech_therapy",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Perkūnkiemio g. 13-91, 12114 Vilnius, Lithuania (based on search). Offers family medicine, dentistry, and specialist consultations including Cardiology (adult & pediatric), Ultrasound (echoscopy), Gynecology, Pediatrics, and Speech Therapy. Also provides laboratory tests and vaccinations. Working hours updated based on user confirmation.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4133384016",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": {
-    "address": "Rygos g. 1, 05259 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/klinikos/5/rygos-g.-1-vilnius",
-    "phone": "+37052390555",
-    "email": "vilnius.rygos@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "InMedica clinic branch located at Rygos g. 1, Vilnius. Offers Dentistry, Family Medicine (which includes general consultations, disease management, pregnancy monitoring, child development tracking, preventive advice, and provision of necessary medical aid during operating hours), extensive Laboratory Testing (utilizing the central InMedica lab), and Vaccinations (including travel, flu, etc.). Specialist consultations are available via referral. Uses a branch-specific email.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4052837500",
-  "name": "Santaura",
-  "status": null,
-  "facility_type": "Specialized Clinic",
-  "location": {
-    "address": "Taikos g. 2, 05246 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.santaura.lt/",
-    "phone": "+37060882369",
-    "email": "santaura@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-18:00 (Appointments outside hours by arrangement possible)",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dermatology_dermatovenerology",
-    "infectious_diseases",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "urology"
-  ],
-  "notes": "Private clinic located at Taikos g. 2, Vilnius (Justiniškės area, Rygos-Taikos intersection). Specializes in Dermatovenerology, Gynecology, and Urology, with significant experience in diagnosing and treating sexually transmitted infections (Chlamydia, Ureaplasma, Mycoplasma mentioned). Offers rapid laboratory tests with results within 1 hour. Emphasizes patient confidentiality and anonymity. Licensed clinic and laboratory. Registration phone: +37052705457.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "6055193938",
-  "name": "Baltupių Šeimos Medicinos Centras",
-  "status": null,
-  "facility_type": "Family Medicine Center",
-  "location": null,
-  "contact": {
-    "website": "https://www.baltupiusmc.lt/",
-    "phone": "+37052772337",
-    "email": "registratura@baltupiusmc.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 07:00-19:00; Fri 07:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "neonatology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Didlaukio g. 1, 08303 Vilnius, Lithuania (based on search). Family medicine center with specific services for pregnant women, newborns, and children provided by specialized doctors. Also offers laboratory tests (own modern lab), dental prosthetics (state funding available for eligible groups, implies general dentistry offered), and vaccinations (both state-funded schedule and private options).",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12375726212",
-  "name": "Z Klinika",
-  "status": null,
-  "facility_type": "Specialized Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.z-klinika.lt/",
-    "phone": "+37052101771",
-    "email": "info@z-klinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00; Sat 09:00-14:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "general_surgery",
-    "proctology"
-  ],
-  "notes": "Address: Žygio g. 90, 08240 Vilnius, Lithuania (based on search). A specialized clinic focusing primarily on Proctology (Coloproctology specialists mentioned) and Dentistry. Information is also available in Russian. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10268270314",
-  "name": "Kūno Terapija",
-  "status": null,
-  "facility_type": "Alternative / Manual Therapy Center",
-  "location": null,
-  "contact": {
-    "website": "https://kuno-terapija.lt/",
-    "phone": "+37060385995",
-    "email": "info@kuno-terapija.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "group_therapy",
-    "massage_therapy",
-    "orthopedics_traumatology",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "psychotherapy"
-  ],
-  "notes": "Address: Vytenio g. 4, 03113 Vilnius, Lithuania (based on search). Center focused on body-oriented therapies. Offers individual sessions including Applied Clinical Kinesiology, Manual Therapy, Kinesitherapy, Foot Reflexology, Craniosacral Therapy, Osteopathy, Biorelease Massage, and Biodynamic Body Psychotherapy. Also provides group exercises like Deep Muscle Exercise, Pilates, and Back Exercise. Offers training in Osteopathy and Body Psychotherapy. Mapped specialties cover the recognized medical/therapeutic fields offered; several specific alternative/complementary methods listed are not in the standard specialty list.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10268270311",
-  "name": "Familia Clinica",
-  "status": null,
-  "facility_type": "Specialized Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://familiaclinica.lt/",
-    "phone": "+37069068935",
-    "email": "info@familiaclinica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 09:00-20:00; Sat 10:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "allergology_clinical_immunology",
-    "dermatology_dermatovenerology",
-    "ophthalmology",
-    "otorhinolaryngology_ent",
-    "pediatrics_child_health"
-  ],
-  "notes": "Address: Vytenio g. 4, 03113 Vilnius, Lithuania (based on search, appears to be in the same building as 'Kūno Terapija'). Specialized clinic focused on specific fields: ENT (adult & pediatric, including hearing tests/aids), Ophthalmology (adult & pediatric, vision diagnostics), Dermatology (general & aesthetic), and Allergology/Immunology.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10242582948",
-  "name": "Gerovės klinika",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://gerovesklinika.lt/",
-    "phone": "+37052000333",
-    "email": "info@gerovesklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00; Sat 09:00-15:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "family_medicine",
-    "general_surgery",
-    "internal_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "nursing_care",
-    "pediatrics_child_health",
-    "radiology_medical_imaging",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Kęstučio g. 35, 08121 Vilnius, Lithuania (based on search). Polyclinic offering services for both adults and children. Allows registration with family doctors. Provides day patient services ('Dienos stacionaras'), day surgery ('Dienos Operacijos'), IV infusions, diagnostic tests (laboratory and likely imaging), and vaccinations. Specific specialist consultations are implied but not detailed beyond the scope of services offered.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3997805853",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "J. Baltrušaičio g. 3, 06120 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/klinikos/5/j.-baltrusaicio-g.-3-vilnius",
-    "phone": "+37052430432",
-    "email": "pasilaiciai@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "neurology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "InMedica clinic branch located at J. Baltrušaičio g. 3, Vilnius (Pašilaičiai area). Provides comprehensive services including Family Medicine (incorporating pregnancy monitoring, child development tracking, preventive care, and necessary medical aid during working hours), Dentistry, Vaccinations, Laboratory Tests, and consultations with various specialists (OB/GYN, Dermatovenerology, Surgery, Endocrinology, Gastroenterology, Cardiology, Neurology explicitly mentioned). Uses a branch-specific email.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "2274117096",
-  "name": "Pilaitės šeimos sveikatos namai GYDA",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.gyda.lt/",
-    "phone": "+37060835000",
-    "email": "registratura@gyda.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry",
-    "family_medicine",
-    "home_care_community_nursing",
-    "internal_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "massage_therapy",
-    "neonatology",
-    "obstetrics_gynecology",
-    "oral_maxillofacial_surgery",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "physiotherapy_kinesitherapy",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Tolminkiemio g. 2D, 06291 Vilnius, Lithuania (based on search). Polyclinic in Pilaitė offering state-funded (for registered/insured patients) and paid services. Provides Family Medicine (adults & children), Pregnancy & Newborn care, comprehensive Dentistry (adult & child care, prosthetics, dental X-ray, oral surgery), Obstetrics & Gynecology, Laboratory tests, Ultrasound (echoscopy), Physiotherapy, Therapeutic Massage, Vaccinations, Preventive programs, and Home visits. Reflexology is also listed among paid services.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4492342443",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": {
-    "address": "Vydūno g. 20, 06209 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/klinikos/5/vyduno-g.-20-vilnius",
-    "phone": "+37052430226",
-    "email": "vilnius.vyduno20@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:30-19:30",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "InMedica clinic branch located at Vydūno g. 20, Vilnius. Provides Family Medicine (likely including pregnancy monitoring and child development tracking based on general InMedica scope), Dentistry, Laboratory Tests, Vaccinations (various types listed including travel, flu, TBE, HPV, etc.), and Preventive Programs. Uses a branch-specific email.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10797265355",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Saulėtekio al. 36-201, 10224 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/klinikos/5/sauletekio-al.-36-201-vilnius",
-    "phone": "+37052724773",
-    "email": "sauletekis@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "laboratory_medicine_clinical_pathology",
-    "neurology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "InMedica clinic branch located at Saulėtekio al. 36-201, Vilnius (Saulėtekis area). Offers Family Medicine (likely including pregnancy/child monitoring, preventive care, and necessary medical aid during working hours), Dentistry, Vaccinations, Laboratory Tests, and consultations with specialists such as OB/GYN, Dermatovenerology, Surgery, Endocrinology, Gastroenterology, Cardiology, and Neurology. Uses a branch-specific email. Working hours obtained from the branch webpage.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4552480351",
-  "name": "Reabilitacijos centras Gilės",
-  "status": null,
-  "facility_type": "Rehabilitation Center",
-  "location": null,
-  "contact": {
-    "website": "https://www.giles.lt/",
-    "phone": "+37064042622",
-    "email": "info@giles.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-20:00; Sat 08:00-14:00",
-    "administration": null,
-    "departments": [
-      {
-        "name": "Procedural Cabinet / Laboratory",
-        "hours": "Mon-Fri 08:00-16:00"
-      }
-    ]
-  },
-  "specialties_en": [
-    "dietetics_nutrition",
-    "laboratory_medicine_clinical_pathology",
-    "massage_therapy",
-    "nursing_care",
-    "pediatrics_child_health",
-    "physical_medicine_rehabilitation"
-  ],
-  "notes": "Address: M. Sleževičiaus g. 7, 06326 Vilnius, Lithuania (based on search). Rehabilitation center providing Physical Medicine & Rehabilitation (FMR) doctor consultations, Dietitian consultations, various Massage therapies (lymphatic drainage, Kobido facial, vacuum, baby/child massage), and services via a Procedural Cabinet (likely laboratory tests, minor procedures - specific hours Mon-Fri 8:00-16:00). General clinic working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "12184503672",
-  "name": "Odos klinika",
-  "status": null,
-  "facility_type": "Dermatology Clinic",
-  "location": null,
-  "contact": {
-    "website": "http://www.odosklinika.net/",
-    "phone": "+37061604900",
-    "email": null
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": null,
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "dermatology_dermatovenerology",
-    "general_surgery",
-    "neurology",
-    "oncology",
-    "plastic_reconstructive_surgery"
-  ],
-  "notes": "Address: M. Valančiaus g. 1A, 03105 Vilnius, Lithuania (based on search). Dermatology clinic specializing in the diagnosis and treatment of skin conditions, with a strong focus on skin lesion diagnostics (dermoscopy, photodynamic diagnostics), early detection and monitoring of skin cancer/melanoma (including mole mapping), aesthetic injections (for wrinkles, hyperhidrosis, scars), basic skin surgery, and laser surgery for removing moles and benign skin lesions. No email or working hours found on website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "218129362",
-  "name": "Karoliniškių poliklinika - Pilaitės Šeimos Medicinos Centras",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Karaliaučiaus g. 11, 06242 Vilnius, Lithuania"
-  },
-  "contact": {
-    "website": "https://www.karpol.lt/pilaites-spc-kontaktine-informacija/",
-    "phone": "+37052168911",
-    "email": "pilaitespcregistratura@karpol.lt"
-  },
-  "has_emergency_room": true,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dermatology_dermatovenerology",
-    "emergency_medicine",
-    "family_medicine",
-    "obstetrics_gynecology",
-    "perinatology_high_risk_pregnancy",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Pilaitė Family Medicine Center branch of Karoliniškių Poliklinika, located at Karaliaučiaus g. 11. Provides necessary/urgent medical aid ('Būtinoji pagalba'), primary care (family medicine), secondary ambulatory care (Dermatovenerology likely accessible, others via referral), preventive services, vaccinations, and services for expectant mothers. Remote consultations are available. This branch is closed on Saturdays; patients requiring Saturday service should go to the main clinic at L. Asanavičiūtės g. Uses a branch-specific email. Working hours confirmed from branch webpage.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "261196858",
-  "name": "VitkusClinic",
-  "status": null,
-  "facility_type": "Plastic Surgery Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://vitkusclinic.com/",
-    "phone": "+37069811992",
-    "email": "info@vitkusclinic.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "aesthetic_laser_dermatology",
-    "anesthesiology_intensive_care_pain_management",
-    "angiology_vascular_medicine",
-    "dermatology_dermatovenerology",
-    "general_surgery",
-    "mammology_breast_health",
-    "massage_therapy",
-    "physiotherapy_kinesitherapy",
-    "plastic_reconstructive_surgery",
-    "radiology_medical_imaging",
-    "vascular_surgery"
-  ],
-  "notes": "Address: Šilo g. 17, 10317 Vilnius, Lithuania (based on search). Specializes in plastic and reconstructive surgery (face, breast, body contouring), aesthetic dermatology (laser treatments, injections, lesion removal, hair care), vascular surgery. Also offers massages, INDIBA therapy (radiofrequency), and ultrasound examinations. Anesthesiology support is likely required for the extensive surgical procedures offered. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "3317421752",
-  "name": "Euromed",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://euromed.lt/",
-    "phone": "+37052151333",
-    "email": "registratura@euromed.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00; Sat-Sun by appointment",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "family_medicine",
-    "internal_medicine",
-    "obstetrics_gynecology",
-    "physical_medicine_rehabilitation",
-    "physiotherapy_kinesitherapy",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Address: Vytenio g. 20 / Šv. Stepono g. 27, 03229 Vilnius, Lithuania (based on search). Provides services including Obstetrics/Gynecology, Ultrasound diagnostics, general doctor consultations (implying Family/Internal Medicine), Rehabilitation (Physiotherapy), and Dentistry. Weekend availability is by prior appointment only.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11892997448",
-  "name": "Affidea - Santariškių diagnostikos centras",
-  "status": null,
-  "facility_type": "Medical Imaging Center",
-  "location": null,
-  "contact": {
-    "website": "https://affidea.lt/lt/klinikos/vilniaus-santariskiu/",
-    "phone": "+37052441188",
-    "email": "info@affidea.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-22:00; Sat-Sun 08:00-20:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "radiology_medical_imaging",
-    "urology"
-  ],
-  "notes": "Affidea diagnostic imaging center located within the Vilnius Santariškės medical campus area (likely Santariškių g. 2, 08661 Vilnius). Specializes in instrumental/imaging tests, specifically offering CT (Computed Tomography) and MRI (Magnetic Resonance Imaging) scans. Also equipped for MRI-guided prostate biopsies (related to Urology). Uses central Affidea contact details. Working hours (7 days/week with extended hours) obtained from the specific branch webpage.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "4424156191",
-  "name": "Grigiškių sveikatos priežiūros centras",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.gspc.lt/",
-    "phone": "+37052432103",
-    "email": "gspc@gspc.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-20:00; Sat 08:00-12:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "family_medicine",
-    "gastroenterology",
-    "general_surgery",
-    "home_care_community_nursing",
-    "internal_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "neonatology",
-    "neurology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "oncology",
-    "pediatric_dentistry",
-    "pediatrics_child_health",
-    "perinatology_high_risk_pregnancy",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "urology",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Šviesos g. 1, Grigiškės 27101, Vilnius City Municipality, Lithuania (based on search). Polyclinic in Grigiškės primarily offering state-funded (PSDF) primary and secondary healthcare services. Level I services include Family Medicine, Internal Medicine, Pediatrics (incl. infant care), OB/GYN (incl. pregnancy care), General Surgery, and Dentistry (incl. pediatric sealants). Level II services include Neurology and Radiology. Also offers basic laboratory tests, home nursing visits, remote consultations, and participates extensively in national preventive screening programs (Cervical, Breast, Cardiovascular risk, Prostate, Colorectal cancer).",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "1120165960",
-  "name": "Šviesi Klinika",
-  "status": null,
-  "facility_type": "Dental Clinic / Physiotherapy Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://www.sviesiklinika.lt/",
-    "phone": "+37060551111",
-    "email": "info@sviesiklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry",
-    "group_therapy",
-    "massage_therapy",
-    "oral_maxillofacial_surgery",
-    "pediatric_dentistry",
-    "physiotherapy_kinesitherapy",
-    "radiology_medical_imaging"
-  ],
-  "notes": "Address: Šviesos g. 1, 27101 Vilnius, Lithuania (Grigiškės area - based on search, shares address with Grigiškių Health Care Center). Primarily offers comprehensive dental services including Oral Surgery (implants, extractions, etc.), Prosthetics, Fillings, Endodontics (root canals), Pediatric Dentistry, Oral Hygiene, Whitening, and Dental X-rays (3D, panoramic, dental). Also provides Kinesitherapy/Physiotherapy (individual & group sessions, therapeutic massage) and Cosmetology services. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "464926284",
-  "name": "Balsių šeimos medicinos centras",
-  "status": null,
-  "facility_type": "Family Medicine Center",
-  "location": null,
-  "contact": {
-    "website": "https://www.balsiusmc.lt/",
-    "phone": "+37052318643",
-    "email": "info@balsiusmc.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Thu 07:00-19:00; Fri 07:00-18:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dental_prosthetics",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "neonatology",
-    "nursing_care",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Visalaukio g. 1, 10108 Vilnius, Lithuania (based on search). Family medicine center located in Balsiai. Provides Family Medicine and Nursing services, Dentistry (including prosthetics), Laboratory tests, care for Pregnant women and Newborns, Preventive programs/prophylaxis, and Vaccinations. Also lists availability of Specialist Doctor consultations (specific types not listed in input). Email obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "11982717170",
-  "name": "Pagalba mažyliui",
-  "status": null,
-  "facility_type": "Pediatric Clinic",
-  "location": null,
-  "contact": {
-    "website": "http://www.pagalbamazyliui.lt/",
-    "phone": "+37052506010",
-    "email": "su.pagalbamazyliui@gmail.com"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00; Sat 09:00-14:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "allergology_clinical_immunology",
-    "cardiac_surgery",
-    "cardiology",
-    "dermatology_dermatovenerology",
-    "endocrinology",
-    "gastroenterology",
-    "general_surgery",
-    "home_care_community_nursing",
-    "laboratory_medicine_clinical_pathology",
-    "massage_therapy",
-    "neurology",
-    "nursing_care",
-    "ophthalmology",
-    "orthopedics_traumatology",
-    "otorhinolaryngology_ent",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "pulmonology",
-    "radiology_medical_imaging",
-    "urology",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Vytenio g. 22, 03229 Vilnius, Lithuania (based on search). Primarily a pediatric clinic offering general pediatrician consultations (clinic/home) and a wide range of pediatric specialist consultations (Cardiology, Neurology, Ortho/Trauma, Ophthalmology, ENT, Endocrinology, Pulmonology, Allergology, Gastroenterology, Surgery, Urology, Cardiac Surgery). Also provides limited services for adults (Dermatology, ENT, Ophthalmology consultations; hearing screening for all ages). Offers ultrasound, nursing services (clinic/home), clinical tests (clinic/home), vaccinations (clinic/home), massage (clinic/home), and preventive health checks for school/kindergarten. Hosts 'Parents' Academy' educational events. Working hours obtained from website.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "10755270690",
-  "name": "InMedica",
-  "status": null,
-  "facility_type": "Polyclinic",
-  "location": {
-    "address": "Klevų al. 32, LT-25105 Lentvaris, Lithuania"
-  },
-  "contact": {
-    "website": "https://inmedica.lt/klinikos/5/klevu-al.-32-lentvaris",
-    "phone": "+37052828085",
-    "email": "lentvaris@inmedica.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 08:00-19:00",
-    "administration": null,
-    "departments": []
-  },
-  "specialties_en": [
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "pediatrics_child_health",
-    "preventive_medicine_health_screening",
-    "psychiatry",
-    "psychology"
-  ],
-  "notes": "InMedica clinic branch located at Klevų al. 32 in Lentvaris (near Vilnius). Provides services through dedicated centers: Family Medicine (likely including pediatric/pregnancy care & prevention), Dentistry, Mental Health (Psychiatry/Psychology), and Laboratory Testing. Also mentions availability of unspecified Specialist Doctor consultations. The provided text details recent (Jan 2025) regulation changes regarding after-hours primary care, directing patients to hospital emergency departments for urgent needs outside clinic hours. Uses a branch-specific email.",
-  "user_requested_update": true
-},
-{
-  "osrm_id": "403517035",
-  "name": "Riešės klinika",
-  "status": null,
-  "facility_type": "Medical Clinic",
-  "location": null,
-  "contact": {
-    "website": "https://riesesklinika.lt/",
-    "phone": "+37065766914",
-    "email": "info@riesesklinika.lt"
-  },
-  "has_emergency_room": null,
-  "working_hours": {
-    "general": "Mon-Fri 07:00-19:00",
-    "administration": "Mon-Fri 08:00-16:00 (Phone Registration Hours)",
-    "departments": []
-  },
-  "specialties_en": [
-    "cardiology",
-    "dentistry",
-    "family_medicine",
-    "laboratory_medicine_clinical_pathology",
-    "obstetrics_gynecology",
-    "preventive_medicine_health_screening",
-    "radiology_medical_imaging",
-    "vaccinations_immunoprophylaxis"
-  ],
-  "notes": "Address: Beržų g. 2, Didžioji Riešė 14266, Vilniaus r. sav., Lithuania (based on search). Provides Family Medicine (free for registered patients), Dentistry, Specialist Consultations (Cardiology, Gynecology listed on website), Ultrasound (Echoscopy), Laboratory Tests, Vaccinations, and Preventive Programs. Note: State-funded Mental Health services are referred to Vilnius District Central Polyclinic (Laisvės pr. 79).",
-  "user_requested_update": true
-}
+[
+  {
+    "osrm_id": "56113044",
+    "name": "Naujininkų Poliklinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.nvpoliklinika.lt/",
+      "phone": "+370 5 2606860",
+      "email": "administracija@nvp.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00; Sat 08:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "allergology_clinical_immunology",
+      "cardiology",
+      "child_adolescent_psychiatry",
+      "dental_prosthetics",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "general_surgery",
+      "internal_medicine",
+      "massage_therapy",
+      "neurology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "otorhinolaryngology_ent",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "psychiatry",
+      "psychology",
+      "radiology_medical_imaging",
+      "social_work",
+      "urology"
+    ],
+    "notes": "Address: Dariaus ir Girėno g. 18, 02160 Vilnius, Lithuania. On Saturdays, a family doctor and dentist are on duty at the associated Naujoji Vilnia clinic (Sirokomlės g. 8, Vilnius), this specific location (Naujininkai) is closed on Saturdays according to the text provided about Sat service. Contains Physical Medicine and Rehabilitation department, Consultation department, Dentistry department, Mental Health Center, and Family Medicine Center. Specific roles identified include: Physiotherapists, Kinesiotherapists, Masseurs, Ophthalmologist, Urologist, Cardiologist, Sonographer (mapped to radiology_medical_imaging), Endocrinologist, Neurologist, ENT specialists, Dermatovenerologist, Allergist, Pediatric Surgeon (no exact match in list), Dentists (general, pediatric, prosthetics), Oral Hygienist (under dentistry), Psychiatrists (general, child/adolescent), Medical Psychologist, Nurses, Social Worker, Family Doctors, Internal Medicine doctors, Pediatricians, Obstetrician-Gynecologists, Surgeons.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12320136892",
+    "name": "Notum",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://notum.lt/",
+      "phone": "+370 676 40330",
+      "email": "jonas.garsva@notum.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 08:00-15:30; Fri 08:00-12:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "occupational_medicine",
+      "preventive_medicine_health_screening"
+    ],
+    "notes": "Address: Švitrigailos g. 11B, 03228 Vilnius, Lithuania (based on search). Primarily provides services like preventive health check-ups for employees, drivers, and issues medical certificates for firearm permits, study, and work abroad.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12206459801",
+    "name": "EYES akių klinika",
+    "status": null,
+    "facility_type": "Ophthalmology Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://eyes.lt/",
+      "phone": "+370 5 2644444",
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "ophthalmology"
+    ],
+    "notes": "Address potentially Konstitucijos pr. 23A, Vilnius (multiple locations may exist, based on search). Provides services such as eye examinations for adults and children, laser eye correction, cataract surgery, and clear lens surgery.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9532256203",
+    "name": "A. Zacharovo klinika VšĮ",
+    "status": null,
+    "facility_type": "Specialized Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.medicina.lt/imones/A-Zacharovo-klinika-V%C5%A1%C4%AE/2027472",
+      "phone": "+370 5 2603767",
+      "email": "psichokin@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "anesthesiology_intensive_care_pain_management",
+      "massage_therapy",
+      "neurology",
+      "orthopedics_traumatology",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy"
+    ],
+    "notes": "Address: Vytenio g. 6, 03113 Vilnius, Lithuania (based on search). Provides services including neurology, manual therapy, acupuncture, osteopathy, applied kinesiology, pain medicine, physiotherapy, kinesitherapy, and massage. Also mentions bioresonance diagnostics and manual correction of toe/jaw bones. Website link is to a directory listing, not the clinic's own site. Mentions 'Medical tourism'.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11891187134",
+    "name": "Endemik klinika",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://endemik.lt/",
+      "phone": "+37052441188",
+      "email": "patients@affidea.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "family_medicine",
+      "home_care_community_nursing",
+      "laboratory_medicine_clinical_pathology",
+      "massage_therapy",
+      "nursing_care",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Associated with Affidea (based on email). Multiple locations may exist in Vilnius (e.g., Ukmergės g. 219, Vytenio g. 50, based on search). Offers family medicine, specialist consultations (types unspecified in provided text), services at home, health check-ups, various lab tests (including blood tests, Covid-19 tests), vaccinations (including travel vaccinations), IV drip infusions, and massages. Appointments needed for doctors; registration recommended but not required for vaccinations/blood tests. Registration via phone (1811) or online.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "8731164619",
+    "name": "Naujamiesčio šeimos klinika",
+    "status": null,
+    "facility_type": "Family Medicine Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://nsklinika.lt/",
+      "phone": "+37065568047",
+      "email": "info@nsklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "diabetes_care_diabetology",
+      "family_medicine",
+      "home_care_community_nursing",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "occupational_medicine",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: A. Vivulskio g. 5, 03162 Vilnius, Lithuania (based on search). Legal entity: UAB 'EuroEra'. Offers both state-funded (for registered/insured patients) and paid services. Services include family medicine, pediatric care (check-ups, vaccinations, newborn home visits), preventive screenings (e.g., Pap smears, driver/employee checks), laboratory tests (including specific tests like HbA1c for diabetics), general vaccinations, dentistry, and ultrasound (echoscopy).",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "8038746960",
+    "name": "Centro poliklinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://pylimas.lt/",
+      "phone": "+37052442244",
+      "email": "info@centropol.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "emergency_medicine",
+      "family_medicine",
+      "general_surgery",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "physical_medicine_rehabilitation",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Likely the Pylimo branch of Centro poliklinika (based on website URL, while email is central). Address: Pylimo g. 3, 01117 Vilnius, Lithuania (based on search). Offers state-funded (PSDF) and paid services. Includes family medicine, urgent care ('Būtinoji pagalba'), lab & diagnostic tests, OB/GYN, dentistry, infectious diseases, dermatology, mental health services, day surgery, preventive check-ups, rehabilitation, and nursing services. Also provides remote consultations, halotherapy (salt therapy), cosmetology, and mandatory health training.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "7992473230",
+    "name": "Vaikų klinika Empatija",
+    "status": null,
+    "facility_type": "Pediatric Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://vaikuklinika.empatija.lt/",
+      "phone": "+370 618 51884",
+      "email": "vjk@empatija.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00; Sat 10:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "child_adolescent_psychiatry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "occupational_therapy",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "preventive_medicine_health_screening",
+      "psychology",
+      "psychotherapy",
+      "speech_therapy",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Antakalnio g. 40, 10306 Vilnius, Lithuania (based on search). Focuses on pediatric and family medicine. Services include specialist consultations, lab tests, personality development and support (likely psychology/psychotherapy), preventive check-ups and certificates, vaccinations, and children's rehabilitation (including early rehabilitation which often involves physiotherapy, occupational therapy, and speech therapy). Offers state-funded (TLK) services.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "5325179701",
+    "name": "Centro poliklinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://pylimas.lt/",
+      "phone": "+37052442244",
+      "email": "info@centropol.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "emergency_medicine",
+      "family_medicine",
+      "general_surgery",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "physical_medicine_rehabilitation",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Another branch of Centro poliklinika. Exact address for this OSRM ID needs confirmation, but potential location is the Vytenio branch (Vytenio g. 59, 03229 Vilnius). Using central contact information. Specialties and urgent care availability ('has_emergency_room': true) are assumed to be similar to the Pylimo branch (OSRM 8038746960) based on user instruction, but verification for this specific branch is recommended.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "107605807",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://inmedica.lt/",
+      "phone": "+37052620202",
+      "email": "info@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "abdominal_surgery",
+      "allergology_clinical_immunology",
+      "anesthesiology_intensive_care_pain_management",
+      "angiology_vascular_medicine",
+      "cardiology",
+      "dental_prosthetics",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "diabetes_care_diabetology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "genetics_medical",
+      "hematology",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "mammology_breast_health",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "oral_maxillofacial_surgery",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging",
+      "rheumatology",
+      "sports_medicine",
+      "toxicology",
+      "urology",
+      "vaccinations_immunoprophylaxis",
+      "vascular_surgery"
+    ],
+    "notes": "Large medical provider with numerous branches across Vilnius and Lithuania; this OSRM ID likely corresponds to one specific location (address requires confirmation). Offers a very comprehensive range of services via specialized centers: Family Medicine, numerous Specialist Centers (Ophthalmology, OB/GYN, Allergy, Anesthesia/Intensive Care/Pain, ENT, General/Abdominal Surgery, Endocrinology, Dermatology, Gastroenterology, Hematology, Cardiology, Vascular Diseases, Mammology, Neurology, Orthopedics/Trauma, Plastic Surgery, Pulmonology, Rehab/Physical/Sports Medicine, Rheumatology, Urology, Pediatrics), Diagnostics (MRI, CT, Instrumental Tests), Dentistry (including Pediatric, Surgery, Prosthetics), Mental Health, and extensive Laboratory services (including Genetics, Microbiology, Toxicology). Anesthesia/Intensive Therapy center exists, but no explicit emergency room is listed.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "169",
+    "name": "Rega",
+    "status": null,
+    "facility_type": "Ophthalmology Clinic / Optician",
+    "location": null,
+    "contact": {
+      "website": "https://rega.lt/",
+      "phone": "+37060605416",
+      "email": "info@rega.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 08:00-17:00; Fri 08:00-15:45",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "ophthalmology"
+    ],
+    "notes": "Branch of UAB Rega (enterprise of the Lithuanian Association of the Blind and Visually Impaired). This OSRM ID likely corresponds to the main branch at Skroblų g. 19, 03141 Vilnius. Working hours listed are for the Skroblų g. branch. Services include ophthalmologist consultations, eye examinations, contact lens fitting, eyeglass manufacturing and repair, sales of optical goods/aids, and services related to technical aids for the visually impaired. Multiple branches exist.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12539091578",
+    "name": "Grožio Akademija",
+    "status": null,
+    "facility_type": "Aesthetic Medicine Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://grozioakademija.lt/",
+      "phone": "+37052332888",
+      "email": "vilnius@medispa.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-21:00; Sat 10:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "anesthesiology_intensive_care_pain_management",
+      "dermatology_dermatovenerology",
+      "general_surgery",
+      "neurology",
+      "plastic_reconstructive_surgery",
+      "regenerative_medicine"
+    ],
+    "notes": "Associated with MediSPA centras (based on email). Address: Šaltinių g. 20, Vilnius (from website). Specializes in aesthetic/plastic surgery (e.g., eyelids, face lift, breast augmentation/lift/reduction, liposuction, hair transplant), aesthetic medicine (e.g., fillers, botulinum toxin, threads, PRP), laser and fractional plasma treatments, skin lesion removal. Also offers neurological services (consultations, migraine/hyperhidrosis treatment) and cosmetology procedures (facials, peels, mesotherapy, depilation). Additional therapies listed include ozone therapy, carboxytherapy, acoustic wave therapy. Anesthesiology likely available to support surgical procedures.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4555556157",
+    "name": "Asmeda",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://asmeda.lt/",
+      "phone": "+370 612 85580",
+      "email": "info@asmeda.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 08:00-17:00; Fri 08:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "family_medicine",
+      "occupational_medicine",
+      "preventive_medicine_health_screening"
+    ],
+    "notes": "Address: Manufaktūrų g. 7, 11342 Vilnius, Lithuania (based on search). Provides medical certificates for drivers and employees, family doctor consultations. Also offers mandatory health training courses such as first aid and hygiene skills.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9788451287",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Šeimyniškių g. 19, 09200 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/",
+      "phone": "+37052199557",
+      "email": "info@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "abdominal_surgery",
+      "allergology_clinical_immunology",
+      "anesthesiology_intensive_care_pain_management",
+      "angiology_vascular_medicine",
+      "cardiology",
+      "dental_prosthetics",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "diabetes_care_diabetology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "genetics_medical",
+      "hematology",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "mammology_breast_health",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "oral_maxillofacial_surgery",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging",
+      "rheumatology",
+      "sports_medicine",
+      "toxicology",
+      "urology",
+      "vaccinations_immunoprophylaxis",
+      "vascular_surgery"
+    ],
+    "notes": "Branch of the InMedica network located at Šeimyniškių g. 19, Vilnius. Using central contact website/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11892954159",
+    "name": "Affidea",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://affidea.lt/",
+      "phone": "+37052441188",
+      "email": "info@affidea.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "emergency_medicine",
+      "endoscopy",
+      "family_medicine",
+      "general_surgery",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "orthopedics_traumatology",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "sports_medicine",
+      "urology",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Affidea is a large provider with multiple locations focusing on diagnostics and clinical services; this OSRM ID likely corresponds to one specific branch (address requires confirmation). Services listed include Day Surgery, Aesthetic/Laser Medicine, Express Care® (indicating urgent care capacity), Specialist Consultations, Instrumental Diagnostics (likely Radiology, potentially Endoscopy), Laboratory Tests, Sexual Health, Dentistry, Pregnancy Services, Rehabilitation, Vaccinations, Sports Medicine (LTeamLAB), Health Checks, and Pediatric Consultations.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "2644297547",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Žirmūnų g. 70, 09124 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/",
+      "phone": "+37052620202",
+      "email": "info@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "abdominal_surgery",
+      "allergology_clinical_immunology",
+      "anesthesiology_intensive_care_pain_management",
+      "angiology_vascular_medicine",
+      "cardiology",
+      "dental_prosthetics",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "diabetes_care_diabetology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "genetics_medical",
+      "hematology",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "mammology_breast_health",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "oral_maxillofacial_surgery",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging",
+      "rheumatology",
+      "sports_medicine",
+      "toxicology",
+      "urology",
+      "vaccinations_immunoprophylaxis",
+      "vascular_surgery"
+    ],
+    "notes": "Branch of the InMedica network located at Žirmūnų g. 70, Vilnius. Using central contact website/phone/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "6743523640",
+    "name": "TUDU Kineziterapijos Studija",
+    "status": null,
+    "facility_type": "Kinesitherapy Studio",
+    "location": null,
+    "contact": {
+      "website": "https://www.tudu.lt/",
+      "phone": "+370 699 08950",
+      "email": "info@tudu.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:15",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "group_therapy",
+      "pediatrics_child_health",
+      "physiotherapy_kinesitherapy"
+    ],
+    "notes": "Address: Kareivių g. 19, 09109 Vilnius, Lithuania (based on search). Focuses on kinesitherapy, offering individual therapy, group sessions, and specific programs for children.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9913296854",
+    "name": "Karoliniškių poliklinika - Lazdynų Šeimos Medicinos Centras",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Erfurto g. 15, 04220 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.karpol.lt/lazdynu-spc-erfurto-g-15-kontaktine-informacija/",
+      "phone": "+37052458438",
+      "email": "rastine@karpol.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dermatology_dermatovenerology",
+      "family_medicine",
+      "obstetrics_gynecology",
+      "perinatology_high_risk_pregnancy",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "This is the Lazdynai Family Medicine Center branch of Karoliniškių Poliklinika, located at Erfurto g. 15. It provides urgent medical aid ('Būtinoji pagalba'), primary care (family medicine), secondary ambulatory care (Dermatovenerology is mentioned as accessible without referral, other specialties likely available with referral), preventive care, vaccinations, and services for expectant mothers. Remote consultations are also offered. Uses the central email address.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "8575794393",
+    "name": "As Klinika",
+    "status": null,
+    "facility_type": "Mental Health Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.asklinika.lt/",
+      "phone": "+37065211903",
+      "email": "info@asklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "child_adolescent_psychiatry",
+      "psychiatry",
+      "psychology",
+      "psychotherapy",
+      "social_work"
+    ],
+    "notes": "Address: S. Konarskio g. 2-71, 03109 Vilnius, Lithuania (based on search). Mental health clinic offering psychiatrist and psychologist consultations, psychotherapy, and psychological assessments for adults, children, and adolescents, as well as social worker consultations. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4157461390",
+    "name": "Žvėryno klinika",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://zverynoklinika.lt/",
+      "phone": "+37052420404",
+      "email": "zverynoklinika@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:30-19:30",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "child_adolescent_psychiatry",
+      "dental_prosthetics",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Address: Sėlių g. 32, 08109 Vilnius, Lithuania (based on search). Offers family medicine, dentistry (including prosthetics and hygiene), adult and child psychiatry, psychology services, blood tests/programs, preventive programs, and ultrasound (echoscopy).",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11183602103",
+    "name": "Saulėtekio klinika",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.sauletekioklinika.lt/",
+      "phone": "+37052105488",
+      "email": "sauletekis38@yahoo.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "oral_maxillofacial_surgery",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Saulėtekio al. 38, 10225 Vilnius, Lithuania (based on search). Provides family medicine, pediatrics, comprehensive dentistry (general, hygiene, whitening, prosthetics, implants), gynecology, psychiatry, psychology, nursing care, blood tests, vaccinations, and preventive programs. Offers state-funded (free) and paid services.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12164029561",
+    "name": "Sėkmingi vaikai - Vaikų raidos centras",
+    "status": null,
+    "facility_type": "Child Development Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.sekmingivaikai.lt/",
+      "phone": "+37066500568",
+      "email": "egle@sekmingivaikai.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "neurology",
+      "occupational_therapy",
+      "pediatrics_child_health",
+      "physiotherapy_kinesitherapy",
+      "psychology",
+      "speech_therapy"
+    ],
+    "notes": "Address: Verkių g. 34A, 08219 Vilnius, Lithuania (based on search). Child development center focused on therapies and assessments. Services include occupational therapy (incl. sensory integration), kinesitherapy/physiotherapy, speech therapy, clinical psychologist assessments (incl. CARS autism assessment), and consultations with a child neurologist/social pediatrician. Also lists 'Audio-neurosensorystimulation' therapy.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10294753464",
+    "name": "Sapiegos klinika",
+    "status": null,
+    "facility_type": "Dermatology Clinic",
+    "location": {
+      "address": "V. Grybo g. 17, 10318 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.sapiegosklinika.lt/lt/",
+      "phone": "+37065550200",
+      "email": "info@sapiegosklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-19:30; Sat 10:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "dermatology_dermatovenerology"
+    ],
+    "notes": "Clinic located in Antakalnis, Vilnius at V. Grybo g. 17. Specializes in dermatology, aesthetic dermatology, laser hair removal, treatment of skin conditions and hair loss, cosmetology, and aesthetic body treatments. Email obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10308155532",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Antakalnio g. 48A, 10206 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/",
+      "phone": "+37052620202",
+      "email": "info@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "abdominal_surgery",
+      "allergology_clinical_immunology",
+      "anesthesiology_intensive_care_pain_management",
+      "angiology_vascular_medicine",
+      "cardiology",
+      "dental_prosthetics",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "diabetes_care_diabetology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "genetics_medical",
+      "hematology",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "mammology_breast_health",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "oral_maxillofacial_surgery",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging",
+      "rheumatology",
+      "sports_medicine",
+      "toxicology",
+      "urology",
+      "vaccinations_immunoprophylaxis",
+      "vascular_surgery"
+    ],
+    "notes": "Branch of the InMedica network located at Antakalnio g. 48A, Vilnius. Using central contact website/phone/email. The comprehensive list of specialties is based on the general scope of InMedica; the exact range of services available *at this specific branch* should be confirmed. No explicit emergency room mentioned.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10294753461",
+    "name": "J. Kaukėnienės akių klinika",
+    "status": null,
+    "facility_type": "Ophthalmology Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.akiugydytojai.lt/",
+      "phone": "+37069415394",
+      "email": "info@akiugydytojai.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00 (Occasional Saturday hours)",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "ophthalmology"
+    ],
+    "notes": "Address: Skroblų g. 19, 03141 Vilnius, Lithuania (based on search, appears co-located with 'Rega' optician). Specializes exclusively in ophthalmology services for adults and children. Services include diagnosis and treatment of various eye diseases (strabismus, amblyopia, glaucoma, dry eye, inflammation), myopia progression control, advanced diagnostics (OCT, visual fields, tonometry, fundus photography, Hess test), foreign body removal from eye surface, and minor eyelid surgeries (chalazion, small tumors, entropion/ectropion). Recommends purchasing glasses/lenses at the adjacent 'Rega' optician. Note: Source text mentioned specific shortened hours and one Saturday opening in April 2025.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4261960690",
+    "name": "NMC - Northway medicinos centrai",
+    "status": null,
+    "facility_type": "Medical Center",
+    "location": null,
+    "contact": {
+      "website": "https://nmc.lt/",
+      "phone": "+37063330303",
+      "email": "info@nmc.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:30-20:30; Sat 09:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "abdominal_surgery",
+      "allergology_clinical_immunology",
+      "angiology_vascular_medicine",
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "dietetics_nutrition",
+      "endocrinology",
+      "endoscopy",
+      "fertility_treatment_reproductive_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "mammology_breast_health",
+      "neurology",
+      "neurosurgery",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "orthopedics_traumatology",
+      "plastic_reconstructive_surgery",
+      "radiology_medical_imaging",
+      "vascular_surgery"
+    ],
+    "notes": "Large medical center, part of the Northway network. This OSRM ID likely corresponds to the main Vilnius center at S. Žukausko g. 19, 08234 (address requires confirmation). Provides a wide array of services including: Allergology, Dietetics, Plastic/Reconstructive Surgery, Lab Tests, Neurology, Vascular Surgery, Endocrinology, Aesthetic Procedures, Breast Care, Dentistry, General/Abdominal Surgery, Gastroenterology, Cardiology, Infertility Treatment, Ophthalmology, Dermatovenerology, Gynecology, Instrumental Diagnostics (Radiology, likely Endoscopy), Neurosurgery, Orthopedics/Traumatology. Email obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9606016871",
+    "name": "Verkių klinika",
+    "status": null,
+    "facility_type": "Dermatology Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://verkiuklinika.lt/",
+      "phone": "+37052300000",
+      "email": "verkiuklinika@mail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 10:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "allergology_clinical_immunology",
+      "dermatology_dermatovenerology",
+      "general_surgery",
+      "regenerative_medicine",
+      "stem_cell_banking_therapy"
+    ],
+    "notes": "Address: Verkių g. 34, 08221 Vilnius, Lithuania (based on search). Specializes in dermatology, allergology, aesthetic medicine, and regenerative medicine, including PRP and stem cell therapies. Offers procedures such as microneedling, mesotherapy, carboxytherapy, chemical peels (chemosurgery), and likely minor dermatologic surgery. Working hours confirmed from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10292172586",
+    "name": "Pagalba pėdoms",
+    "status": null,
+    "facility_type": "Podology Practice",
+    "location": null,
+    "contact": {
+      "website": "https://pagalbapedoms.lt/",
+      "phone": "+37061427199",
+      "email": "podology.practice@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dermatology_dermatovenerology",
+      "diabetes_care_diabetology",
+      "orthopedics_traumatology"
+    ],
+    "notes": "Address: Pylimo g. 45-3, 01136 Vilnius, Lithuania (based on search). This is a specialized podology practice focused on comprehensive foot and nail care. Services include medical/hygienic pedicure, treatment for ingrown nails (using correction systems, prosthetics), removal/treatment of calluses, cracked heels, warts, fungal infections (onychomycosis), and onychogryphosis. Also provides diabetic foot care (including ulcer management) and fabrication of custom corrective/protective orthotics and insoles. Mapped specialties (Dermatology, Diabetes Care, Orthopedics) reflect related medical fields involved, as 'Podology/Podiatry' is not a distinct option in the provided specialty list.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3597052447",
+    "name": "Sveikatos klinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.sveikatosklinika.lt/",
+      "phone": "+37063342462",
+      "email": "registratura@sveikatosklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "proctology",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Polyclinic located at A. J. Povilaičio g. 18. Offers a broad range of services including Family Medicine, Mental Health services, Rehabilitation, Dentistry, Obstetrics/Gynecology, Surgery/Proctology, Dermatology, Endocrinology, Cardiology (adult & pediatric), Laboratory tests, Neurology (adult & pediatric), Ophthalmology, Orthopedics/Traumatology, ENT, Ultrasound diagnostics, and Pediatric Pulmonology.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3597052447",
+    "name": "Sveikatos klinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.sveikatosklinika.lt/",
+      "phone": "+37063342462",
+      "email": "registratura@sveikatosklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "proctology",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Polyclinic located at A. J. Povilaičio g. 18. Offers a broad range of services including Family Medicine, Mental Health services, Rehabilitation, Dentistry, Obstetrics/Gynecology, Surgery/Proctology, Dermatology, Endocrinology, Cardiology (adult & pediatric), Laboratory tests, Neurology (adult & pediatric), Ophthalmology, Orthopedics/Traumatology, ENT, Ultrasound diagnostics, and Pediatric Pulmonology.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3597052446",
+    "name": "Sveikatos klinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Apolinaro Juozo Povilaitio g. 18, 04338 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.sveikatosklinika.lt/",
+      "phone": "+37063342462",
+      "email": "registratura@sveikatosklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "neurology",
+      "obstetrics_gynecology",
+      "ophthalmology",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "proctology",
+      "psychiatry",
+      "psychology",
+      "pulmonology",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Another OSRM ID associated with 'Sveikatos klinika' at Apolinaro Juozo Povilaitio g. 18 (Karoliniškės area). This address is identical to the one associated with OSRM ID 3597052447. Assuming similar broad polyclinic services based on user instruction and shared location/brand; confirmation of exact services for this specific ID might be needed. This could be a duplicate map entry or represent a distinct part/entrance of the same facility.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10292996090",
+    "name": "Anteja",
+    "status": null,
+    "facility_type": "Medical Clinic / Laboratory",
+    "location": {
+      "address": "Antakalnio g. 45-101, 10308 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.anteja.lt/",
+      "phone": "+37052344487",
+      "email": "pagalba@anteja.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Part of the Anteja laboratory network, this accredited clinic is located at Antakalnio g. 45-101, Vilnius. It offers family medicine consultations, unspecified specialist consultations, extensive laboratory testing, vaccinations, and emphasizes preventive care.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9925556417",
+    "name": "Dermaplius",
+    "status": null,
+    "facility_type": "Dermatology Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://dermaplius.lt/",
+      "phone": "+37061677444",
+      "email": "info@dermaplius.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00; Sat 09:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "dermatology_dermatovenerology"
+    ],
+    "notes": "Address: Antakalnio g. 57, 10207 Vilnius, Lithuania (based on search). Specializes in laser dermatology, aesthetic dermatology, device-based dermatological treatments ('Aparatinė dermatologija'), diagnosis and treatment of skin diseases, Hydrafacial procedures, and cosmetology. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "60566155",
+    "name": "Sugihara klinika",
+    "status": null,
+    "facility_type": "Medical Spa",
+    "location": null,
+    "contact": {
+      "website": "https://sugihara.lt",
+      "phone": "+37052705710",
+      "email": "info@sugihara.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-20:00; Sat 09:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "dermatology_dermatovenerology",
+      "hydrotherapy",
+      "massage_therapy",
+      "obstetrics_gynecology",
+      "plastic_reconstructive_surgery"
+    ],
+    "notes": "Address: Č. Sugiharos g. 3, 08122 Vilnius, Lithuania (based on search). Offers a blend of medical, aesthetic, spa, and beauty services. Includes plastic/aesthetic surgery, hair transplantation, dermatology (large laser center, trichology, UVB therapy for psoriasis), aesthetic/laser gynecology, Eastern medicine (acupuncture/acupressure), cosmetology, various facial/body SPA treatments (massage, hydrotherapy, mud therapy), slimming programs, and full hairdressing/beauty salon services (manicure, pedicure, etc.). Also has cosmetic retail.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9727070619",
+    "name": "Lirema Akių Klinika",
+    "status": null,
+    "facility_type": "Ophthalmology Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://lirema.lt/",
+      "phone": "+37061595550",
+      "email": "lirema@lirema.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-17:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "ophthalmology"
+    ],
+    "notes": "Part of the Lirema network of eye clinics. This OSRM ID likely corresponds to the main Vilnius location at Steelnio g. 3, 08105. Specializes in ophthalmology, with listed core services being laser eye correction and cataract surgery. Working hours are for the Vilnius branch, obtained from the website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11942883497",
+    "name": "Affidea - Antakalnio diagnostikos centras",
+    "status": null,
+    "facility_type": "Medical Imaging Center",
+    "location": {
+      "address": "Antakalnio g. 57, 10207 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://affidea.lt/",
+      "phone": "+37052441188",
+      "email": "info@affidea.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-21:00; Sat 08:00-14:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "radiology_medical_imaging"
+    ],
+    "notes": "Affidea diagnostic imaging center located at Antakalnio g. 57, Vilnius. Specializes solely in instrumental/imaging examinations, offering MRI (including specific 'Icobrain dm' analysis), CT scans (including low-dose options), and X-ray studies. Uses central Affidea contact details. Working hours obtained from the Affidea website for this specific location.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4414794205",
+    "name": "Ąžuolyno klinika",
+    "status": null,
+    "facility_type": "Mental Health Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://azuolynoklinika.lt/",
+      "phone": "+37052460827",
+      "email": "info@azuolynoklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "addiction_medicine_treatment",
+      "psychiatry",
+      "psychology",
+      "psychotherapy"
+    ],
+    "notes": "Address: Ąžuolyno g. 5, 07196 Vilnius, Lithuania (based on search). Specializes in treating mental health disorders, including depression, mood disorders, anxiety, insomnia, schizophrenic spectrum disorders, mental/behavioral issues due to substance use (alcohol, drugs, medications), adaptation disorders, personality/behavioral disorders, somatoform disorders, and eating disorders. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "28138545",
+    "name": "Antakalnio Poliklinika - Psichikos sveikatos centras",
+    "status": null,
+    "facility_type": "Mental Health Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.antakpol.lt/skyriai-psichikos-sveikatos-centras/",
+      "phone": "+37052347486",
+      "email": "info@antakpol.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00; Sat 08:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "child_adolescent_psychiatry",
+      "group_therapy",
+      "psychiatry",
+      "psychology",
+      "psychosocial_rehabilitation",
+      "social_work"
+    ],
+    "notes": "This is the Mental Health Center operating within Antakalnio Poliklinika. It is likely located at the main polyclinic address: Antakalnio g. 59, 10207 Vilnius, Lithuania. Provides services including psychiatric consultations (adult, child/adolescent), psychological services, social work, and potentially day patient programs involving group therapy or psychosocial rehabilitation. Working hours listed are for the main polyclinic. Uses the central email but has a specific phone number listed.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9729795417",
+    "name": "AT Klinika",
+    "status": null,
+    "facility_type": "Dental Clinic",
+    "location": null,
+    "contact": {
+      "website": "http://www.atklinika.lt/",
+      "phone": "+37060824611",
+      "email": "atklinika@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 09:00-19:00; Fri 09:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry"
+    ],
+    "notes": "Address: Antakalnio g. 98, 10202 Vilnius, Lithuania (based on search). Dental clinic focusing on aesthetic dentistry and oral hygiene. Services include consultations regarding malocclusion (alternatives to braces), professional oral hygiene, teeth whitening, Edelweiss veneers, aesthetic fillings (bonding), and a specific 'Fotosun' procedure for oral disinfection.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "6738948259",
+    "name": "Aktyvus Judėjimas",
+    "status": null,
+    "facility_type": "Physiotherapy Clinic",
+    "location": {
+      "address": "J. Balčikonio g. 3, 08247 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.aktyvusjudejimas.lt/",
+      "phone": "+37064700709",
+      "email": "reg@aktyvusjudejimas.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "group_therapy",
+      "massage_therapy",
+      "neurology",
+      "obstetrics_gynecology",
+      "orthopedics_traumatology",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "sports_medicine"
+    ],
+    "notes": "Specializes in kinesitherapy/physiotherapy, osteopathy, and rehabilitation for adults and children. Treats conditions like back/joint pain, muscle/ligament/tendon injuries, jaw disorders, headaches, and provides post-traumatic/post-operative care. Offers individual therapy, group wellness sessions, and massage. Kinesiotherapists have specializations including sports physiotherapy, infant/child physiotherapy, and pregnancy physiotherapy. Various therapeutic techniques mentioned (e.g., Vojta, Maitland, Mulligan, Neurac, Schroth, DNS). Located at J. Balčikonio g. 3, Vilnius.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10792704032",
+    "name": "Anteja",
+    "status": null,
+    "facility_type": "Medical Clinic / Laboratory",
+    "location": {
+      "address": "Kareivių g. 9, 09109 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.anteja.lt/klinikos/kareiviu-g-9",
+      "phone": "+37070055511",
+      "email": "pagalba@anteja.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00; Sat 08:00-13:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Clinic and laboratory branch of the Anteja network located at Kareivių g. 9, Vilnius. Offers family medicine consultations, unspecified specialist consultations, extensive laboratory testing (modern diagnostics), and vaccinations. Working hours obtained from the specific branch webpage.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3121957629",
+    "name": "Vaisingumo Centras",
+    "status": null,
+    "facility_type": "Fertility Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.vaisingumocentras.lt/",
+      "phone": "+37068780605",
+      "email": "info@vaisingumocentras.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 08:00-18:00; Fri 08:00-17:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "anesthesiology_intensive_care_pain_management",
+      "endocrinology",
+      "fertility_treatment_reproductive_medicine",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "radiology_medical_imaging",
+      "urology"
+    ],
+    "notes": "Address: Laisvės pr. 64A, 05263 Vilnius, Lithuania (based on search). A specialized clinic dedicated to the diagnosis and treatment of infertility. Offers services such as initial consultations, hormone testing, diagnostic procedures (laparoscopy, HyFoSy tubal patency test, hysteroscopy, ultrasound), semen analysis (spermogram), and various assisted reproductive technologies including IUI, IVF, ICSI, PICSI, and TESA. Anesthesiology support is likely required for some procedures listed. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11891131223",
+    "name": "Affidea Klinika Outlet",
+    "status": null,
+    "facility_type": "Sports Medicine / Rehabilitation Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://affidea.lt/lt/klinikos/vilniaus-affidea-klinika-outlet/",
+      "phone": "+37052441188",
+      "email": "info@affidea.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-23:00; Sat-Sun 08:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dietetics_nutrition",
+      "laboratory_medicine_clinical_pathology",
+      "massage_therapy",
+      "orthopedics_traumatology",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "sports_medicine",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Affidea clinic located within the 'Vilnius Outlet' shopping center (likely V. Pociūno g. 8, 06214 Vilnius - based on search). Focuses strongly on Sports Medicine (LTeamLAB), Physical Medicine & Rehabilitation, and Orthopedics/Traumatology (adult & pediatric), staffed accordingly with specialists, kinesiotherapists, and masseurs. Also provides instrumental/laboratory diagnostics, vaccinations, and lifestyle consultations. Uses central Affidea contact details. Note the extended operating hours.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "9550072329",
+    "name": "AND Klinika",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.andklinika.lt/",
+      "phone": "+37065019911",
+      "email": "info@andklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:30-20:00; Sat 09:00-16:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "radiology_medical_imaging",
+      "speech_therapy",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Perkūnkiemio g. 13-91, 12114 Vilnius, Lithuania (based on search). Offers family medicine, dentistry, and specialist consultations including Cardiology (adult & pediatric), Ultrasound (echoscopy), Gynecology, Pediatrics, and Speech Therapy. Also provides laboratory tests and vaccinations. Working hours updated based on user confirmation.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4133384016",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": {
+      "address": "Rygos g. 1, 05259 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/klinikos/5/rygos-g.-1-vilnius",
+      "phone": "+37052390555",
+      "email": "vilnius.rygos@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "InMedica clinic branch located at Rygos g. 1, Vilnius. Offers Dentistry, Family Medicine (which includes general consultations, disease management, pregnancy monitoring, child development tracking, preventive advice, and provision of necessary medical aid during operating hours), extensive Laboratory Testing (utilizing the central InMedica lab), and Vaccinations (including travel, flu, etc.). Specialist consultations are available via referral. Uses a branch-specific email.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4052837500",
+    "name": "Santaura",
+    "status": null,
+    "facility_type": "Specialized Clinic",
+    "location": {
+      "address": "Taikos g. 2, 05246 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.santaura.lt/",
+      "phone": "+37060882369",
+      "email": "santaura@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-18:00 (Appointments outside hours by arrangement possible)",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dermatology_dermatovenerology",
+      "infectious_diseases",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "urology"
+    ],
+    "notes": "Private clinic located at Taikos g. 2, Vilnius (Justiniškės area, Rygos-Taikos intersection). Specializes in Dermatovenerology, Gynecology, and Urology, with significant experience in diagnosing and treating sexually transmitted infections (Chlamydia, Ureaplasma, Mycoplasma mentioned). Offers rapid laboratory tests with results within 1 hour. Emphasizes patient confidentiality and anonymity. Licensed clinic and laboratory. Registration phone: +37052705457.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "6055193938",
+    "name": "Baltupių Šeimos Medicinos Centras",
+    "status": null,
+    "facility_type": "Family Medicine Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.baltupiusmc.lt/",
+      "phone": "+37052772337",
+      "email": "registratura@baltupiusmc.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 07:00-19:00; Fri 07:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "neonatology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Didlaukio g. 1, 08303 Vilnius, Lithuania (based on search). Family medicine center with specific services for pregnant women, newborns, and children provided by specialized doctors. Also offers laboratory tests (own modern lab), dental prosthetics (state funding available for eligible groups, implies general dentistry offered), and vaccinations (both state-funded schedule and private options).",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12375726212",
+    "name": "Z Klinika",
+    "status": null,
+    "facility_type": "Specialized Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.z-klinika.lt/",
+      "phone": "+37052101771",
+      "email": "info@z-klinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00; Sat 09:00-14:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "general_surgery",
+      "proctology"
+    ],
+    "notes": "Address: Žygio g. 90, 08240 Vilnius, Lithuania (based on search). A specialized clinic focusing primarily on Proctology (Coloproctology specialists mentioned) and Dentistry. Information is also available in Russian. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10268270314",
+    "name": "Kūno Terapija",
+    "status": null,
+    "facility_type": "Alternative / Manual Therapy Center",
+    "location": null,
+    "contact": {
+      "website": "https://kuno-terapija.lt/",
+      "phone": "+37060385995",
+      "email": "info@kuno-terapija.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "group_therapy",
+      "massage_therapy",
+      "orthopedics_traumatology",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "psychotherapy"
+    ],
+    "notes": "Address: Vytenio g. 4, 03113 Vilnius, Lithuania (based on search). Center focused on body-oriented therapies. Offers individual sessions including Applied Clinical Kinesiology, Manual Therapy, Kinesitherapy, Foot Reflexology, Craniosacral Therapy, Osteopathy, Biorelease Massage, and Biodynamic Body Psychotherapy. Also provides group exercises like Deep Muscle Exercise, Pilates, and Back Exercise. Offers training in Osteopathy and Body Psychotherapy. Mapped specialties cover the recognized medical/therapeutic fields offered; several specific alternative/complementary methods listed are not in the standard specialty list.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10268270311",
+    "name": "Familia Clinica",
+    "status": null,
+    "facility_type": "Specialized Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://familiaclinica.lt/",
+      "phone": "+37069068935",
+      "email": "info@familiaclinica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 09:00-20:00; Sat 10:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "allergology_clinical_immunology",
+      "dermatology_dermatovenerology",
+      "ophthalmology",
+      "otorhinolaryngology_ent",
+      "pediatrics_child_health"
+    ],
+    "notes": "Address: Vytenio g. 4, 03113 Vilnius, Lithuania (based on search, appears to be in the same building as 'Kūno Terapija'). Specialized clinic focused on specific fields: ENT (adult & pediatric, including hearing tests/aids), Ophthalmology (adult & pediatric, vision diagnostics), Dermatology (general & aesthetic), and Allergology/Immunology.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10242582948",
+    "name": "Gerovės klinika",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://gerovesklinika.lt/",
+      "phone": "+37052000333",
+      "email": "info@gerovesklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00; Sat 09:00-15:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "family_medicine",
+      "general_surgery",
+      "internal_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "nursing_care",
+      "pediatrics_child_health",
+      "radiology_medical_imaging",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Kęstučio g. 35, 08121 Vilnius, Lithuania (based on search). Polyclinic offering services for both adults and children. Allows registration with family doctors. Provides day patient services ('Dienos stacionaras'), day surgery ('Dienos Operacijos'), IV infusions, diagnostic tests (laboratory and likely imaging), and vaccinations. Specific specialist consultations are implied but not detailed beyond the scope of services offered.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3997805853",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "J. Baltrušaičio g. 3, 06120 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/klinikos/5/j.-baltrusaicio-g.-3-vilnius",
+      "phone": "+37052430432",
+      "email": "pasilaiciai@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "neurology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "InMedica clinic branch located at J. Baltrušaičio g. 3, Vilnius (Pašilaičiai area). Provides comprehensive services including Family Medicine (incorporating pregnancy monitoring, child development tracking, preventive care, and necessary medical aid during working hours), Dentistry, Vaccinations, Laboratory Tests, and consultations with various specialists (OB/GYN, Dermatovenerology, Surgery, Endocrinology, Gastroenterology, Cardiology, Neurology explicitly mentioned). Uses a branch-specific email.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "2274117096",
+    "name": "Pilaitės šeimos sveikatos namai GYDA",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.gyda.lt/",
+      "phone": "+37060835000",
+      "email": "registratura@gyda.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry",
+      "family_medicine",
+      "home_care_community_nursing",
+      "internal_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "massage_therapy",
+      "neonatology",
+      "obstetrics_gynecology",
+      "oral_maxillofacial_surgery",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "physiotherapy_kinesitherapy",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Tolminkiemio g. 2D, 06291 Vilnius, Lithuania (based on search). Polyclinic in Pilaitė offering state-funded (for registered/insured patients) and paid services. Provides Family Medicine (adults & children), Pregnancy & Newborn care, comprehensive Dentistry (adult & child care, prosthetics, dental X-ray, oral surgery), Obstetrics & Gynecology, Laboratory tests, Ultrasound (echoscopy), Physiotherapy, Therapeutic Massage, Vaccinations, Preventive programs, and Home visits. Reflexology is also listed among paid services.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4492342443",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": {
+      "address": "Vydūno g. 20, 06209 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/klinikos/5/vyduno-g.-20-vilnius",
+      "phone": "+37052430226",
+      "email": "vilnius.vyduno20@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:30-19:30",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "InMedica clinic branch located at Vydūno g. 20, Vilnius. Provides Family Medicine (likely including pregnancy monitoring and child development tracking based on general InMedica scope), Dentistry, Laboratory Tests, Vaccinations (various types listed including travel, flu, TBE, HPV, etc.), and Preventive Programs. Uses a branch-specific email.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10797265355",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Saulėtekio al. 36-201, 10224 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/klinikos/5/sauletekio-al.-36-201-vilnius",
+      "phone": "+37052724773",
+      "email": "sauletekis@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "laboratory_medicine_clinical_pathology",
+      "neurology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "InMedica clinic branch located at Saulėtekio al. 36-201, Vilnius (Saulėtekis area). Offers Family Medicine (likely including pregnancy/child monitoring, preventive care, and necessary medical aid during working hours), Dentistry, Vaccinations, Laboratory Tests, and consultations with specialists such as OB/GYN, Dermatovenerology, Surgery, Endocrinology, Gastroenterology, Cardiology, and Neurology. Uses a branch-specific email. Working hours obtained from the branch webpage.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4552480351",
+    "name": "Reabilitacijos centras Gilės",
+    "status": null,
+    "facility_type": "Rehabilitation Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.giles.lt/",
+      "phone": "+37064042622",
+      "email": "info@giles.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-20:00; Sat 08:00-14:00",
+      "administration": null,
+      "departments": [
+        {
+          "name": "Procedural Cabinet / Laboratory",
+          "hours": "Mon-Fri 08:00-16:00"
+        }
+      ]
+    },
+    "specialties_en": [
+      "dietetics_nutrition",
+      "laboratory_medicine_clinical_pathology",
+      "massage_therapy",
+      "nursing_care",
+      "pediatrics_child_health",
+      "physical_medicine_rehabilitation"
+    ],
+    "notes": "Address: M. Sleževičiaus g. 7, 06326 Vilnius, Lithuania (based on search). Rehabilitation center providing Physical Medicine & Rehabilitation (FMR) doctor consultations, Dietitian consultations, various Massage therapies (lymphatic drainage, Kobido facial, vacuum, baby/child massage), and services via a Procedural Cabinet (likely laboratory tests, minor procedures - specific hours Mon-Fri 8:00-16:00). General clinic working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "12184503672",
+    "name": "Odos klinika",
+    "status": null,
+    "facility_type": "Dermatology Clinic",
+    "location": null,
+    "contact": {
+      "website": "http://www.odosklinika.net/",
+      "phone": "+37061604900",
+      "email": null
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": null,
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "dermatology_dermatovenerology",
+      "general_surgery",
+      "neurology",
+      "oncology",
+      "plastic_reconstructive_surgery"
+    ],
+    "notes": "Address: M. Valančiaus g. 1A, 03105 Vilnius, Lithuania (based on search). Dermatology clinic specializing in the diagnosis and treatment of skin conditions, with a strong focus on skin lesion diagnostics (dermoscopy, photodynamic diagnostics), early detection and monitoring of skin cancer/melanoma (including mole mapping), aesthetic injections (for wrinkles, hyperhidrosis, scars), basic skin surgery, and laser surgery for removing moles and benign skin lesions. No email or working hours found on website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "218129362",
+    "name": "Karoliniškių poliklinika - Pilaitės Šeimos Medicinos Centras",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Karaliaučiaus g. 11, 06242 Vilnius, Lithuania"
+    },
+    "contact": {
+      "website": "https://www.karpol.lt/pilaites-spc-kontaktine-informacija/",
+      "phone": "+37052168911",
+      "email": "pilaitespcregistratura@karpol.lt"
+    },
+    "has_emergency_room": false,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dermatology_dermatovenerology",
+      "emergency_medicine",
+      "family_medicine",
+      "obstetrics_gynecology",
+      "perinatology_high_risk_pregnancy",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Pilaitė Family Medicine Center branch of Karoliniškių Poliklinika, located at Karaliaučiaus g. 11. Provides necessary/urgent medical aid ('Būtinoji pagalba'), primary care (family medicine), secondary ambulatory care (Dermatovenerology likely accessible, others via referral), preventive services, vaccinations, and services for expectant mothers. Remote consultations are available. This branch is closed on Saturdays; patients requiring Saturday service should go to the main clinic at L. Asanavičiūtės g. Uses a branch-specific email. Working hours confirmed from branch webpage.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "261196858",
+    "name": "VitkusClinic",
+    "status": null,
+    "facility_type": "Plastic Surgery Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://vitkusclinic.com/",
+      "phone": "+37069811992",
+      "email": "info@vitkusclinic.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "aesthetic_laser_dermatology",
+      "anesthesiology_intensive_care_pain_management",
+      "angiology_vascular_medicine",
+      "dermatology_dermatovenerology",
+      "general_surgery",
+      "mammology_breast_health",
+      "massage_therapy",
+      "physiotherapy_kinesitherapy",
+      "plastic_reconstructive_surgery",
+      "radiology_medical_imaging",
+      "vascular_surgery"
+    ],
+    "notes": "Address: Šilo g. 17, 10317 Vilnius, Lithuania (based on search). Specializes in plastic and reconstructive surgery (face, breast, body contouring), aesthetic dermatology (laser treatments, injections, lesion removal, hair care), vascular surgery. Also offers massages, INDIBA therapy (radiofrequency), and ultrasound examinations. Anesthesiology support is likely required for the extensive surgical procedures offered. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "3317421752",
+    "name": "Euromed",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://euromed.lt/",
+      "phone": "+37052151333",
+      "email": "registratura@euromed.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00; Sat-Sun by appointment",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "family_medicine",
+      "internal_medicine",
+      "obstetrics_gynecology",
+      "physical_medicine_rehabilitation",
+      "physiotherapy_kinesitherapy",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Address: Vytenio g. 20 / Šv. Stepono g. 27, 03229 Vilnius, Lithuania (based on search). Provides services including Obstetrics/Gynecology, Ultrasound diagnostics, general doctor consultations (implying Family/Internal Medicine), Rehabilitation (Physiotherapy), and Dentistry. Weekend availability is by prior appointment only.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11892997448",
+    "name": "Affidea - Santariškių diagnostikos centras",
+    "status": null,
+    "facility_type": "Medical Imaging Center",
+    "location": null,
+    "contact": {
+      "website": "https://affidea.lt/lt/klinikos/vilniaus-santariskiu/",
+      "phone": "+37052441188",
+      "email": "info@affidea.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-22:00; Sat-Sun 08:00-20:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "radiology_medical_imaging",
+      "urology"
+    ],
+    "notes": "Affidea diagnostic imaging center located within the Vilnius Santariškės medical campus area (likely Santariškių g. 2, 08661 Vilnius). Specializes in instrumental/imaging tests, specifically offering CT (Computed Tomography) and MRI (Magnetic Resonance Imaging) scans. Also equipped for MRI-guided prostate biopsies (related to Urology). Uses central Affidea contact details. Working hours (7 days/week with extended hours) obtained from the specific branch webpage.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "4424156191",
+    "name": "Grigiškių sveikatos priežiūros centras",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.gspc.lt/",
+      "phone": "+37052432103",
+      "email": "gspc@gspc.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-20:00; Sat 08:00-12:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "family_medicine",
+      "gastroenterology",
+      "general_surgery",
+      "home_care_community_nursing",
+      "internal_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "neonatology",
+      "neurology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "oncology",
+      "pediatric_dentistry",
+      "pediatrics_child_health",
+      "perinatology_high_risk_pregnancy",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "urology",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Šviesos g. 1, Grigiškės 27101, Vilnius City Municipality, Lithuania (based on search). Polyclinic in Grigiškės primarily offering state-funded (PSDF) primary and secondary healthcare services. Level I services include Family Medicine, Internal Medicine, Pediatrics (incl. infant care), OB/GYN (incl. pregnancy care), General Surgery, and Dentistry (incl. pediatric sealants). Level II services include Neurology and Radiology. Also offers basic laboratory tests, home nursing visits, remote consultations, and participates extensively in national preventive screening programs (Cervical, Breast, Cardiovascular risk, Prostate, Colorectal cancer).",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "1120165960",
+    "name": "Šviesi Klinika",
+    "status": null,
+    "facility_type": "Dental Clinic / Physiotherapy Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://www.sviesiklinika.lt/",
+      "phone": "+37060551111",
+      "email": "info@sviesiklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry",
+      "group_therapy",
+      "massage_therapy",
+      "oral_maxillofacial_surgery",
+      "pediatric_dentistry",
+      "physiotherapy_kinesitherapy",
+      "radiology_medical_imaging"
+    ],
+    "notes": "Address: Šviesos g. 1, 27101 Vilnius, Lithuania (Grigiškės area - based on search, shares address with Grigiškių Health Care Center). Primarily offers comprehensive dental services including Oral Surgery (implants, extractions, etc.), Prosthetics, Fillings, Endodontics (root canals), Pediatric Dentistry, Oral Hygiene, Whitening, and Dental X-rays (3D, panoramic, dental). Also provides Kinesitherapy/Physiotherapy (individual & group sessions, therapeutic massage) and Cosmetology services. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "464926284",
+    "name": "Balsių šeimos medicinos centras",
+    "status": null,
+    "facility_type": "Family Medicine Center",
+    "location": null,
+    "contact": {
+      "website": "https://www.balsiusmc.lt/",
+      "phone": "+37052318643",
+      "email": "info@balsiusmc.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Thu 07:00-19:00; Fri 07:00-18:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dental_prosthetics",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "neonatology",
+      "nursing_care",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Visalaukio g. 1, 10108 Vilnius, Lithuania (based on search). Family medicine center located in Balsiai. Provides Family Medicine and Nursing services, Dentistry (including prosthetics), Laboratory tests, care for Pregnant women and Newborns, Preventive programs/prophylaxis, and Vaccinations. Also lists availability of Specialist Doctor consultations (specific types not listed in input). Email obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "11982717170",
+    "name": "Pagalba mažyliui",
+    "status": null,
+    "facility_type": "Pediatric Clinic",
+    "location": null,
+    "contact": {
+      "website": "http://www.pagalbamazyliui.lt/",
+      "phone": "+37052506010",
+      "email": "su.pagalbamazyliui@gmail.com"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00; Sat 09:00-14:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "allergology_clinical_immunology",
+      "cardiac_surgery",
+      "cardiology",
+      "dermatology_dermatovenerology",
+      "endocrinology",
+      "gastroenterology",
+      "general_surgery",
+      "home_care_community_nursing",
+      "laboratory_medicine_clinical_pathology",
+      "massage_therapy",
+      "neurology",
+      "nursing_care",
+      "ophthalmology",
+      "orthopedics_traumatology",
+      "otorhinolaryngology_ent",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "pulmonology",
+      "radiology_medical_imaging",
+      "urology",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Vytenio g. 22, 03229 Vilnius, Lithuania (based on search). Primarily a pediatric clinic offering general pediatrician consultations (clinic/home) and a wide range of pediatric specialist consultations (Cardiology, Neurology, Ortho/Trauma, Ophthalmology, ENT, Endocrinology, Pulmonology, Allergology, Gastroenterology, Surgery, Urology, Cardiac Surgery). Also provides limited services for adults (Dermatology, ENT, Ophthalmology consultations; hearing screening for all ages). Offers ultrasound, nursing services (clinic/home), clinical tests (clinic/home), vaccinations (clinic/home), massage (clinic/home), and preventive health checks for school/kindergarten. Hosts 'Parents' Academy' educational events. Working hours obtained from website.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "10755270690",
+    "name": "InMedica",
+    "status": null,
+    "facility_type": "Polyclinic",
+    "location": {
+      "address": "Klevų al. 32, LT-25105 Lentvaris, Lithuania"
+    },
+    "contact": {
+      "website": "https://inmedica.lt/klinikos/5/klevu-al.-32-lentvaris",
+      "phone": "+37052828085",
+      "email": "lentvaris@inmedica.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 08:00-19:00",
+      "administration": null,
+      "departments": []
+    },
+    "specialties_en": [
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "pediatrics_child_health",
+      "preventive_medicine_health_screening",
+      "psychiatry",
+      "psychology"
+    ],
+    "notes": "InMedica clinic branch located at Klevų al. 32 in Lentvaris (near Vilnius). Provides services through dedicated centers: Family Medicine (likely including pediatric/pregnancy care & prevention), Dentistry, Mental Health (Psychiatry/Psychology), and Laboratory Testing. Also mentions availability of unspecified Specialist Doctor consultations. The provided text details recent (Jan 2025) regulation changes regarding after-hours primary care, directing patients to hospital emergency departments for urgent needs outside clinic hours. Uses a branch-specific email.",
+    "user_requested_update": true
+  },
+  {
+    "osrm_id": "403517035",
+    "name": "Riešės klinika",
+    "status": null,
+    "facility_type": "Medical Clinic",
+    "location": null,
+    "contact": {
+      "website": "https://riesesklinika.lt/",
+      "phone": "+37065766914",
+      "email": "info@riesesklinika.lt"
+    },
+    "has_emergency_room": null,
+    "working_hours": {
+      "general": "Mon-Fri 07:00-19:00",
+      "administration": "Mon-Fri 08:00-16:00 (Phone Registration Hours)",
+      "departments": []
+    },
+    "specialties_en": [
+      "cardiology",
+      "dentistry",
+      "family_medicine",
+      "laboratory_medicine_clinical_pathology",
+      "obstetrics_gynecology",
+      "preventive_medicine_health_screening",
+      "radiology_medical_imaging",
+      "vaccinations_immunoprophylaxis"
+    ],
+    "notes": "Address: Beržų g. 2, Didžioji Riešė 14266, Vilniaus r. sav., Lithuania (based on search). Provides Family Medicine (free for registered patients), Dentistry, Specialist Consultations (Cardiology, Gynecology listed on website), Ultrasound (Echoscopy), Laboratory Tests, Vaccinations, and Preventive Programs. Note: State-funded Mental Health services are referred to Vilnius District Central Polyclinic (Laisvės pr. 79).",
+    "user_requested_update": true
+  }
 ]
