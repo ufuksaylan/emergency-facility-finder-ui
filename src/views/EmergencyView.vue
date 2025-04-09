@@ -214,4 +214,62 @@ watch(
   width: 100%;
   height: 100%;
 }
+
+/* Add these rules inside your <style scoped> block */
+
+@media (max-width: 600px) {
+  /* Apply styles for screens 600px wide or less */
+
+  .selected-er-info {
+    /* Dock to bottom edge instead of centering */
+    left: 10px; /* Space from left edge */
+    right: 10px; /* Space from right edge */
+    bottom: 10px; /* Space from bottom edge */
+    transform: none; /* Remove the horizontal centering */
+    width: auto; /* Let left/right define width */
+    max-width: none; /* Not needed when using left/right */
+
+    /* Reduce padding for smaller screens */
+    padding: 10px 15px;
+
+    /* Ensure padding is included in width calculation */
+    box-sizing: border-box;
+
+    /* Optional: Align text left might look better when docked */
+    text-align: left;
+  }
+
+  .selected-er-info h3 {
+    /* Reduce heading font size */
+    font-size: 1em; /* Adjust as needed (e.g., 0.95em) */
+    margin-bottom: 4px; /* Slightly adjust spacing */
+  }
+
+  .selected-er-info p {
+    /* Reduce paragraph font size */
+    font-size: 0.85em; /* Adjust as needed (e.g., 0.8em, 13px) */
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .selected-er-info .route-summary {
+    /* Ensure route summary also uses smaller base size if needed */
+    font-size: 0.85em; /* Match paragraph size or make slightly larger */
+    margin-top: 6px; /* Adjust spacing */
+  }
+
+  /* If you have the alert inside, maybe reduce its font too */
+  .selected-er-info .el-alert {
+    padding: 5px 8px; /* Make alert padding smaller */
+    font-size: 0.8em; /* Make alert text smaller */
+  }
+  .selected-er-info .el-alert__title {
+    font-size: 1em; /* Alert title relative to alert font-size */
+  }
+  .selected-er-info .el-alert__icon {
+    /* Adjust icon size if needed, might require targeting deeper */
+    width: 14px;
+    font-size: 14px;
+  }
+} /* End of media query */
 </style>
