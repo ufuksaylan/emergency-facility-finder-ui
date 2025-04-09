@@ -60,3 +60,42 @@ export const getAdminSpecialties = () => {
   // Assuming the backend correctly returns specialties from this endpoint.
   return apiClient.get('/admin/specialties')
 }
+
+// --- Complaints (NEW) ---
+
+/**
+ * Fetches all complaints for the admin list.
+ * @returns {Promise} Axios promise resolving with an array of complaints.
+ */
+export const getAdminComplaints = () => {
+  return apiClient.get('/admin/complaints')
+}
+
+/**
+ * Fetches a single complaint by its ID.
+ * @param {string|number} id - The ID of the complaint.
+ * @returns {Promise} Axios promise resolving with the complaint data.
+ */
+export const getAdminComplaint = (id) => {
+  return apiClient.get(`/admin/complaints/${id}`)
+}
+
+/**
+ * Updates an existing complaint (status and resolution notes).
+ * @param {string|number} id - The ID of the complaint to update.
+ * @param {object} complaintData - The update data { status, resolution_notes }.
+ * @returns {Promise} Axios promise resolving with the updated complaint data.
+ */
+export const updateAdminComplaint = (id, complaintData) => {
+  // Backend expects { complaint: { status: '...', resolution_notes: '...' } }
+  return apiClient.patch(`/admin/complaints/${id}`, { complaint: complaintData })
+}
+
+/**
+ * Deletes a complaint by its ID.
+ * @param {string|number} id - The ID of the complaint to delete.
+ * @returns {Promise} Axios promise resolving with no content on success.
+ */
+export const deleteAdminComplaint = (id) => {
+  return apiClient.delete(`/admin/complaints/${id}`)
+}

@@ -13,6 +13,8 @@ import AdminLoginView from '../views/AdminLoginView.vue'
 import AdminDashboardView from '../views/AdminDashboardView.vue' // Make sure this component exists
 import AdminFacilitiesListView from '../views/admin/AdminFacilitiesListView.vue'
 import AdminFacilityFormView from '../views/admin/AdminFacilityFormView.vue'
+import AdminComplaintDetailView from '@/views/AdminComplaintDetailView.vue'
+import AdminComplaintsListView from '@/views/AdminComplaintsListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,6 +80,17 @@ const router = createRouter({
           component: AdminFacilityFormView, // Uses the form hosting view
           props: true, // Allows component to receive :osm_id as prop (though useRoute is also used)
           // meta: { requiresAuth: true } // Inherits from parent
+        },
+        {
+          path: 'complaints', // Resolves to /admin/complaints
+          name: 'adminComplaintsList',
+          component: AdminComplaintsListView,
+        },
+        {
+          path: 'complaints/:id', // Resolves to /admin/complaints/123
+          name: 'adminComplaintDetail',
+          component: AdminComplaintDetailView,
+          props: true, // Pass route param 'id' as a prop
         },
         // Add other admin child routes here (e.g., specialties management)
       ],

@@ -137,15 +137,17 @@
             >
               <div class="item-content">
                 <div class="item-details">
-                  <strong class="facility-name">{{ facility.name || 'Unnamed Facility' }}</strong>
-                  <el-tag
-                    v-if="facility.has_emergency"
-                    type="danger"
-                    size="small"
-                    effect="light"
-                    class="emergency-tag"
-                    >ER</el-tag
-                  >
+                  <div>
+                    <strong class="facility-name">{{ facility.name || 'Unnamed Facility' }}</strong>
+                    <el-tag
+                      v-if="facility.has_emergency"
+                      type="danger"
+                      size="small"
+                      effect="light"
+                      class="emergency-tag"
+                      >ER</el-tag
+                    >
+                  </div>
 
                   <div class="facility-info">
                     <span class="info-item address-info">
@@ -213,6 +215,19 @@
                       +{{ facility.specialties.length - 5 }} more
                     </el-tag>
                   </div>
+
+                  <div class="report-issue-container">
+                    <el-button
+                      type="warning"
+                      link
+                      size="small"
+                      @click.stop="handleReportIssueClick(facility)"
+                      class="report-button"
+                      :icon="WarningIcon"
+                    >
+                      Report Issue
+                    </el-button>
+                  </div>
                 </div>
 
                 <div class="item-actions">
@@ -232,6 +247,51 @@
         </div>
       </div>
     </el-main>
+
+    <el-dialog
+      v-model="reportDialogVisible"
+      :title="`Report Issue for: ${reportingFacility?.name || 'Facility'}`"
+      width="500px"
+      :before-close="cancelReport"
+      append-to-body
+      draggable
+      destroy-on-close
+    >
+      <el-alert
+        v-if="reportError"
+        :title="reportError"
+        type="error"
+        show-icon
+        :closable="false"
+        style="margin-bottom: 15px"
+      />
+      <el-form @submit.prevent="submitReport" v-loading="reportLoading">
+        <el-form-item label="Issue Description" required :error="descriptionError">
+          <el-input
+            v-model="complaintDescription"
+            type="textarea"
+            :rows="4"
+            placeholder="Please describe the incorrect or missing information..."
+            maxlength="500"
+            show-word-limit
+            aria-label="Issue description"
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="cancelReport" :disabled="reportLoading">Cancel</el-button>
+          <el-button
+            type="primary"
+            @click="submitReport"
+            :loading="reportLoading"
+            :disabled="!complaintDescription.trim()"
+          >
+            Submit Report
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
   </el-container>
 </template>
 
@@ -241,9 +301,12 @@ import { useRouter } from 'vue-router'
 import { debounce } from 'lodash-es'
 import { useLocationStore } from '@/stores/location'
 import { useDestinationStore } from '@/stores/destinationStore'
-// Corrected import paths assumed based on project structure
+// API Functions
 import { findFacilities } from '@/api/facilities'
-import { findSpecialties } from '@/api/specialties' // Import the new API function
+import { findSpecialties } from '@/api/specialties'
+import { submitComplaint } from '@/api/complaints' // <-- Import complaint API function
+
+// Import Element Plus components
 import {
   ElContainer,
   ElMain,
@@ -254,19 +317,25 @@ import {
   ElAlert,
   ElTag,
   ElIcon,
-  ElButton, // Import ElButton explicitly
+  ElButton,
+  // --- Dialog Components ---
+  ElDialog,
+  ElForm,
+  ElFormItem,
+  ElMessage, // <-- For feedback messages
 } from 'element-plus'
+// Import Element Plus Icons
 import {
   Search as SearchIcon,
   Loading as LoadingIcon,
-  Warning as WarningIcon,
+  Warning as WarningIcon, // Used for alerts AND report button icon
   InfoFilled as InfoIcon,
   Location as LocationIcon, // For address
   OfficeBuilding as OfficeBuildingIcon, // For type
   Link as LinkIcon, // For website
   Phone as PhoneIcon, // For phone
   Message as MessageIcon, // For email
-  Position as PositionIcon, // Add icon for Directions button
+  Position as PositionIcon, // For Directions button
 } from '@element-plus/icons-vue'
 
 // --- Router & Stores ---
@@ -286,8 +355,16 @@ const allSpecialties = ref([]) // Holds the fetched specialties {id, name, label
 // --- Filter State ---
 const nameQuery = ref('')
 const facilityTypeFilter = ref('')
-const specializationFilter = ref([]) // Changed to array for multiple selections
+const specializationFilter = ref([]) // Array for multiple selections
 const emergencyOnlyFilter = ref(false)
+
+// --- State for Report Dialog ---
+const reportDialogVisible = ref(false)
+const reportingFacility = ref(null) // Facility object being reported
+const complaintDescription = ref('')
+const reportLoading = ref(false)
+const reportError = ref(null) // Error specific to the report submission
+const descriptionError = ref(null) // Validation error for description input
 
 // --- Methods ---
 
@@ -298,7 +375,6 @@ async function fetchSpecialties() {
   try {
     const response = await findSpecialties()
     allSpecialties.value = response.data || []
-    // Sort specialties alphabetically by label for better UX
     allSpecialties.value.sort((a, b) => a.label.localeCompare(b.label))
   } catch (error) {
     console.error('SearchView: Error fetching specialties:', error)
@@ -309,7 +385,7 @@ async function fetchSpecialties() {
   }
 }
 
-// Computed property to map specialty names to IDs for efficient lookup
+// Computed property to map specialty names to IDs
 const specialtyNameToIdMap = computed(() => {
   return allSpecialties.value.reduce((map, spec) => {
     map[spec.name] = spec.id
@@ -317,13 +393,11 @@ const specialtyNameToIdMap = computed(() => {
   }, {})
 })
 
-// Fetch Facilities - Sends specialty IDs now
+// Fetch Facilities
 async function fetchAndSetFacilities() {
-  // 1. Ensure Location is Available (remains the same)
   if (!locationStore.hasLocation()) {
     searchError.value = null
     if (!locationStore.isLoading && !locationStore.error) {
-      console.log('SearchView: Location needed, attempting fetch...')
       await locationStore.fetchLocation()
     }
     if (!locationStore.hasLocation()) {
@@ -334,32 +408,27 @@ async function fetchAndSetFacilities() {
     }
   }
 
-  // 2. Fetch Facilities Data
   isLoading.value = true
   searchError.value = null
 
   try {
-    // Map selected names to IDs
     const selectedSpecialtyIds = specializationFilter.value
-      .map((name) => specialtyNameToIdMap.value[name]) // Get ID for each selected name
-      .filter((id) => id !== undefined) // Filter out any potential undefined IDs (safety)
+      .map((name) => specialtyNameToIdMap.value[name])
+      .filter((id) => id !== undefined)
 
     const filters = {
       query: nameQuery.value || undefined,
       facility_type: facilityTypeFilter.value || undefined,
-      // Use the array of IDs, joined by comma
       specializations: selectedSpecialtyIds.length > 0 ? selectedSpecialtyIds.join(',') : undefined,
       has_emergency: emergencyOnlyFilter.value ? true : undefined,
     }
 
-    // Remove undefined keys
     Object.keys(filters).forEach((key) => filters[key] === undefined && delete filters[key])
 
-    console.log('Fetching facilities with filters (IDs):', filters) // Updated log message
+    console.log('Fetching facilities with filters:', filters)
 
     const response = await findFacilities(filters)
 
-    // Process response (remains the same)
     const rawFacilities = response.data || []
     facilities.value = rawFacilities.filter(
       (f) => f.location?.latitude != null && f.location?.longitude != null,
@@ -383,7 +452,7 @@ async function fetchAndSetFacilities() {
 // Debounced version for filter inputs
 const debouncedFetch = debounce(fetchAndSetFacilities, 400)
 
-// Select Facility (Now only called by the button)
+// Select Facility (for map view)
 function selectAndShowMap(facility) {
   if (!facility) return
   console.log('SearchView: Facility selected via button:', facility.name)
@@ -393,14 +462,13 @@ function selectAndShowMap(facility) {
 
 // Format address
 function formatAddress(facility) {
-  // Combine parts that exist, filtering out null/empty strings
   return [facility.street, facility.house_number, facility.city, facility.postcode]
     .filter(Boolean)
     .join(' ')
     .trim()
 }
 
-// Helper to get specialty label from name (for display in tags)
+// Helper to get specialty label from name
 const specialtyMap = computed(() => {
   return allSpecialties.value.reduce((map, spec) => {
     map[spec.name] = spec.label
@@ -409,9 +477,79 @@ const specialtyMap = computed(() => {
 })
 
 function getSpecialtyLabel(specName) {
-  // Handle potential case where specName might be an object if API changes
   const name = typeof specName === 'object' && specName !== null ? specName.name : specName
-  return specialtyMap.value[name] || name // Fallback to name if label not found
+  return specialtyMap.value[name] || name
+}
+
+// --- Methods for Report Dialog ---
+
+function handleReportIssueClick(facility) {
+  console.log('Report issue clicked for:', facility.name)
+  reportingFacility.value = facility
+  complaintDescription.value = '' // Clear previous description
+  reportError.value = null // Clear previous errors
+  descriptionError.value = null // Clear validation error
+  reportDialogVisible.value = true
+}
+
+function cancelReport() {
+  reportDialogVisible.value = false
+  setTimeout(() => {
+    reportingFacility.value = null
+    complaintDescription.value = ''
+    reportError.value = null
+    descriptionError.value = null
+  }, 300)
+}
+
+async function submitReport() {
+  // Basic client-side validation
+  const descTrimmed = complaintDescription.value.trim()
+  if (!descTrimmed) {
+    descriptionError.value = 'Description cannot be empty.'
+    return
+  }
+  if (descTrimmed.length < 10) {
+    descriptionError.value = 'Please provide at least 10 characters.'
+    return
+  }
+  descriptionError.value = null // Clear validation error
+
+  if (!reportingFacility.value || !reportingFacility.value.id) {
+    reportError.value = 'Cannot submit report: Facility data is missing.'
+    return
+  }
+
+  reportLoading.value = true
+  reportError.value = null
+
+  try {
+    // Call the API function
+    await submitComplaint(reportingFacility.value.id, descTrimmed)
+
+    reportDialogVisible.value = false // Close dialog on success
+    ElMessage({
+      message: 'Thank you! Your report has been submitted.',
+      type: 'success',
+      duration: 4000,
+    })
+    // Clear state (already handled by cancelReport timeout logic, but can be explicit)
+    reportingFacility.value = null
+    complaintDescription.value = ''
+  } catch (error) {
+    console.error('Error submitting complaint:', error)
+    const backendError = error.response?.data?.errors?.join(', ') || error.response?.data?.error
+    const errorMessage = `Failed to submit report: ${backendError || error.message || 'Unknown error'}`
+    reportError.value = errorMessage // Show error within the dialog
+    ElMessage({
+      // Also show a toast message
+      message: `Error: ${backendError || error.message || 'Could not submit report.'}`,
+      type: 'error',
+      duration: 5000,
+    })
+  } finally {
+    reportLoading.value = false
+  }
 }
 
 // --- Lifecycle & Watchers ---
@@ -422,14 +560,12 @@ onMounted(async () => {
 
   // Then handle location and facilities
   if (!locationStore.hasLocation() && !locationStore.isLoading) {
-    await locationStore.fetchLocation() // Await location fetch if needed
+    await locationStore.fetchLocation()
   }
-  // Only fetch facilities if specialties loaded successfully OR if no specialties are needed for the initial load
   if (!specialtiesError.value) {
     fetchAndSetFacilities() // Fetch initial facilities
   } else {
     console.warn('SearchView: Did not fetch initial facilities due to specialty loading error.')
-    // Optionally set an error message or leave the list empty
   }
 })
 
@@ -437,12 +573,11 @@ onMounted(async () => {
 watch(
   [nameQuery, facilityTypeFilter, specializationFilter, emergencyOnlyFilter],
   () => {
-    // Only trigger fetch if specialties have loaded without error
     if (!specialtiesLoading.value && !specialtiesError.value) {
       debouncedFetch()
     } else if (specialtiesError.value) {
       console.warn('SearchView: Skipping facility fetch due to specialty loading error.')
-      facilities.value = [] // Clear results if filters change while specialties are errored
+      facilities.value = []
       searchError.value = 'Cannot filter facilities because the specialty list failed to load.'
     }
   },
@@ -453,7 +588,6 @@ watch(
 watch(
   () => locationStore.hasLocation(),
   (newVal, oldVal) => {
-    // Fetch facilities when location becomes available, but only if specialties are okay
     if (newVal && !oldVal && !specialtiesLoading.value && !specialtiesError.value) {
       console.log('SearchView: Location became available, fetching facilities...')
       fetchAndSetFacilities()
@@ -476,17 +610,15 @@ watch(
   },
 )
 
-// Watch for specialty loading errors to clear facility results
+// Watch for specialty loading errors
 watch(
   () => specialtiesError.value,
   (newError) => {
     if (newError) {
       facilities.value = []
       isLoading.value = false
-      // Optionally set searchError to inform the user in the main panel too
       searchError.value = `Cannot search facilities: ${newError}`
     } else {
-      // If error is cleared, maybe refetch facilities?
       if (!isLoading.value && locationStore.hasLocation()) {
         fetchAndSetFacilities()
       }
@@ -500,9 +632,9 @@ watch(
 .list-main-content {
   padding: 0;
   flex-grow: 1;
-  overflow: hidden; /* Important for child overflow */
+  overflow: hidden;
   display: flex;
-  position: relative; /* For absolute positioning of loading mask */
+  position: relative;
 }
 /* Filter Bar */
 .filter-bar {
@@ -513,51 +645,50 @@ watch(
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px; /* Space between items */
+  gap: 10px;
 }
 .filter-item {
-  /* Base styling for filter items */
+  /* Base styling */
 }
 .filter-input {
-  width: 200px; /* Adjust as needed */
+  width: 200px;
 }
 .filter-select {
-  width: 180px; /* Adjust as needed */
+  width: 180px;
 }
-/* Adjust width specifically for the multi-select specialty */
 .specialization-select {
-  width: 250px; /* Give more space */
+  width: 250px;
 }
 .filter-checkbox {
-  margin-left: 5px; /* Align checkbox better */
+  margin-left: 5px;
 }
 
 /* Facility List Panel */
 .facility-list-panel {
   width: 100%;
-  padding: 0; /* Remove padding here, add to container below */
-  overflow-y: hidden; /* Hide scrollbar here */
+  padding: 0;
+  overflow-y: hidden;
   background: white;
   color: #303133;
-  height: 100%; /* Fill the main content area */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack children vertically */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Container for the list itself to handle scrolling */
 .results-list-container {
-  padding: 0 15px 15px 15px; /* Padding around the list */
-  overflow-y: auto; /* Enable vertical scrolling *here* */
-  flex-grow: 1; /* Allow this container to grow and fill space */
+  padding: 0 15px 15px 15px;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .facility-list-panel h3 {
   margin: 0 0 10px 0;
   color: #303133;
   font-size: 1.1em;
-  padding: 15px 15px 0 15px; /* Padding only top/sides for the header */
-  flex-shrink: 0; /* Prevent header from shrinking */
-  border-bottom: 1px solid #eee; /* Add separator below header */
+  padding: 15px 15px 0 15px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #eee;
 }
 .facility-list-panel ul {
   list-style: none;
@@ -569,7 +700,6 @@ watch(
 .facility-list-item {
   padding: 12px 15px;
   border-bottom: 1px solid #f4f4f4;
-  /* cursor: pointer; REMOVED */
   transition: background-color 0.2s ease;
 }
 .facility-list-item:last-child {
@@ -577,7 +707,7 @@ watch(
 }
 .facility-list-item:hover,
 .facility-list-item:focus {
-  background-color: #f0faff; /* Lighter blue hover */
+  background-color: #f0faff;
   outline: 1px dashed #409eff;
   outline-offset: -1px;
 }
@@ -585,21 +715,21 @@ watch(
 /* Wrapper for content inside li */
 .item-content {
   display: flex;
-  justify-content: space-between; /* Push details and actions apart */
-  align-items: flex-start; /* Align items to the top */
-  gap: 15px; /* Space between details and button */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 /* Container for all the text details */
 .item-details {
-  flex-grow: 1; /* Allow details to take available space */
-  min-width: 0; /* Prevent flex item overflow issues */
+  flex-grow: 1;
+  min-width: 0;
 }
 
 /* Container for the action button(s) */
 .item-actions {
-  flex-shrink: 0; /* Prevent button area from shrinking */
-  padding-top: 2px; /* Align button roughly with the top line of text */
+  flex-shrink: 0;
+  padding-top: 2px;
 }
 
 /* Adjustments to existing styles */
@@ -622,42 +752,40 @@ watch(
   margin-bottom: 6px;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 10px; /* Row and column gap */
+  gap: 4px 10px;
 }
 
 .info-item {
-  display: inline-flex; /* Use inline-flex for icon alignment */
-  align-items: center; /* Vertically center icon and text */
-  white-space: nowrap; /* Prevent wrapping within an item initially */
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .info-item .el-icon {
-  margin-right: 4px; /* Space between icon and text */
-  font-size: 1.1em; /* Slightly larger icon */
-  color: #909399; /* Subdued icon color */
+  margin-right: 4px;
+  font-size: 1.1em;
+  color: #909399;
 }
 
 .address-info {
-  white-space: normal; /* Allow address to wrap */
+  white-space: normal;
 }
 
-/* Make tel: and mailto: links look consistent */
 .link-item {
-  color: #409eff; /* Use Element Plus primary color for links */
+  color: #409eff;
   text-decoration: none;
-  cursor: pointer; /* Ensure pointer cursor */
+  cursor: pointer;
 }
 .link-item:hover {
   text-decoration: underline;
 }
-/* Specific styling for non-website links if needed */
 a[href^='tel:'],
 a[href^='mailto:'] {
-  color: #606266; /* Match surrounding text color */
+  color: #606266;
 }
 a[href^='tel:']:hover,
 a[href^='mailto:']:hover {
-  color: #409eff; /* Highlight on hover */
+  color: #409eff;
   text-decoration: underline;
 }
 
@@ -666,10 +794,24 @@ a[href^='mailto:']:hover {
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px; /* Space between tags */
+  gap: 5px;
 }
 .specialty-tag {
-  /* Optional: Add specific styling if needed */
+  /* Optional */
+}
+
+/* Report Issue Button */
+.report-issue-container {
+  margin-top: 8px;
+  text-align: right;
+}
+.report-button.el-button--small {
+  padding: 2px 5px;
+  font-size: 0.8em;
+  height: auto;
+}
+.report-button .el-icon {
+  margin-right: 3px;
 }
 
 /* Placeholder styling */
@@ -678,16 +820,16 @@ a[href^='mailto:']:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Ensure it takes full height */
+  height: 100%;
   padding: 20px;
   text-align: center;
   color: #909399;
-  flex-grow: 1; /* Allow placeholder to fill space */
+  flex-grow: 1;
 }
 .panel-placeholder .el-icon {
   margin-bottom: 10px;
-  font-size: 24px; /* Consistent icon size */
-  color: #c0c4cc; /* Default placeholder icon color */
+  font-size: 24px;
+  color: #c0c4cc;
 }
 .panel-placeholder.error-placeholder span {
   color: #f56c6c;
@@ -707,6 +849,7 @@ a[href^='mailto:']:hover {
     transform: rotate(360deg);
   }
 }
+
 /* Specialty list specific error */
 .specialty-error-text {
   padding: 10px;
@@ -717,8 +860,8 @@ a[href^='mailto:']:hover {
 
 /* Alert Positioning */
 .view-alert {
-  margin: 5px 15px; /* Consistent margin */
-  flex-shrink: 0; /* Prevent alerts from shrinking */
+  margin: 5px 15px;
+  flex-shrink: 0;
 }
 
 /* Mobile Responsiveness */
@@ -729,7 +872,7 @@ a[href^='mailto:']:hover {
     padding: 10px;
   }
   .filter-bar > .filter-item {
-    width: 100% !important; /* Make filters full width */
+    width: 100% !important;
     margin-right: 0 !important;
     margin-bottom: 10px;
   }
@@ -744,35 +887,39 @@ a[href^='mailto:']:hover {
     padding: 12px 10px;
   }
   .facility-list-panel h3 {
-    padding: 15px 10px 10px 10px; /* Adjusted padding */
+    padding: 15px 10px 10px 10px;
   }
   .results-list-container {
-    padding: 0 10px 10px 10px; /* Adjusted padding */
+    padding: 0 10px 10px 10px;
   }
   .facility-info {
-    font-size: 0.85em; /* Slightly smaller text on mobile */
+    font-size: 0.85em;
     line-height: 1.5;
     gap: 3px 8px;
   }
-  .info-item {
-    /* Allow wrapping by default on smaller screens if needed */
-    /* white-space: normal; */
-  }
   .item-content {
-    flex-direction: column; /* Stack details and actions vertically */
-    gap: 10px; /* Space between details and button */
-    align-items: stretch; /* Stretch items to full width */
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
   }
   .item-actions {
-    padding-top: 0; /* Remove top padding */
-    align-self: flex-end; /* Align button to the right */
+    padding-top: 0;
+    align-self: flex-end;
+  }
+  .report-issue-container {
+    text-align: left; /* Or keep right */
+    margin-top: 10px;
+  }
+  /* Adjust dialog width on mobile */
+  :deep(.el-dialog) {
+    width: 90% !important;
   }
 }
 
 /* Loading indicator styling */
 :deep(.list-main-content .el-loading-mask) {
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 5; /* Ensure it's above content */
+  z-index: 5;
 }
 :deep(.list-main-content .el-loading-spinner .path) {
   stroke: #409eff;
