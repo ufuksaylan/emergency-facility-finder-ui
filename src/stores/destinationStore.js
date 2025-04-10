@@ -3,25 +3,19 @@ import { ref, computed } from 'vue' // Import computed
 import { defineStore } from 'pinia'
 
 export const useDestinationStore = defineStore('destination', () => {
-  // --- State ---
-  // Raw facility data as selected/fetched
   const _selectedFacilityData = ref(null)
 
-  // Routing/Map related state
   const isRouting = ref(false)
   const routingError = ref(null)
   const routeSummary = ref(null)
 
   // --- Getters (Computed Properties) ---
-  // Provides the formatted destination object needed by the map composable/component
   const selectedFacility = computed(() => {
     const facility = _selectedFacilityData.value
     if (!facility) return null
 
-    // Ensure it has coordinates before returning
     if (facility.location?.latitude == null || facility.location?.longitude == null) {
       console.warn('DestinationStore: Selected facility in store lacks coordinates.', facility)
-      // Return null or a partial object? Returning null is safer for map.
       return null
     }
 

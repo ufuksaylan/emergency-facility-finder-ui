@@ -42,7 +42,6 @@
 </template>
 
 <script setup>
-// Removed imports: AppHeader, AppFooter, ElContainer, ElMain
 import { useRouter } from 'vue-router'
 import { ElRow, ElCol, ElCard, ElIcon, ElButton } from 'element-plus' // Keep components used HERE
 import { FirstAidKit, Pointer, Search as SearchIconComponent } from '@element-plus/icons-vue'
@@ -58,21 +57,18 @@ function goToFinder(searchType) {
 </script>
 
 <style scoped>
-/* Styles ONLY for LandingView's unique content */
 .landing-view-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow this view to potentially fill the main area */
-  /* background-color: #f8f9fa; /* Optional: background specific to landing page content */
+  flex-grow: 1;
 }
 
-/* Keep hero styles */
 .landing-hero {
   background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
   color: white;
   padding: 50px 20px;
   text-align: center;
-  flex-shrink: 0; /* Don't let hero shrink */
+  flex-shrink: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .landing-hero h1 {
@@ -86,14 +82,12 @@ function goToFinder(searchType) {
   margin-top: 0;
 }
 
-/* Keep styles for the cards area */
 .landing-cards-area {
-  padding: 50px 20px; /* Restore padding for the cards area */
-  flex-grow: 1; /* Allow cards area to expand */
+  padding: 50px 20px;
+  flex-grow: 1;
   text-align: center;
 }
 
-/* Keep card styles (unchanged from your provided snippet) */
 .choice-card {
   margin-bottom: 30px;
   min-height: 280px;
@@ -154,6 +148,4 @@ function goToFinder(searchType) {
   background-color: #004d40;
   border-color: #004d40;
 }
-
-/* REMOVE styles for .landing-container, .landing-main, .landing-footer */
 </style>

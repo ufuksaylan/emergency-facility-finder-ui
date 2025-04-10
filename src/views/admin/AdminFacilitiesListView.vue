@@ -73,11 +73,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { getAdminFacilities } from '@/api/adminApi' // Use the new API file
+import { getAdminFacilities } from '@/api/adminApi'
 import { ElTable, ElTableColumn, ElButton, ElCard, ElAlert, ElTag, ElTooltip } from 'element-plus'
 import { Plus as PlusIcon, Edit as EditIcon } from '@element-plus/icons-vue'
-// Optional: Import message/confirm dialogs if implementing delete
-// import { ElMessage, ElMessageBox } from 'element-plus'
 
 const router = useRouter()
 const facilities = ref([])
@@ -93,60 +91,25 @@ const fetchFacilities = async () => {
   } catch (err) {
     console.error('Failed to fetch facilities:', err)
     error.value = err.response?.data?.error || err.message || 'Unknown error'
-    facilities.value = [] // Clear data on error
+    facilities.value = []
   } finally {
     isLoading.value = false
   }
 }
 
-// Navigate to edit form when row is clicked
 const handleRowClick = (row) => {
   if (row.osm_id) {
     router.push({ name: 'adminFacilityEdit', params: { osm_id: row.osm_id } })
   }
 }
 
-// Navigate to edit form via button
 const goToEditForm = (osmId) => {
   router.push({ name: 'adminFacilityEdit', params: { osm_id: osmId } })
 }
 
-// Navigate to create form
 const goToCreateForm = () => {
   router.push({ name: 'adminFacilityCreate' })
 }
-
-// Optional: Delete Handler (Requires confirmation dialog)
-/*
-const handleDelete = async (osmId) => {
-  try {
-    await ElMessageBox.confirm(
-      'Are you sure you want to delete this facility? This action cannot be undone.',
-      'Confirm Deletion',
-      {
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel',
-        type: 'warning',
-      }
-    );
-
-    // User confirmed
-    isLoading.value = true; // Optional: show loading state on table/button
-    await deleteAdminFacility(osmId); // Assuming you add deleteAdminFacility to adminApi.js
-    ElMessage({ type: 'success', message: 'Facility deleted successfully' });
-    fetchFacilities(); // Refresh the list
-  } catch (action) {
-    if (action === 'cancel') {
-      ElMessage({ type: 'info', message: 'Deletion cancelled' });
-    } else {
-      // Handle API deletion error
-      console.error("Failed to delete facility:", action); // Log the actual error if it's not 'cancel'
-       ElMessage({ type: 'error', message: action.response?.data?.errors?.join(', ') || 'Failed to delete facility' });
-       isLoading.value = false; // Ensure loading stops on error
-    }
-  }
-};
-*/
 
 onMounted(() => {
   fetchFacilities()

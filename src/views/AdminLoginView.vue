@@ -61,9 +61,7 @@ import {
 } from 'element-plus'
 import { User as UserIcon, Lock as LockIcon } from '@element-plus/icons-vue'
 
-// --- State ---
 const router = useRouter()
-// Removed loginFormRef
 const isLoading = ref(false)
 const loginError = ref(null)
 
@@ -72,11 +70,6 @@ const loginForm = reactive({
   password: '',
 })
 
-// Removed loginRules
-
-// --- Methods ---
-
-// Removed the validate() wrapper
 const handleLogin = async () => {
   isLoading.value = true
   loginError.value = null
@@ -100,15 +93,11 @@ const handleLogin = async () => {
       if (user) {
         localStorage.setItem('adminUser', JSON.stringify(user))
       }
-      // if (expiry) { localStorage.setItem('adminTokenExp', expiry); } // Optional
-
       router.push({ name: 'adminDashboard' })
     } else {
-      // This case becomes less likely if the backend *always* returns an error
-      // for failed logins, but kept for robustness.
       loginError.value = 'Login successful, but no authentication token received.'
       console.error('API response missing token:', response.data)
-      // Ensure cleanup even in this odd case
+
       localStorage.removeItem('adminAuthToken')
       localStorage.removeItem('adminUser')
     }
@@ -117,16 +106,14 @@ const handleLogin = async () => {
     if (error.response?.data?.message) {
       loginError.value = error.response.data.message
     } else if (error.response?.status === 401) {
-      loginError.value = 'Invalid email or password.' // Specific message for 401
+      loginError.value = 'Invalid email or password.'
     } else if (error.response?.status === 400) {
-      loginError.value = 'Invalid request. Please check your input.' // Example for Bad Request
+      loginError.value = 'Invalid request. Please check your input.'
     } else {
       loginError.value = 'An error occurred during login. Please try again.'
     }
-    // Clear stored items on any failed login attempt
     localStorage.removeItem('adminAuthToken')
     localStorage.removeItem('adminUser')
-    // localStorage.removeItem('adminTokenExp')
   } finally {
     isLoading.value = false
   }

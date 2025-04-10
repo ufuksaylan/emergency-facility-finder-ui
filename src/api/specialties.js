@@ -1,4 +1,3 @@
-// src/api/facilities.js
 import apiClient from './client'
 
 // /**

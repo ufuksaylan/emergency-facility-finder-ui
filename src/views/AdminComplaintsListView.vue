@@ -67,16 +67,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { getAdminComplaints } from '@/api/adminApi' // Adjust path if needed
+import { getAdminComplaints } from '@/api/adminApi'
 import { ElTable, ElTableColumn, ElButton, ElCard, ElAlert, ElTag, ElTooltip } from 'element-plus'
-import { View as ViewIcon } from '@element-plus/icons-vue' // Import needed icons
+import { View as ViewIcon } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const complaints = ref([])
 const isLoading = ref(false)
 const error = ref(null)
 
-// Helper function to format dates (adjust format as needed)
 const formatDateTime = (dateTimeString) => {
   if (!dateTimeString) return ''
   try {
@@ -84,11 +83,10 @@ const formatDateTime = (dateTimeString) => {
       new Date(dateTimeString),
     )
   } catch {
-    return dateTimeString // Fallback
+    return dateTimeString
   }
 }
 
-// Helper for status tag colors
 const getStatusTagType = (status) => {
   switch (status?.toLowerCase()) {
     case 'new':
@@ -110,28 +108,23 @@ const fetchComplaints = async () => {
   error.value = null
   try {
     const response = await getAdminComplaints()
-    // --- IMPORTANT ---
-    // Check the actual structure of the response.data
-    // If your backend doesn't include nested user info etc.,
-    // adjust the table columns accordingly.
+
     complaints.value = response.data
   } catch (err) {
     console.error('Failed to fetch complaints:', err)
     error.value = err.response?.data?.error || err.message || 'Unknown error'
-    complaints.value = [] // Clear data on error
+    complaints.value = []
   } finally {
     isLoading.value = false
   }
 }
 
-// Navigate to detail view when row is clicked
 const handleRowClick = (row) => {
   if (row.id) {
     router.push({ name: 'adminComplaintDetail', params: { id: row.id } })
   }
 }
 
-// Navigate to detail view via button
 const goToDetailView = (id) => {
   router.push({ name: 'adminComplaintDetail', params: { id: id } })
 }

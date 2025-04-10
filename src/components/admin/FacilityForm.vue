@@ -185,15 +185,12 @@ const props = defineProps({
   },
 })
 
-// --- Emits ---
 const emit = defineEmits(['submit-success', 'cancel'])
 
-// --- State ---
 const formRef = ref(null)
 const isLoading = ref(false)
 const error = ref(null)
 
-// Initialize form data reactively
 const formData = reactive({
   osm_id: null,
   name: '',
@@ -208,47 +205,36 @@ const formData = reactive({
   email: '',
   wheelchair_accessible: false,
   has_emergency: false,
-  specialization: '', // General description field
-  latitude: null, // Will store as string from input, backend handles conversion
-  longitude: null, // Will store as string from input, backend handles conversion
-  specialty_ids: [], // Specific associated specialties
+  specialization: '',
+  latitude: null,
+  longitude: null,
+  specialty_ids: [],
 })
 
-// --- Computed ---
 const isEditMode = computed(() => !!props.initialData?.osm_id)
 
-// --- Methods ---
-
-// Initialize or update form data when initialData prop changes
 const populateForm = (data) => {
   if (data) {
-    // Populate standard fields
     Object.keys(formData).forEach((key) => {
-      // Skip lat/lon initially, handle separately below
       if (key === 'latitude' || key === 'longitude') return
 
       if (data[key] !== undefined && data[key] !== null) {
-        // Handle specialties association - assuming initialData includes specialties array
         if (key === 'specialty_ids' && Array.isArray(data.specialties)) {
           formData.specialty_ids = data.specialties.map((spec) => spec.id)
         } else {
           formData[key] = data[key]
         }
       } else {
-        // Reset field if not present in initial data
         if (typeof formData[key] === 'boolean') formData[key] = false
         else if (Array.isArray(formData[key])) formData[key] = []
-        // Keep number type for osm_id if resetting
         else if (typeof formData[key] === 'number') formData[key] = null
         else formData[key] = ''
       }
     })
 
-    // Ensure boolean values are correctly set
     formData.wheelchair_accessible = !!data.wheelchair_accessible
     formData.has_emergency = !!data.has_emergency
 
-    // --- Handle location: Parse WKT string or use fallbacks ---
     let parsedLat = null
     let parsedLon = null
 
@@ -277,13 +263,9 @@ const populateForm = (data) => {
       console.warn('Populate: No location data found in expected formats.')
     }
 
-    // Assign to form data (will be treated as text by the ElInput)
-    // Convert null back to empty string for the text input if desired, or keep as null
     formData.latitude = parsedLat !== null ? String(parsedLat) : ''
     formData.longitude = parsedLon !== null ? String(parsedLon) : ''
-    // --- End Location Handling ---
   } else {
-    // Reset form for create mode
     Object.keys(formData).forEach((key) => {
       if (typeof formData[key] === 'boolean') formData[key] = false
       else if (Array.isArray(formData[key])) formData[key] = []
@@ -304,17 +286,15 @@ const handleSubmit = async () => {
     return
   }
 
-  // Prepare payload, backend handles conversion of lat/lon from string/null
   const corePayload = { ...formData }
   delete corePayload.specialty_ids
 
   const payload = {
     facility: {
       ...corePayload,
-      // Send lat/lon as they are (string or null from text input)
-      // Backend's .to_f should handle conversion
-      latitude: formData.latitude || null, // Send null if empty string
-      longitude: formData.longitude || null, // Send null if empty string
+
+      latitude: formData.latitude || null,
+      longitude: formData.longitude || null,
       ...(formData.specialty_ids?.length > 0 && { specialty_ids: formData.specialty_ids }),
     },
   }
@@ -323,7 +303,7 @@ const handleSubmit = async () => {
     delete payload.facility.osm_id
   }
 
-  console.log('Submitting Payload:', JSON.stringify(payload, null, 2)) // Log payload before sending
+  console.log('Submitting Payload:', JSON.stringify(payload, null, 2))
 
   try {
     let response
@@ -337,20 +317,16 @@ const handleSubmit = async () => {
     emit('submit-success', response.data)
   } catch (err) {
     console.error('Save failed:', err.response || err.message || err)
-    // Improved error message display
     let errorMessage = 'An unexpected error occurred. Please try again.'
     if (err.response?.data?.errors) {
-      // Handle Rails validation errors array
-      errorMessage = err.response.data.errors.join('; ') // Join with semicolon for readability
+      errorMessage = err.response.data.errors.join('; ')
     } else if (err.response?.data?.error) {
-      // Handle single error message string
       errorMessage = err.response.data.error
     } else if (err.message) {
       errorMessage = err.message
     }
     error.value = errorMessage
-    console.error('Detailed Error:', err.response?.data || err) // Log detailed error object
-  } finally {
+    console.error('Detailed Error:', err.response?.data || err)
     isLoading.value = false
   }
 }
@@ -359,7 +335,6 @@ const handleCancel = () => {
   emit('cancel')
 }
 
-// --- Watchers ---
 watch(
   () => props.initialData,
   (newData) => {
@@ -376,9 +351,6 @@ watch(
 .el-checkbox.is-bordered {
   margin-right: 10px;
 }
-/* :deep(.el-input-number .el-input__inner) { */
-/* text-align: left; */
-/* } */
 small {
   display: block;
   color: #909399;

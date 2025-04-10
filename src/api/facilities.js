@@ -1,4 +1,3 @@
-// src/api/facilities.js
 import apiClient from './client'
 import { useLocationStore } from '@/stores/location'
 
@@ -20,15 +19,10 @@ export const findFacilities = (filters = {}) => {
     )
   }
 
-  // Prepare parameters, always using store's location
   const paramsToSend = {
-    // Include any filters passed by the caller
     ...filters,
-    // Always include location for proximity sorting/filtering on the backend
     latitude: locationStore.latitude,
     longitude: locationStore.longitude,
-    // Add a parameter for the backend to maybe filter by currently open (requires backend logic)
-    // only_open_now: filters.only_open_now || false, // Example
   }
 
   console.log('API: Sending facility search params:', paramsToSend)

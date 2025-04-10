@@ -4,30 +4,20 @@ import { storeToRefs } from 'pinia'
 import { ElIcon } from 'element-plus'
 import { Van, Promotion } from '@element-plus/icons-vue'
 
-// Import the composable and stores
 import { useLeafletMap } from '@/composables/useLeafletMap'
 import { useMapSettingsStore } from '@/stores/mapSettings'
-import { useDestinationStore } from '@/stores/destinationStore' // <-- Import Destination Store
+import { useDestinationStore } from '@/stores/destinationStore'
 
-// --- Store Instantiation ---
 const mapSettingsStore = useMapSettingsStore()
-const destinationStore = useDestinationStore() // <-- Instantiate Destination Store
+const destinationStore = useDestinationStore()
 
-// --- Reactive State from Stores ---
 const { selectedTravelMode } = storeToRefs(mapSettingsStore)
-// Get reactive destination and routing state from destinationStore
 const { selectedFacility, isRouting, routingError, routeSummary } = storeToRefs(destinationStore)
 
-// --- Local Component State ---
 const mapContainerRef = ref(null)
 
-// --- Use the Map Composable ---
-// Pass the reactive selectedFacility ref directly from the store
-// NOTE: useLeafletMap now returns nothing, it updates the store directly
 useLeafletMap(mapContainerRef, selectedFacility)
 
-// --- Computed Properties ---
-// Determine the icon based on the selected travel mode from the store
 const currentModeIcon = computed(() => {
   return selectedTravelMode.value === 'driving' ? Van : Promotion
 })
@@ -59,7 +49,6 @@ const currentModeIcon = computed(() => {
 </template>
 
 <style scoped>
-/* Styles for map layout and elements */
 .map-component-wrapper {
   height: 100%;
   width: 100%;
@@ -70,10 +59,9 @@ const currentModeIcon = computed(() => {
 .map-container {
   height: 100%;
   width: 100%;
-  background-color: #e0e0e0; /* Placeholder background */
+  background-color: #e0e0e0;
 }
 
-/* Styles for the directions overlay */
 .directions-overlay {
   position: absolute;
   bottom: 20px;
@@ -85,7 +73,7 @@ const currentModeIcon = computed(() => {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  z-index: 1001; /* Above map layers */
+  z-index: 1001;
   width: fit-content;
   max-width: 90%;
 }
@@ -106,7 +94,6 @@ const currentModeIcon = computed(() => {
   font-weight: normal;
 }
 
-/* Optional overlay styles */
 .routing-error-overlay,
 .routing-loading-overlay {
   position: absolute;
@@ -123,17 +110,16 @@ const currentModeIcon = computed(() => {
   font-size: 0.9em;
 }
 .routing-error-overlay {
-  background-color: #f8d7da; /* Light red */
-  color: #721c24; /* Dark red */
+  background-color: #f8d7da;
+  color: #721c24;
   border: 1px solid #f5c6cb;
 }
 .routing-loading-overlay {
-  background-color: #e2e3e5; /* Light grey */
-  color: #383d41; /* Dark grey */
+  background-color: #e2e3e5;
+  color: #383d41;
   border: 1px solid #d6d8db;
 }
 
-/* Global Leaflet control styles should remain in main.css or App.vue */
 :global(.leaflet-control-zoom a),
 :global(.leaflet-control-locate a) {
   border: 1px solid #ccc !important;

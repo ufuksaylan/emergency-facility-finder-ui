@@ -29,23 +29,21 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAdminFacility, getAdminSpecialties } from '@/api/adminApi'
-import FacilityForm from '@/components/admin/FacilityForm.vue' // Adjust path if needed
+import FacilityForm from '@/components/admin/FacilityForm.vue'
 import { ElPageHeader, ElCard, ElAlert } from 'element-plus'
-import { ElMessage } from 'element-plus' // For success/error messages
+import { ElMessage } from 'element-plus'
 
 const route = useRoute()
 const router = useRouter()
 
-const facilityData = ref(null) // Holds data for editing
+const facilityData = ref(null)
 const availableSpecialties = ref([])
 const isLoadingInitialData = ref(false)
 const loadingError = ref(null)
 
-// Track loading state for different async operations
 const specialtiesLoaded = ref(false)
-const initialDataLoaded = ref(false) // True immediately for create mode, true after fetch for edit mode
+const initialDataLoaded = ref(false)
 
-// Determine mode and title based on route params
 const isEditMode = computed(() => !!route.params.osm_id)
 const pageTitle = computed(() =>
   isEditMode.value ? `Edit Facility (OSM ID: ${route.params.osm_id})` : 'Create New Facility',
@@ -54,42 +52,38 @@ const pageTitle = computed(() =>
 const loadInitialData = async () => {
   isLoadingInitialData.value = true
   loadingError.value = null
-  specialtiesLoaded.value = false // Reset loading flags
-  initialDataLoaded.value = !isEditMode.value // Initial data considered loaded if creating
+  specialtiesLoaded.value = false
+  initialDataLoaded.value = !isEditMode.value
 
-  // Fetch specialties first (needed for both modes)
   try {
     const specResponse = await getAdminSpecialties()
     availableSpecialties.value = specResponse.data
-    specialtiesLoaded.value = true // Mark specialties as loaded
+    specialtiesLoaded.value = true
     console.log('Specialties loaded:', availableSpecialties.value)
   } catch (err) {
     console.error('Failed to load specialties:', err)
     loadingError.value = err.response?.data?.error || err.message || 'Failed to load specialties'
-    isLoadingInitialData.value = false // Stop loading on critical error
-    return // Stop further execution if specialties fail
+    isLoadingInitialData.value = false
+    return
   }
 
-  // If in edit mode, fetch the specific facility
   if (isEditMode.value) {
     try {
       const osmId = route.params.osm_id
       const facilityResponse = await getAdminFacility(osmId)
-      facilityData.value = facilityResponse.data // Store fetched data
-      initialDataLoaded.value = true // Mark facility data as loaded
+      facilityData.value = facilityResponse.data
+      initialDataLoaded.value = true
       console.log('Facility data loaded for editing:', facilityData.value)
     } catch (err) {
       console.error(`Failed to load facility ${route.params.osm_id}:`, err)
       loadingError.value =
         err.response?.data?.error || err.message || 'Failed to load facility data'
-      // Decide if you still want to show the form with specialties only, or fail completely
-      // Failing completely might be safer if facility data is crucial
-      initialDataLoaded.value = false // Explicitly mark as not loaded on error
+
+      initialDataLoaded.value = false
     }
   }
-  // No else needed, initialDataLoaded is already true for create mode
 
-  isLoadingInitialData.value = false // Loading finished
+  isLoadingInitialData.value = false
 }
 
 const handleSuccess = (savedFacility) => {
@@ -97,11 +91,11 @@ const handleSuccess = (savedFacility) => {
     message: `Facility '${savedFacility.name}' ${isEditMode.value ? 'updated' : 'created'} successfully.`,
     type: 'success',
   })
-  router.push({ name: 'adminFacilitiesList' }) // Go back to the list view
+  router.push({ name: 'adminFacilitiesList' })
 }
 
 const goBack = () => {
-  router.push({ name: 'adminFacilitiesList' }) // Or use router.go(-1)
+  router.push({ name: 'adminFacilitiesList' })
 }
 
 onMounted(() => {

@@ -39,35 +39,27 @@ import MapComponent from '@/components/MapComponent.vue' // Verify path
 import { ElContainer, ElHeader, ElMain, ElButton, ElAlert } from 'element-plus'
 import { Back as BackIcon } from '@element-plus/icons-vue'
 
-// --- Router & Stores ---
 const router = useRouter()
 const destinationStore = useDestinationStore()
 
-// --- Component State ---
-const error = ref(null) // Error specific to this view (e.g., no destination)
+const error = ref(null)
 
-// --- Methods ---
 function goBack() {
-  // Navigate back to the search list view using its name
   router.push({ name: 'search' })
 }
 
-// --- Lifecycle ---
 onMounted(() => {
-  error.value = null // Reset error on mount
-  // Check if a valid destination is available using the store's getter
-  // The `selectedFacility` getter in your store already handles coordinate checks.
+  error.value = null
+
   if (!destinationStore.selectedFacility) {
     console.warn('MapView: No valid destination found in store on mount.')
     error.value =
       'No facility selected or facility data is incomplete. Please go back to the search list and select a facility.'
-    // MapComponent will not render due to the v-if condition
   } else {
     console.log(
       'MapView: Valid destination found, rendering MapComponent for:',
       destinationStore.selectedFacility.name,
     )
-    // MapComponent will render and use the store data
   }
 })
 </script>
@@ -112,7 +104,6 @@ onMounted(() => {
   color: #909399;
   padding: 20px;
 }
-/* Ensure MapComponent fills the space */
 :deep(.map-component-wrapper) {
   width: 100%;
   height: 100%;

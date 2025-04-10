@@ -3,15 +3,14 @@
 import { ref, onMounted, watch, computed } from 'vue'
 import { useLocationStore } from '@/stores/location'
 import { useDestinationStore } from '@/stores/destinationStore'
-import { findFacilities } from '@/api/facilities' // Use the updated API function
+import { findFacilities } from '@/api/facilities'
 import AppHeader from '@/components/AppHeader.vue'
 import MapComponent from '@/components/MapComponent.vue'
-// Import filter components if you create separate ones, or add controls here
 
 const props = defineProps({
   searchType: {
     type: String,
-    default: 'general', // Default if no type is passed
+    default: 'general',
   },
 })
 
@@ -20,54 +19,39 @@ const destinationStore = useDestinationStore()
 
 const isLoading = ref(false)
 const searchError = ref(null)
-const facilities = ref([]) // Store multiple results
-const currentFilters = ref({}) // Store active filters
+const facilities = ref([])
+const currentFilters = ref({})
 
-// Example Filter State
-const facilityTypeFilter = ref('') // e.g., 'hospital', 'clinic'
-const specializationFilter = ref('') // e.g., 'cardiology', 'orthopedics'
+const facilityTypeFilter = ref('')
+const specializationFilter = ref('')
 const emergencyOnlyFilter = ref(false)
 const nameQuery = ref('')
 
-// Function to fetch facilities based on current state
 async function fetchAndSetFacilities() {
   if (!locationStore.hasLocation()) {
-    // Maybe trigger location fetch again or show message
     searchError.value = 'Please enable location services.'
     return
   }
 
   isLoading.value = true
   searchError.value = null
-  facilities.value = [] // Clear previous results
+  facilities.value = []
 
   try {
     const filters = {
-      ...currentFilters.value, // Base filters
-      query: nameQuery.value || undefined, // Add name search
+      ...currentFilters.value,
+      query: nameQuery.value || undefined,
       facility_type: facilityTypeFilter.value || undefined,
       specialization: specializationFilter.value || undefined,
       has_emergency: emergencyOnlyFilter.value ? true : undefined,
     }
-    // Remove undefined filters before sending
     Object.keys(filters).forEach((key) => filters[key] === undefined && delete filters[key])
 
     const response = await findFacilities(filters)
-    facilities.value = response.data // Assuming backend returns an array of facilities
-
-    // --- LOGIC CHANGE: Instead of auto-directing to nearest ---
-    // Now you have a list in `facilities.value`.
-    // You need to display these (e.g., on the map, in a list).
-    // The user will select one, and *then* you set the destination.
-    // For emergency, you might still highlight/pre-select the closest *open* one.
+    facilities.value = response.data
 
     if (props.searchType === 'emergency' && facilities.value.length > 0) {
-      // Add logic here to find the *closest* emergency facility from the results
-      // This requires distance calculation, potentially done on backend or frontend
-      // For now, just log, let user select from map/list
       console.log('Emergency search results:', facilities.value)
-      // Maybe pre-select the first one for convenience?
-      // handleFacilitySelect(facilities.value[0]);
     }
   } catch (error) {
     console.error('Error fetching facilities:', error)
@@ -78,13 +62,11 @@ async function fetchAndSetFacilities() {
   }
 }
 
-// Function called when a user selects a facility from the map or a list
 function handleFacilitySelect(facility) {
   console.log('Facility selected by user:', facility)
-  destinationStore.setDestination(facility) // Set it in the store
+  destinationStore.setDestination(facility)
 }
 
-// Watch for location changes to re-fetch if needed
 watch(
   () => [locationStore.latitude, locationStore.longitude],
   (newVal, oldVal) => {
@@ -98,43 +80,36 @@ watch(
     }
   },
   { immediate: false },
-) // Don't run immediately, wait for mount
+)
 
-// Watch for filter changes to re-fetch
 watch(
   [nameQuery, facilityTypeFilter, specializationFilter, emergencyOnlyFilter],
   () => {
-    // Debounce this in a real app
     fetchAndSetFacilities()
   },
   { deep: true },
 )
 
 onMounted(async () => {
-  // Set initial filters based on searchType
   if (props.searchType === 'emergency') {
     emergencyOnlyFilter.value = true
-    currentFilters.value = { has_emergency: true } // Set initial filter
+    currentFilters.value = { has_emergency: true }
   } else {
-    // Reset filters for other types
     emergencyOnlyFilter.value = false
     currentFilters.value = {}
   }
 
   if (!locationStore.hasLocation()) {
     try {
-      await locationStore.fetchLocation() // Fetch location if not already available
-      // fetchAndSetFacilities will be triggered by the location watch
+      await locationStore.fetchLocation()
     } catch {
       searchError.value = locationStore.error || 'Could not get location.'
     }
   } else {
-    // Location already exists, fetch facilities immediately
     fetchAndSetFacilities()
   }
 })
 
-// --- Add computed properties or methods to format facilities for display ---
 const facilityMarkers = computed(() => {
   return facilities.value
     .map((f) => ({
@@ -143,14 +118,13 @@ const facilityMarkers = computed(() => {
       longitude: f.location?.longitude,
       name: f.name,
       address: [f.street, f.house_number, f.city].filter(Boolean).join(' ').trim(),
-      // Add other relevant info for popups/list
       facility_type: f.facility_type,
-      opening_hours: f.opening_hours, // Display this nicely
+      opening_hours: f.opening_hours,
       has_emergency: f.has_emergency,
       specialization: f.specialization,
-      raw: f, // Keep raw data if needed when marker is clicked
+      raw: f,
     }))
-    .filter((f) => f.latitude != null && f.longitude != null) // Filter out invalid locations
+    .filter((f) => f.latitude != null && f.longitude != null)
 })
 </script>
 
@@ -199,10 +173,10 @@ const facilityMarkers = computed(() => {
   align-items: center;
 }
 .el-main {
-  display: flex; /* Use flexbox for layout */
+  display: flex;
 }
 .facility-list-panel {
-  width: 300px; /* Adjust width as needed */
+  width: 300px;
   flex-shrink: 0;
   border-right: 1px solid #eee;
   padding: 15px;
@@ -226,62 +200,57 @@ const facilityMarkers = computed(() => {
 }
 
 .map-area {
-  flex-grow: 1; /* Map takes remaining space */
-  position: relative; /* Needed for overlays inside MapComponent */
+  flex-grow: 1;
+  position: relative;
 }
 
 .facility-list-panel {
-  width: 300px; /* Adjust width as needed */
+  width: 300px;
   flex-shrink: 0;
   border-right: 1px solid #eee;
   padding: 15px;
   overflow-y: auto;
   background: white;
-  color: #303133; /* Default darker text for the panel if needed */
+  color: #303133;
 }
 
 .facility-list-panel h3 {
   margin-bottom: 10px;
-  color: #303133; /* Darker heading */
+  color: #303133;
 }
 
 .facility-list-panel ul {
   list-style: none;
   padding: 0;
-  margin: 0; /* Remove default ul margin */
+  margin: 0;
 }
 
-/* Target the list item */
 .facility-list-item {
-  /* Use the class added in the template */
-  padding: 12px 5px; /* Adjust padding */
+  padding: 12px 5px;
   border-bottom: 1px solid #f4f4f4;
   cursor: pointer;
-  transition: background-color 0.2s ease; /* Smooth hover effect */
+  transition: background-color 0.2s ease;
 }
 
 .facility-list-item:hover {
-  background-color: #f5f5f5; /* Slightly darker hover */
+  background-color: #f5f5f5;
 }
 
-/* Target the specific text elements within the list item */
 .facility-list-item .facility-name {
-  font-weight: 600; /* Make name slightly bolder */
-  color: #303133; /* Element Plus Default Text Color (Dark) */
-  display: block; /* Ensure it takes its own line if needed */
+  font-weight: 600;
+  color: #303133;
+  display: block;
   margin-bottom: 4px;
 }
 
 .facility-list-item .facility-address,
 .facility-list-item .facility-details {
-  font-size: 0.85em; /* Keep address/details slightly smaller */
-  color: #606266; /* Element Plus Secondary Text Color (Slightly Lighter Dark) */
-  line-height: 1.4; /* Improve readability for smaller text */
-  display: inline-block; /* Keep details on the same line if possible */
-  margin-right: 5px; /* Add space between details */
+  font-size: 0.85em;
+  color: #606266;
+  line-height: 1.4;
+  display: inline-block;
+  margin-right: 5px;
 }
-
-/* Optional: If you want address and details even darker */
 
 .facility-list-item .facility-address,
 .facility-list-item .facility-details {
@@ -289,8 +258,7 @@ const facilityMarkers = computed(() => {
 }
 
 .map-area {
-  flex-grow: 1; /* Map takes remaining space */
-  position: relative; /* Needed for overlays inside MapComponent */
+  flex-grow: 1;
+  position: relative;
 }
-/* Adjust MapComponent styles if necessary */
 </style>

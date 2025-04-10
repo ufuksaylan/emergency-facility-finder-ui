@@ -30,11 +30,10 @@
 import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 
-// --- Props ---
 const props = defineProps({
   suggestions: {
     type: Array,
-    default: () => [], // Default to an empty array of {value, address, facilityData}
+    default: () => [],
   },
   placeholder: {
     type: String,
@@ -46,48 +45,32 @@ const props = defineProps({
   },
 })
 
-// --- Emits ---
-// Emit an event when a facility is actually selected from the list
 const emit = defineEmits(['facility-selected'])
 
-// --- Local State ---
-// Local state for the input field's text.
 const inputValue = ref('')
 
-// --- Methods ---
-
-// Method for el-autocomplete to fetch suggestions
 const querySearch = (queryString, cb) => {
   const query = queryString ? queryString.toLowerCase() : ''
-  const results = query ? props.suggestions.filter(createFilter(query)) : props.suggestions // Show all if query is empty (on focus)
-
+  const results = query ? props.suggestions.filter(createFilter(query)) : props.suggestions
   console.log(`Search Query: "${query}", Found:`, results.length)
-  cb(results) // Pass the filtered results back to el-autocomplete
+  cb(results)
 }
 
-// Helper function for filtering suggestions based on input query (case-insensitive)
 const createFilter = (queryString) => {
   return (suggestion) => {
-    // Check if name (value) or address contains the query string
     const nameMatch = suggestion.value.toLowerCase().includes(queryString)
     const addressMatch = suggestion.address.toLowerCase().includes(queryString)
     return nameMatch || addressMatch
   }
 }
 
-// Method called when a suggestion is selected from the dropdown
 const handleSelect = (item) => {
   console.log('SearchBar: Selected Item:', item)
-  // Emit the full selected facility data object to the parent
-  emit('facility-selected', item) // item is the suggestion object {value, address, facilityData}
-
-  // Optional: Clear input after selection?
-  // inputValue.value = '';
+  emit('facility-selected', item)
 }
 </script>
 
 <style scoped>
-/* Styles specific to the search container */
 .search-container {
   padding: 10px 15px;
   background-color: #f8f8f8;
@@ -96,27 +79,26 @@ const handleSelect = (item) => {
 }
 
 .search-autocomplete {
-  width: 100%; /* Make autocomplete take full width */
+  width: 100%;
 }
 
-/* Styles for custom suggestion items */
 .suggestion-item {
   line-height: normal;
-  padding: 7px 0; /* Adjust padding if needed */
+  padding: 7px 0;
 }
 .suggestion-name {
   font-size: 14px;
-  color: #333; /* Darker text for name */
+  color: #333;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Prevent long names breaking layout */
+  text-overflow: ellipsis;
 }
 .suggestion-address {
   font-size: 12px;
-  color: #888; /* Lighter text for address */
+  color: #888;
   margin-top: 2px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Prevent long addresses breaking layout */
+  text-overflow: ellipsis;
 }
 </style>

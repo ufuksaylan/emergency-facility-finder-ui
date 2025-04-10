@@ -108,7 +108,6 @@
 <script setup>
 import { ref, onMounted, computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-// Make sure this path is correct for your project structure
 import { getAdminComplaint, updateAdminComplaint, deleteAdminComplaint } from '@/api/adminApi'
 import {
   ElPageHeader,
@@ -127,10 +126,8 @@ import {
   ElMessage,
   ElMessageBox,
 } from 'element-plus'
-// Import necessary icons
 import { Delete as DeleteIcon, Edit as EditIcon } from '@element-plus/icons-vue'
 
-// Props passed from router (complaint ID)
 const props = defineProps({
   id: {
     type: [String, Number],
@@ -140,27 +137,21 @@ const props = defineProps({
 
 const router = useRouter()
 
-// Component State Refs
-const complaint = ref(null) // Expected to hold { ..., facility: { osm_id: '...', name: '...' } } if backend provides it
+const complaint = ref(null)
 const isLoading = ref(false)
 const isSaving = ref(false)
 const isDeleting = ref(false)
 const error = ref(null)
 
-// Form Data (using reactive for nested properties)
 const formData = reactive({
   status: '',
   resolution_notes: '',
 })
 
-// Computed property for the page title
 const pageTitle = computed(() =>
   complaint.value ? `Complaint Details (ID: ${complaint.value.id})` : 'Complaint Details',
 )
 
-// --- Helper Functions ---
-
-// Format DateTime strings (Using Lithuanian locale based on context)
 const formatDateTime = (dateTimeString) => {
   if (!dateTimeString) return ''
   try {
@@ -170,11 +161,10 @@ const formatDateTime = (dateTimeString) => {
       hour12: false,
     }).format(new Date(dateTimeString))
   } catch {
-    return dateTimeString // Fallback if formatting fails
+    return dateTimeString
   }
 }
 
-// Determine tag type based on status
 const getStatusTagType = (status) => {
   switch (status?.toLowerCase()) {
     case 'new':
@@ -191,9 +181,6 @@ const getStatusTagType = (status) => {
   }
 }
 
-// --- Core Logic Functions ---
-
-// Fetch complaint data from API (expects facility info now)
 const loadComplaint = async () => {
   isLoading.value = true
   error.value = null
@@ -201,11 +188,9 @@ const loadComplaint = async () => {
   try {
     const response = await getAdminComplaint(props.id)
     complaint.value = response.data
-    // Initialize form data
+
     formData.status = complaint.value.status || ''
     formData.resolution_notes = complaint.value.resolution_notes || ''
-    // Optional: Log to verify data structure in browser console
-    // console.log('Loaded complaint data:', complaint.value);
   } catch (err) {
     console.error(`Failed to load complaint ${props.id}:`, err)
     error.value = err.response?.data?.error || err.message || 'Failed to load complaint data'
@@ -217,7 +202,6 @@ const loadComplaint = async () => {
   }
 }
 
-// Handle saving changes (Update status and resolution notes)
 const handleSave = async () => {
   isSaving.value = true
   error.value = null
@@ -227,8 +211,8 @@ const handleSave = async () => {
       resolution_notes: formData.resolution_notes,
     }
     const response = await updateAdminComplaint(props.id, updateData)
-    complaint.value = response.data // Update local data with response
-    // Re-sync form
+    complaint.value = response.data
+
     formData.status = complaint.value.status || ''
     formData.resolution_notes = complaint.value.resolution_notes || ''
     ElMessage({ message: 'Complaint updated successfully.', type: 'success' })
@@ -276,20 +260,16 @@ const handleDelete = async () => {
   }
 }
 
-// Navigate back to the complaints list view
 const goBack = () => {
   router.push({ name: 'adminComplaintsList' })
 }
 
-// Navigate to the Admin Facility Edit page
 const goToEditFacility = () => {
-  // ** Verify this path matches your data structure from the backend **
   const facilityOsmId = complaint.value?.facility?.osm_id
 
   if (facilityOsmId) {
     router.push({ name: 'adminFacilityEdit', params: { osm_id: facilityOsmId } })
   } else {
-    // Log a warning and show a message if the ID is missing
     console.warn(
       'Cannot navigate to edit facility: facility OSM ID is missing from complaint data.',
     )
@@ -297,9 +277,6 @@ const goToEditFacility = () => {
   }
 }
 
-// --- Lifecycle Hook ---
-
-// Fetch the complaint data when the component is mounted
 onMounted(() => {
   loadComplaint()
 })
@@ -319,56 +296,51 @@ onMounted(() => {
   padding: 20px;
   text-align: center;
 }
-/* Style for read-only <p> tags within the form */
 .el-form p {
   margin: 0;
-  line-height: 32px; /* Align with default input height */
+  line-height: 32px;
   color: var(--el-text-color-regular);
   word-break: break-word;
-  padding: 0 11px; /* Match input padding if needed */
+  padding: 0 11px;
 }
 .el-form-item {
   margin-bottom: 18px;
 }
 .form-actions {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  gap: 10px; /* Space between buttons */
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 20px;
 }
 .el-col {
-  /* Add some spacing below columns on smaller screens if needed */
   margin-bottom: 10px;
 }
 
-/* Style for the read-only description textarea */
 .read-only-textarea :deep(.el-textarea__inner) {
   cursor: default;
-  background-color: var(--el-fill-color-light); /* Slightly different background */
+  background-color: var(--el-fill-color-light);
   color: var(--el-text-color-regular);
-  box-shadow: none; /* Remove focus shadow if desired */
+  box-shadow: none;
 }
 
-/* Styles for the facility link section */
 .facility-link-container {
   display: flex;
-  align-items: center; /* Vertically align items */
-  gap: 15px; /* Space between name and button */
-  line-height: 32px; /* Match input/p height */
-  padding: 0 11px; /* Match input padding */
-  flex-wrap: wrap; /* Allow button to wrap on small screens */
+  align-items: center;
+  gap: 15px;
+  line-height: 32px;
+  padding: 0 11px;
+  flex-wrap: wrap;
 }
 
 .facility-link-container .facility-name {
-  margin: 0; /* Remove default p margin */
-  padding: 0; /* Remove default p padding */
-  flex-grow: 1; /* Allow name to take available space */
-  color: var(--el-text-color-secondary); /* Slightly muted color for name */
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  color: var(--el-text-color-secondary);
   font-size: 0.9em;
-  word-break: break-word; /* Prevent overflow */
+  word-break: break-word;
 }
 
-/* Ensure button doesn't shrink too much */
 .facility-link-container .el-button {
   flex-shrink: 0;
 }
