@@ -1,5 +1,4 @@
-// src/api/adminApi.js
-import apiClient from './client' // Assuming your configured axios instance
+import apiClient from './client'
 
 // --- Facilities ---
 

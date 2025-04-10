@@ -1,4 +1,3 @@
-// src/api/complaints.js
 import apiClient from './client'
 
 /**

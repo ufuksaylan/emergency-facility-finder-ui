@@ -26,24 +26,21 @@
 
 <script setup>
 import { PhoneFilled } from '@element-plus/icons-vue'
-// No additional script logic needed for this static header
-// If navigation logic were added, import { useRouter } from 'vue-router'
 </script>
 
 <style scoped>
 .app-header {
-  /* Modern Look: White background, subtle shadow */
   background-color: #ffffff;
-  color: #303133; /* Darker text for contrast */
-  height: 60px; /* Standard header height */
-  line-height: 60px; /* Vertically align text */
-  padding: 0 20px; /* Standard padding */
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06); /* Subtle shadow */
-  border-bottom: 1px solid #e4e7ed; /* Light border */
-  flex-shrink: 0; /* Prevent shrinking in flex layouts */
-  position: sticky; /* Keep header visible on scroll */
+  color: #303133;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid #e4e7ed;
+  flex-shrink: 0;
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure header stays on top */
+  z-index: 1000;
   width: 100%;
 }
 
@@ -53,23 +50,20 @@ import { PhoneFilled } from '@element-plus/icons-vue'
 }
 
 .logo-title-link {
-  display: inline-flex; /* Align logo and title */
+  display: inline-flex;
   align-items: center;
-  text-decoration: none; /* Remove underline from link */
-  color: inherit; /* Use header text color */
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-placeholder {
-  height: 35px; /* Adjust size as needed */
+  height: 35px;
   width: 35px;
   margin-right: 10px;
-  /* background-color: #00796B; /* Placeholder color - replace with actual logo */
-  /* border-radius: 50%; /* Example: circular logo */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00796b; /* Theme color for SVG */
-  /* If using an image, remove background/color/border-radius */
+  color: #00796b;
 }
 .logo-placeholder svg {
   height: 25px;
@@ -77,7 +71,7 @@ import { PhoneFilled } from '@element-plus/icons-vue'
 }
 
 .header-title {
-  font-weight: 700; /* Bold title */
+  font-weight: 700;
   font-size: 1.2em;
   white-space: nowrap;
   overflow: hidden;
@@ -85,31 +79,27 @@ import { PhoneFilled } from '@element-plus/icons-vue'
 }
 
 .header-right {
-  text-align: right; /* Align content to the right */
+  text-align: right;
 }
 
 .emergency-call-link {
-  display: inline-flex; /* Align button and number */
+  display: inline-flex;
   align-items: center;
-  text-decoration: none; /* Remove underline from tel link */
-  color: inherit; /* Inherit text color */
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Keep the emergency button visually distinct */
 .emergency-call-link .el-button {
-  margin-right: 8px; /* Space between button and number */
-  /* Solid danger button contrasts well with white bg */
+  margin-right: 8px;
 }
 
 .header-emergency-number {
   font-weight: bold;
   font-size: 1.15em;
-  color: #f56c6c; /* Match Element Plus danger color */
+  color: #f56c6c;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  /* Tablets and below */
   .app-header {
     padding: 0 15px;
   }
@@ -122,15 +112,11 @@ import { PhoneFilled } from '@element-plus/icons-vue'
 }
 
 @media (max-width: 480px) {
-  /* Smaller mobile phones */
   .app-header {
     padding: 0 10px;
   }
   .header-title {
-    /* Option 1: Slightly smaller title */
     font-size: 1em;
-    /* Option 2: Hide title, show only logo */
-    /* display: none; */
   }
   .logo-placeholder {
     height: 30px;
@@ -142,7 +128,6 @@ import { PhoneFilled } from '@element-plus/icons-vue'
     width: 20px;
   }
   .emergency-call-link .el-button {
-    /* Make button smaller on tiny screens */
     --el-button-size: var(--el-button-size-small);
     margin-right: 5px;
   }
